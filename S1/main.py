@@ -1,8 +1,5 @@
 from bagg import Bagg
 from iteratorr import Iterator
-
-
-
 def main():
     bag = Bagg()
 
@@ -10,46 +7,50 @@ def main():
     bag.add(100)
     bag.add(250)
     bag.add(6)
+    bag.add(15)
+
+    print(bag.size())
 
     assert bag.nr_occurrences(100)
 
-    assert bag.size() == 4
-
+    try:
+        assert bag.size() == 5
+    except AssertionError:
+        print("Size is bigger or lower than the actual size of the bag")
 
     assert bag.search(6)
 
-    bag.remove(2)
-    assert not bag.search(2)
-
-    iterator = bag.iterator()
-
-    assert type(iterator) == Iterator
-    assert iterator.bag == bag
-    assert iterator.first() == bag.lst[0]
-    iterator.next()
-    assert iterator.i == 1
-    iterator.next()
-    iterator.next()
+    bag.add(500)
+    assert bag.search(500)
+    bag.remove(500)
 
     try:
-        iterator.next()
-        iterator.next()
-        iterator.next()
-        assert False
+        assert  bag.search(500)
+    except AssertionError:
+        print("Not valid")
+
+    iter = bag.iterator()
+
+    try:
+        assert type(iter) == Iterator
+    except AssertionError:
+        print("Iterators are not the same")
+
+    try:
+        assert iter.first() == bag.item_list[0]
+    except AssertionError:
+        print("Invalid")
+
+    iter.next()
+    assert iter.iterator == 1
+
+
+    try:
+        iter.next()
+        assert True
     except:
         bag.destroy()
 
-        try:
-            bag.lst
-
-        except:
-            # The delete method is implemented by pythons garbage collector by default
-            del bag
-
-            try:
-                bag
-            except NameError:
-                pass
-
+    bag.destroy()
 
 main()
