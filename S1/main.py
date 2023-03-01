@@ -11,7 +11,7 @@ def main():
 
     print(bag.size())
 
-    assert bag.nr_occurrences(100)
+    assert bag.nr_occurrences(100) == 2
 
     try:
         assert bag.size() == 5
@@ -21,11 +21,11 @@ def main():
     assert bag.search(6)
 
     bag.add(500)
-    assert bag.search(500)
+    assert bag.search(500) == True
     bag.remove(500)
 
     try:
-        assert  bag.search(500)
+        assert  bag.search(500) == True
     except AssertionError:
         print("Not valid")
 
