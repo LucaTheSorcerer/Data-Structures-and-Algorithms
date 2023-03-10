@@ -21,19 +21,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/L1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtendedTest.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtendedTest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShortTest.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShortTest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../S1/Archive.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678464834413</updated>
       <workItem from="1678464836049" duration="4030000" />
-      <workItem from="1678479258329" duration="4417000" />
+      <workItem from="1678479258329" duration="5480000" />
     </task>
     <servers />
   </component>

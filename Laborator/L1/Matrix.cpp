@@ -42,7 +42,7 @@ int Matrix::nrColumns() const {
 
 TElem Matrix::element(int i, int j) const {
 	//TODO - Implementation
-    if(i >= rows || j >= columns)
+    if(i < 0 || j < 0 || i >= rows || j >= columns)
         throw std::out_of_range("Invalid Position");
 
     int start = columnPointers[j];
@@ -62,7 +62,7 @@ TElem Matrix::element(int i, int j) const {
 TElem Matrix::modify(int i, int j, TElem e) {
 	//TODO - Implementation
 
-    if(i >= rows || j >= columns)
+    if(i < 0 || j < 0 || i >= rows || j >= columns)
         throw std::out_of_range("Invalid position");
 
     int start = columnPointers[j];
