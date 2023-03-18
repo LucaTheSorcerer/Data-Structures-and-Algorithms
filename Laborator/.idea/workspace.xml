@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c8ef336-3a50-4e82-916d-682131949713" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../S1/Archive.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/L1/HelperArray.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/cache-v2-bc0aafd64487d4ab5dad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-99173b8909b171cf6a10.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-16T14-14-10-0336.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/L1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/L1/App.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/L1/ExtendedTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/L1/Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/cache-v2-14621d5ff642751fbf4a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-dc6b1b5f112e1a7ade91.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-10T21-27-15-0658.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/App.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/App.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/L1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/L1/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/L1/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,14 +40,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Laborator" />
@@ -55,6 +81,8 @@
       <option name="presentableId" value="Default" />
       <updated>1678464799851</updated>
       <workItem from="1678464800870" duration="8000" />
+      <workItem from="1678889650859" duration="3000" />
+      <workItem from="1679168715721" duration="3000" />
     </task>
     <servers />
   </component>

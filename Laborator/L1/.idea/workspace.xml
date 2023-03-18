@@ -21,8 +21,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dynamic_Array.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dynamic_Array.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HelperArray.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HelperArray.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-bc0aafd64487d4ab5dad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-99173b8909b171cf6a10.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-16T14-14-10-0336.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/App.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ExtendedTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-14621d5ff642751fbf4a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-dc6b1b5f112e1a7ade91.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-10T21-27-15-0658.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/App.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/App.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ShortTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+    </list>
+    <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="">
+      <change beforePath="$PROJECT_DIR$/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ExtendedTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +67,39 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Matrix.cpp">
+      <ranges>
+        <range start1="6" end1="7" start2="6" end2="10" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="9" end1="10" start2="12" end2="13" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="14" end1="14" start2="17" end2="19" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="15" end1="16" start2="20" end2="24" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="29" end1="31" start2="37" end2="43" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="32" end1="33" start2="44" end2="45" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="35" end1="39" start2="47" end2="54" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="41" end1="46" start2="56" end2="67" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="50" end1="52" start2="71" end2="75" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="55" end1="57" start2="78" end2="78" changelist="3c97e27a-996f-4953-9ca7-03a62c64198d" />
+        <range start1="61" end1="61" start2="82" end2="196" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="62" end1="63" start2="197" end2="201" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="64" end1="67" start2="202" end2="203" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="68" end1="69" start2="204" end2="205" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="70" end1="71" start2="206" end2="214" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="72" end1="80" start2="215" end2="221" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="81" end1="105" start2="222" end2="251" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="106" end1="111" start2="252" end2="309" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="112" end1="112" start2="310" end2="315" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="113" end1="114" start2="316" end2="316" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/ExtendedTest.cpp">
+      <ranges>
+        <range start1="35" end1="35" start2="35" end2="40" changelist="3c97e27a-996f-4953-9ca7-03a62c64198d" />
+        <range start1="159" end1="163" start2="164" end2="168" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+        <range start1="164" end1="165" start2="169" end2="169" changelist="d27d0877-d948-4eee-bc7b-45df85dce31f" />
+      </ranges>
+    </file>
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="xxn8deuq" />
   </component>
@@ -61,6 +128,8 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -86,6 +155,14 @@
       <workItem from="1678464836049" duration="4030000" />
       <workItem from="1678479258329" duration="6078000" />
       <workItem from="1678560992102" duration="95000" />
+      <workItem from="1678721987360" duration="560000" />
+      <workItem from="1678724660128" duration="42000" />
+      <workItem from="1678728482472" duration="134000" />
+      <workItem from="1678889659829" duration="18000" />
+      <workItem from="1678976050283" duration="2475000" />
+      <workItem from="1679130927119" duration="5277000" />
+      <workItem from="1679168716890" duration="2424000" />
+      <workItem from="1679171660765" duration="3163000" />
     </task>
     <servers />
   </component>

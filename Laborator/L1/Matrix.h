@@ -16,22 +16,24 @@ private:
     TElem* elements;
     int* rowIndexes;
     int* columnPointers;
+//    Array line_vec, column_vec;
+//    Arraytelem elements_vec;
 
 public:
 	//constructor
 	Matrix(int nrLines, int nrCols);
 
 	//returns the number of lines
-	int nrLines() const;
+	[[nodiscard]] int nrLines();
 
 	//returns the number of columns
-	int nrColumns() const;
+	[[nodiscard]] int nrColumns();
 
-	//returns the element from line i and column j (indexing starts from 0)
+	//returns the element from line_vec i and column_vec j (indexing starts from 0)
 	//throws exception if (i,j) is not a valid position in the Matrix
-	TElem element(int i, int j) const;
+	[[nodiscard]] TElem element(int i, int j);
 
-	//modifies the value from line i and column j
+	//modifies the value from line_vec i and column_vec j
 	//returns the previous value from the position
 	//throws exception if (i,j) is not a valid position in the Matrix
 	TElem modify(int i, int j, TElem e);

@@ -33,6 +33,11 @@ void testModify() {
 void testQuantity() {
 	cout << "Test quantity" << endl;
 	Matrix m(200, 300);
+    assert(m.element(5, 5) == 0);
+    m.modify(5,5,1);
+    assert(m.element(5, 5) == 1);
+    m.modify(5,5,0);
+    assert(m.element(5, 5) == 0);
 	for (int i = m.nrLines() / 2; i < m.nrLines(); i++) {
 		for (int j = 0; j <= m.nrColumns() / 2; j++)
 		{
@@ -157,8 +162,8 @@ void testMix() {
 
 void testAllExtended() {
 	testCreate(); //passed
-	//testModify(); //error
-	//testQuantity(); //error
-	//testMix(); //error
-	//testExceptions(); //error
+	testModify(); //error
+	testQuantity(); //error
+	testMix(); //error
+	testExceptions(); //passed
 }
