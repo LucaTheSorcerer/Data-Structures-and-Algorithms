@@ -228,6 +228,9 @@ TElem Matrix::modify(int i, int j, TElem e) {
         new_elements[k] = elements[k];
         new_rowIndexes[k] = rowIndexes[k];
     }
+
+    new_elements[start] = e;
+    new_rowIndexes[start] = i;
     for (int k = end; k < new_size; k++) {
         new_elements[k] = elements[k-1];
         new_rowIndexes[k] = rowIndexes[k-1];
@@ -239,8 +242,8 @@ TElem Matrix::modify(int i, int j, TElem e) {
     size = new_size;
 
     // Insert the new element
-    elements[start] = e;
-    rowIndexes[start] = i;
+    //elements[start] = e;
+    //rowIndexes[start] = i;
 
     // Update the columnPointers array to reflect the new element
     for (int k = j+1; k <= columns; k++) {
