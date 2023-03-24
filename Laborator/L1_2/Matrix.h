@@ -7,18 +7,18 @@ typedef int TElem;
 class Matrix {
 
 private:
-	int rows;
-    int columns;
+	int rows; //nr_lines
+    int columns; //nr_cols
 
-    int rowCapacity;
-    int *rowIndexes;
+    int rowCapacity; //line_capacity
+    int rowSize; //line_size
+    int *rowIndexes; //sparse_line
 
-    int columnCapacity;
-    int *columnPointers;
+    int *columnPointers; //sparse_column
 
     int elementsSize;
-    int elementsCapacity;
-    TElem *elements;
+    int elementsCapacity; //
+    TElem *elements; //values
 
     void resizeRowIndexes(int newCapacity);
 
@@ -28,6 +28,14 @@ private:
 
     void automaticElementsIndexes();
 
+    void resize();
+
+    void addToPosition(int position, int i, int j, TElem e);
+
+    void deleteFromPosition(int position, int j);
+
+
+
 public:
 	//constructor
 	Matrix(int nrLines, int nrCols);
@@ -35,10 +43,10 @@ public:
     void print();
 
 	//returns the number of lines
-	int nrLines() const;
+	[[nodiscard]] int nrLines() const;
 
 	//returns the number of columns
-	int nrColumns() const;
+	[[nodiscard]] int nrColumns() const;
 
 	//returns the element from line i and column j (indexing starts from 0)
 	//throws exception if (i,j) is not a valid position in the Matrix

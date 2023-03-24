@@ -11,7 +11,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="L1" targetName="L1" />
+      <config projectName="L1_2" targetName="L1_2" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -39,6 +39,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -68,7 +71,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -78,7 +81,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="L1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="L1" TARGET_NAME="L1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="L1" RUN_TARGET_NAME="L1">
+    <configuration name="L1_2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="L1_2" TARGET_NAME="L1_2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="L1_2" RUN_TARGET_NAME="L1_2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -107,6 +110,12 @@
       <workItem from="1679600573159" duration="6566000" />
       <workItem from="1679667093534" duration="38000" />
       <workItem from="1679667138067" duration="25000" />
+      <workItem from="1679667181659" duration="315000" />
+      <workItem from="1679667503658" duration="3205000" />
+      <workItem from="1679673708441" duration="4814000" />
+      <workItem from="1679679161029" duration="1154000" />
+      <workItem from="1679689342921" duration="597000" />
+      <workItem from="1679691621981" duration="779000" />
     </task>
     <servers />
   </component>
@@ -115,5 +124,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/App.cpp</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

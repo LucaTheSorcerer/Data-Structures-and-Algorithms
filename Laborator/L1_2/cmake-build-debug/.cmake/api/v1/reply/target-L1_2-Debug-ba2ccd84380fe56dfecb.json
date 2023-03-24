@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "L1"
+			"path" : "L1_2"
 		}
 	],
 	"backtrace" : 1,
@@ -59,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "L1::@6890427a1f51a3e7e1df",
+	"id" : "L1_2::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -75,8 +75,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "L1",
-	"nameOnDisk" : "L1",
+	"name" : "L1_2",
+	"nameOnDisk" : "L1_2",
 	"paths" : 
 	{
 		"build" : ".",

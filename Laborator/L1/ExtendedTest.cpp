@@ -162,8 +162,8 @@ void testMix() {
 
 void testAllExtended() {
 	testCreate(); //passed
-	testModify(); //error
-	testQuantity(); //error
-	testMix(); //error
+	testModify(); //passed
+	testQuantity(); //passed
+	testMix(); //passed
 	testExceptions(); //passed
 }

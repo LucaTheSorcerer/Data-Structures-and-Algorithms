@@ -1,4 +1,4 @@
-#include <assert.h>
+#include <cassert>
 #include "Matrix.h"
 #include "ExtendedTest.h"
 #include <iostream>
@@ -25,7 +25,7 @@ void testModify() {
     m.print();
 
 	for (int i = 0; i < m.nrLines(); i++)
-		for (int j = 1; j < m.nrColumns() - 1; j++)
+		for (int j = 0; j < m.nrColumns() ; j++)
 			if (i == 4)
 				assert(m.element(i, j) == 3);
 			else
@@ -147,8 +147,8 @@ void testMix() {
 
 void testAllExtended() {
     testCreate();
-    testModify();
-//	testQuantity();
-//	testMix();
-//	testExceptions();
+    //testModify();
+	//testQuantity();
+	//testMix();
+	//testExceptions();
 }
