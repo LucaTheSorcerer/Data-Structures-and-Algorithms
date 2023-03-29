@@ -19,7 +19,7 @@ Matrix::Matrix(int nrLines, int nrCols) {
  * columns and the columnPointers can be initialized with the size of columns+1.
  * Also, the first element of columnPointers is set to 0 and the rest are set to size
  * We initialize three dynamic arrays that hold the elements, row indexes and column_vec pointers so we can represent
- * the ccs sparse matrix format
+ * the ccs sparse matrix format. it initializes the matrix with empty elements and column pointers
  */
     this->rows = nrLines; //nr_lines
     this->columns = nrCols; //nr_cols
@@ -35,24 +35,22 @@ Matrix::Matrix(int nrLines, int nrCols) {
 }
 
 /**
- * @brief return the number of rows in the matrix
+ * @brief returns the number of rows in the matrix
  * @params  -
  * @Best_case  θ(1)
  * @Medium_case  θ(1)
- * @Amortized_case  θ(1)
- * @Worst_case θ(1)
+ * @Total_case θ(1)
  */
 int Matrix::nrLines() const {
     return this->rows;
 }
 
 /**
- * @brief return the number of columns in the matrix
+ * @brief returns the number of columns in the matrix
  * @params -
  * @Best_case θ(1)
  * @Medium_case θ(1)
- * @Amortized_case θ(1)
- * @Worst_case θ(1)
+ * @Total_case θ(1)
  */
 int Matrix::nrColumns() const {
     return this->columns;
@@ -63,9 +61,12 @@ int Matrix::nrColumns() const {
  * @brief returns the element from position i and j
  * @param i  index for line
  * @param j  index for column
- * @details this function returns the element in the matrix from position i and j.
- * It will throw and exception if the position in the matrix is not valid so when the indexes are out of range/bounds
- * @Time_complexity: best case - θ(1), worst case - O(n)
+ * @details this function returns the element in the matrix from position i and j. If the element does not exist in the
+ * matrix it will return NULL_TELEM
+ * @throws out_of_range - It will throw and exception if the position in the matrix is not valid so when the indexes are out of range/bounds
+ * @Best_case - θ(1)
+ * @Medium_case - θ(n) where n is the number of elements on the column j
+ * @Total_case - O(n)
  */
 TElem Matrix::element(int i, int j) {
     if (i < 0 || j < 0 || i >= this->nrLines() || j >= this->nrColumns()) {
@@ -88,8 +89,12 @@ TElem Matrix::element(int i, int j) {
 /**
  * @brief the function modifies the element on the line_vec i and column_vec j
  * @params: i - index for row, j - index for column_vec, TElem e - the element to be modified
- * @detail
- * Time complexity: idk yet bro gotta think this one through
+ * @details This function modifies the element at position (i,j) in the matrix. If the element exists, it replaces
+ * the element with a new value e. If e is NULL_TELEM it deletes the existing element
+ * @throws out_of_range if the indices (i,j) are out of range
+ * @Best_case - θ(1)
+ * @Medium_case - θ(n) where n is the number lines
+ * @Total_case - O(n)
  */
 
 //
@@ -225,12 +230,20 @@ void Matrix::automaticElementsIndexes() {
         resizeElements(this->elementsCapacity / 2);
 }
 
+/**
+ * @brief The destructor function for the Matrix class
+ * @details it frees the memory allocated for the arrays elements, rowIndex and columnPointers
+ */
 Matrix::~Matrix() {
     delete[] this->elements;
     delete[] this->rowIndexes;
     delete[] this->columnPointers;
 }
 
+/**
+ * @brief used to dynamically resize the arrays
+ * @details this function is called when the number of elements in the matrix exceeds the capacity
+ */
 void Matrix::resize() {
 
     auto newRowIndexes = new TElem[2 * this->rowCapacity];
@@ -248,6 +261,17 @@ void Matrix::resize() {
     this->rowIndexes = newRowIndexes;
 }
 
+/**
+ * @brief function to adds an element to a certain position, used for the modify function
+ * @details if the number of rows is equal to the capacity, it calls the resize function to increase
+ * the capacity of the matrix. It then shifts the elements to the right of position 'position' by one index
+ * and increments their column pointer values by one.
+ * It then updates the rowIndexes and elements arrays at the specified new position
+ * @param position - the position where the element e should be added
+ * @param i - index for row i
+ * @param j - index for column j
+ * @param e - element to be added to the array
+ */
 void Matrix::addToPosition(int position, int i, int j, TElem e) {
     if(this->rowSize == this->rowCapacity)
         this->resize();
@@ -266,6 +290,17 @@ void Matrix::addToPosition(int position, int i, int j, TElem e) {
 
 }
 
+/**
+ * @brief function to delete an element at a certain position, used for the modify function
+ * @details if the number of rows is equal to the capacity, it calls the resize function to increase
+ * the capacity of the matrix. It deletes the element at position 'position' from the matrix that belongs
+ * to column j. It then shift all the elements to the right of position to the legt by one index
+ * and then decrements the the column pointers of the values one by one
+ * It then updates the rowSize and elements arrays accordingly.
+ * It then updates the rowIndexes and elements arrays at the specified new position
+ * @param position - the position where the element e should be added
+ * @param j - index for column j
+ */
 void Matrix::deleteFromPosition(int position, int j) {
     for(int index = position; index < this->rowSize - 1; index++) {
         this->rowIndexes[index] = this->rowIndexes[index + 1];
