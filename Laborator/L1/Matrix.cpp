@@ -92,44 +92,75 @@ TElem Matrix::element(int i, int j) {
  * Time complexity: idk yet bro gotta think this one through
  */
 
+//
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || j < 0 || i > this->nrLines() || j > this->nrColumns()) {
+//        throw std::out_of_range("Invalid Position for your element");
+//    }
+//
+//    int start = this->columnPointers[j];
+//    int end = this->columnPointers[j + 1];
+//    TElem old = NULL_TELEM;
+//
+//    while(start < end) {
+//        if(this->rowIndexes[start] == i) {
+//            old = this->elements[start];
+//            if(e != NULL_TELEM) {
+//                this->elements[start] = e;
+//            }
+//            else {
+//                this->deleteFromPosition(start, j);
+//            }
+//            return old;
+//        }
+//
+//        if(this->rowIndexes[start] > i) {
+//            old = this->elements[start];
+//
+//            this->addToPosition(start, i, j, e);
+//
+//            return old;
+//        }
+//
+//        start++;
+//    }
+//
+//    this->addToPosition(start, i, j, e);
+//    return NULL_TELEM;
+//
+//}
 
 TElem Matrix::modify(int i, int j, TElem e) {
     if (i < 0 || j < 0 || i > this->nrLines() || j > this->nrColumns()) {
         throw std::out_of_range("Invalid Position for your element");
     }
 
+
     int start = this->columnPointers[j];
     int end = this->columnPointers[j + 1];
     TElem old = NULL_TELEM;
 
-    while(start < end) {
-        if(this->rowIndexes[start] == i) {
-            old = this->elements[start];
-            if(e != NULL_TELEM) {
-                this->elements[start] = e;
-            }
-            else {
-                this->deleteFromPosition(start, j);
+    for (int idx = start; idx < end; idx++) {
+        if (this->rowIndexes[idx] == i) {
+            old = this->elements[idx];
+            if (e != NULL_TELEM) {
+                this->elements[idx] = e;
+            } else {
+                this->deleteFromPosition(idx, j);
             }
             return old;
         }
 
-        if(this->rowIndexes[start] > i) {
-            old = this->elements[start];
-
-            this->addToPosition(start, i, j, e);
-
+        if (this->rowIndexes[idx] > i) {
+            old = this->elements[idx];
+            this->addToPosition(idx, i, j, e);
             return old;
         }
-
-        start++;
     }
 
-    this->addToPosition(start, i, j, e);
+    this->addToPosition(end, i, j, e);
     return NULL_TELEM;
-
 }
-
 
 void Matrix::print() {
     for (int i = 0; i < rows; i++) {
@@ -181,9 +212,9 @@ void Matrix::resizeElements(int newCapacity) {
 }
 
 void Matrix::automaticResizeRowIndexes() {
-    if (rows == rowCapacity)
+    if (rowSize == rowCapacity)
         resizeRowIndexes(rowCapacity * 2);
-    else if (rows <= rowCapacity / 4 && rowCapacity >= 10)
+    else if (rowSize <= rowCapacity / 4 && rowCapacity >= 10)
         resizeRowIndexes(rowCapacity / 2);
 }
 
@@ -201,6 +232,7 @@ Matrix::~Matrix() {
 }
 
 void Matrix::resize() {
+
     auto newRowIndexes = new TElem[2 * this->rowCapacity];
     auto new_elements = new TElem[2 * this->rowCapacity];
 
@@ -244,6 +276,8 @@ void Matrix::deleteFromPosition(int position, int j) {
     for(int index = j + 1; index < this->columns + 1; index++) {
         this->columnPointers[index]--;
     }
+
+
 }
 
 

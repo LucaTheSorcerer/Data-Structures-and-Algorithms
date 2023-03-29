@@ -21,6 +21,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../L1_Rares/Set/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../L1_Rares/Set/.idea/Set.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../L1_Rares/Set/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../L1_Rares/Set/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../L1_Rares/Set/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="" />
@@ -100,6 +111,15 @@
       <workItem from="1679665837075" duration="160000" />
       <workItem from="1679679288006" duration="836000" />
       <workItem from="1679689343559" duration="5819000" />
+      <workItem from="1679696149613" duration="111000" />
+      <workItem from="1679899156761" duration="1943000" />
+      <workItem from="1679915013479" duration="805000" />
+      <workItem from="1679925160891" duration="119000" />
+      <workItem from="1679943152442" duration="719000" />
+      <workItem from="1679986895410" duration="692000" />
+      <workItem from="1680006749003" duration="193000" />
+      <workItem from="1680104782094" duration="1206000" />
+      <workItem from="1680116153702" duration="2004000" />
     </task>
     <servers />
   </component>
