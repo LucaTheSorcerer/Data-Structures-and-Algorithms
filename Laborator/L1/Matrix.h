@@ -28,7 +28,7 @@ private:
 
     void automaticElementsIndexes();
 
-    void resize();
+    //void resize();
 
     void addToPosition(int position, int i, int j, TElem e);
 

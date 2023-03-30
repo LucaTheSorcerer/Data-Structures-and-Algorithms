@@ -243,23 +243,23 @@ Matrix::~Matrix() {
 /**
  * @brief used to dynamically resize the arrays
  * @details this function is called when the number of elements in the matrix exceeds the capacity
- */
-void Matrix::resize() {
-
-    auto newRowIndexes = new TElem[2 * this->rowCapacity];
-    auto new_elements = new TElem[2 * this->rowCapacity];
-
-    for(int i = 0; i < this->rowSize; i++) {
-        newRowIndexes[i] = this->rowIndexes[i];
-        new_elements[i] = this->elements[i];
-    }
-    delete[] this->elements;
-    delete[] this->rowIndexes;
-
-    this->rowCapacity *= 2;
-    this->elements = new_elements;
-    this->rowIndexes = newRowIndexes;
-}
+// */
+//void Matrix::resize() {
+//
+//    auto newRowIndexes = new TElem[2 * this->rowCapacity];
+//    auto new_elements = new TElem[2 * this->rowCapacity];
+//
+//    for(int i = 0; i < this->rowSize; i++) {
+//        newRowIndexes[i] = this->rowIndexes[i];
+//        new_elements[i] = this->elements[i];
+//    }
+//    delete[] this->elements;
+//    delete[] this->rowIndexes;
+//
+//    this->rowCapacity *= 2;
+//    this->elements = new_elements;
+//    this->rowIndexes = newRowIndexes;
+//}
 
 
 

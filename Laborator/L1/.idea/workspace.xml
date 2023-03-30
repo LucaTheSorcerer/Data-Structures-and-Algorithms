@@ -21,25 +21,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/samacac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set (2).zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/Set.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/Set.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/SetIterator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/SetIterator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/ExtendedTest.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/Set.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/Set.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/SetIterator.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/SetIterator.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/CMakeFiles/Set.dir/ShortTest.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/Set" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/Set" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L1_Rares/Set/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +113,7 @@
       <workItem from="1680116153702" duration="3499000" />
       <workItem from="1680173583471" duration="1002000" />
       <workItem from="1680174601969" duration="5000" />
-      <workItem from="1680184780741" duration="4190000" />
+      <workItem from="1680184780741" duration="4592000" />
     </task>
     <servers />
   </component>
