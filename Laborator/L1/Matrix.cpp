@@ -191,16 +191,16 @@ void Matrix::print() {
 }
 
 void Matrix::resizeRowIndexes(int newCapacity) {
-    if (newCapacity < rows)
+    if (newCapacity < rowSize)
         throw std::out_of_range("Index out of range");
 
     int *newArray = new int[newCapacity];
-    for (int i = 0; i < rows; i++)
-        newArray[i] = rowIndexes[i];
+    for (int i = 0; i < rowSize; i++)
+        newArray[i] = this->rowIndexes[i];
 
-    delete[] rowIndexes;
-    rowIndexes = newArray;
-    rowCapacity = newCapacity;
+    delete[] this->rowIndexes;
+    this->rowIndexes = newArray;
+    this->rowCapacity = newCapacity;
 }
 
 void Matrix::resizeElements(int newCapacity) {
@@ -261,6 +261,9 @@ void Matrix::resize() {
     this->rowIndexes = newRowIndexes;
 }
 
+
+
+
 /**
  * @brief function to adds an element to a certain position, used for the modify function
  * @details if the number of rows is equal to the capacity, it calls the resize function to increase
@@ -273,8 +276,11 @@ void Matrix::resize() {
  * @param e - element to be added to the array
  */
 void Matrix::addToPosition(int position, int i, int j, TElem e) {
-    if(this->rowSize == this->rowCapacity)
-        this->resize();
+    if (this->rowSize == this->rowCapacity) {
+        this->automaticResizeRowIndexes();
+        this->automaticElementsIndexes();
+
+    }
     this->rowSize++;
 
     for(int index = this->rowSize - 1; index > position; index--){
@@ -307,6 +313,8 @@ void Matrix::deleteFromPosition(int position, int j) {
         this->elements[index] = this->elements[index + 1];
     }
     this->rowSize--;
+    automaticResizeRowIndexes();
+    automaticElementsIndexes();
 
     for(int index = j + 1; index < this->columns + 1; index++) {
         this->columnPointers[index]--;
