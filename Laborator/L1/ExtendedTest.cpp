@@ -160,10 +160,53 @@ void testMix() {
 	}
 }
 
+void testResize() {
+
+    Matrix m(3, 3);
+    m.modify(0, 0, 1);
+    m.modify(0, 1, 2);
+    m.modify(1, 1, 3);
+    m.modify(2, 2, 4);
+
+    m.print();
+
+    m.resize(2, 2);
+
+    m.print();
+    assert(m.nrLines() == 2);
+    assert(m.nrColumns() == 2);
+    assert(m.element(0, 0) == 1);
+    assert(m.element(0, 1) == 2);
+//    assert(m.element(2, 2) == NULL_TELEM);
+}
+
+void testResizebigger() {
+    Matrix m(4, 4);
+    m.modify(0, 0, 1);
+    m.modify(0, 1, 2);
+    m.modify(1, 1, 3);
+    m.modify(2, 2, 4);
+
+    m.print();
+
+    m.resize(5, 5);
+
+    m.print();
+    assert(m.nrLines() == 5);
+    assert(m.nrColumns() == 5);
+    assert(m.element(0, 0) == 1);
+    assert(m.element(0, 1) == 2);
+    assert(m.element(1, 1) == 3);
+//    assert(m.element(2, 2) == NULL_TELEM);
+}
+
+
 void testAllExtended() {
 	testCreate(); //passed
 	testModify(); //passed
 	testQuantity(); //passed
 	testMix(); //passed
 	testExceptions(); //passed
+    testResize();
+    testResizebigger();
 }

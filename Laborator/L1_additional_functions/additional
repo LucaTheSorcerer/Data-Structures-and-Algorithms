@@ -1,0 +1,440 @@
+void Matrix::transpose() {
+    // swap rows with columns
+    int temp = rows;
+    rows = columns;
+    columns = temp;
+
+    // allocate new memory for transposed matrix
+    int* new_rowIndexes = new int[rows + 1];
+    int* new_colPointers = new int[columns + 1];
+    TElem* new_elements = new TElem[elementsSize];
+
+    // initialize row indexes with 0s
+    for (int i = 0; i <= rows; i++) {
+        new_rowIndexes[i] = 0;
+    }
+
+    // compute the number of non-zero elements in each column
+    for (int i = 0; i < columns; i++) {
+        for (int j = columnPointers[i]; j < columnPointers[i + 1]; j++) {
+            new_rowIndexes[rowIndexes[j] + 1]++;
+        }
+    }
+
+    // compute the new row indexes
+    for (int i = 1; i <= rows; i++) {
+        new_rowIndexes[i] += new_rowIndexes[i - 1];
+    }
+
+    // copy the elements to the new array
+    for (int i = 0; i < columns; i++) {
+        for (int j = columnPointers[i]; j < columnPointers[i + 1]; j++) {
+            int row = rowIndexes[j];
+            int newPos = new_rowIndexes[row];
+            new_elements[newPos] = elements[j];
+            new_rowIndexes[row]++;
+        }
+    }
+
+    // compute the new column pointers
+    new_colPointers[0] = 0;
+    for (int i = 0; i < rows; i++) {
+        new_colPointers[i + 1] = new_rowIndexes[i];
+    }
+
+    // update the matrix
+    delete[] rowIndexes;
+    delete[] columnPointers;
+    delete[] elements;
+
+    rowIndexes = new_rowIndexes;
+    columnPointers = new_colPointers;
+    elements = new_elements;
+}
+
+
+void Matrix::unsparse_matrix() {
+    //This function unsparses the matrix
+    //It does this by creating a new matrix with the same number of rows and columns
+    //It then iterates through the matrix and adds the elements to the new matrix
+    //It then deletes the old matrix and replaces it with the new one
+    Matrix newMatrix(this->rows, this->columns);
+    for (int i = 0; i < this->rows; i++) {
+        for (int j = 0; j < this->columns; j++) {
+            TElem value = this->element(i, j);
+            if (value != NULL_TELEM) {
+                newMatrix.addToPosition(newMatrix.elementsSize, i, j, value);
+            }
+        }
+    }
+}
+
+
+
+//This function computes the transpose of a matrix represented as a sparse matrix with a tupel
+//Now code a new function transpose based on this one that does the same thing but for a ccs sparse matrix
+//The function should be called transpose_ccs and it should not modify the original matrix
+
+//Matrix Matrix::transpose() {
+//    Matrix transposed(columns, rows);
+//
+//    // Swap rows and columns
+//    swap(transposed.rows, transposed.columns);
+//
+//    // Swap row and column indexes
+//    swap(transposed.rowIndexes, transposed.columnPointers);
+//
+//    // Update column pointers
+//    int* newColumnPointers = new int[transposed.columns + 1];
+//    int* rowCounts = new int[transposed.columns]{0};
+//
+//    for (int i = 0; i < rowSize; i++) {
+//        rowCounts[rowIndexes[i]]++;
+//    }
+//
+//    newColumnPointers[0] = 0;
+//
+//    for (int j = 0; j < transposed.columns; j++) {
+//        newColumnPointers[j + 1] = newColumnPointers[j] + rowCounts[j];
+//    }
+//
+//    // Rearrange elements based on new column pointers
+//    for (int j = 0; j < transposed.columns; j++) {
+//        int start = columnPointers[j];
+//        int end = columnPointers[j + 1];
+//
+//        for (int k = start; k < end; k++) {
+//            int i = rowIndexes[k];
+//            int pos = newColumnPointers[i];
+//
+//            // Swap element to its new position
+//            transposed.elements[pos] = elements[k];
+//            transposed.rowIndexes[pos] = j;
+//
+//            newColumnPointers[i]++;
+//        }
+//    }
+//
+//    // Update column pointers to final positions
+//    for (int j = transposed.columns; j > 0; j--) {
+//        transposed.columnPointers[j] = newColumnPointers[j - 1];
+//    }
+//    transposed.columnPointers[0] = 0;
+//
+//    delete[] newColumnPointers;
+//    delete[] rowCounts;
+//
+//    return transposed;
+//}
+
+
+//void Matrix::transposed() {
+//
+//    Matrix transpusa(nrCols_, nrLines_);
+//
+//    for (int k = 0; k < nr_elements; k++) {
+//        int i_orig = element_[k].Zeile;
+//        int j_orig = element_[k].Spalte;
+//        TElem value = element_[k].Wert;
+//        transpusa.modify(j_orig, i_orig, value);
+//    }
+//
+//    std::swap(nrLines_, nrCols_);
+//    std::swap(nr_elements, transpusa.nr_elements);
+//    std::swap(cap, transpusa.cap);
+//    std::swap(element_, transpusa.element_);
+//}
+
+
+
+//void Matrix::transpose() {
+//    // Swap rows and columns
+//    swap(this->rows, this->columns);
+//    swap(this->rowIndexes, this->columnPointers);
+//
+//    // Update row indexes and column pointers
+//    int *newRowIndexes = new int[this->rowCapacity];
+//    int *newColumnPointers = new int[this->columns + 1];
+//    int *counts = new int[this->columns]();
+//
+//    for (int i = 0; i < this->rowSize; i++) {
+//        counts[this->rowIndexes[i]]++;
+//    }
+//
+//    newColumnPointers[0] = 0;
+//    for (int i = 0; i < this->columns; i++) {
+//        newColumnPointers[i + 1] = newColumnPointers[i] + counts[i];
+//        counts[i] = newColumnPointers[i];
+//    }
+//
+//    for (int i = 0; i < this->rows; i++) {
+//        for (int j = this->columnPointers[i]; j < this->columnPointers[i + 1]; j++) {
+//            int k = counts[this->rowIndexes[j]];
+//            newRowIndexes[k] = i;
+//            this->elements[k] = this->elements[j];
+//            counts[this->rowIndexes[j]]++;
+//        }
+//    }
+//
+//    delete[] this->rowIndexes;
+//    delete[] this->columnPointers;
+//    this->rowIndexes = newRowIndexes;
+//    this->columnPointers = newColumnPointers;
+//    this->rowSize = this->elementsSize;
+//}
+
+//
+//Matrix Matrix::transpose()  {
+//    Matrix result(this->columns, this->rows);
+//
+//    // Compute the number of non-zero elements in each column
+//    int* columnSize = new int[this->columns]();
+//    for (int i = 0; i < this->rowSize; i++) {
+//        columnSize[this->rowIndexes[i]]++;
+//    }
+//
+//    // Compute the starting index of each column in the transposed matrix
+//    int* columnPointersT = new int[this->rows + 1]();
+//    for (int i = 1; i <= this->columns; i++) {
+//        columnPointersT[i] = columnPointersT[i - 1] + columnSize[i - 1];
+//    }
+//
+//    // Compute the transposed matrix
+//    for (int i = 0; i < this->rowSize; i++) {
+//        int j = this->rowIndexes[i];
+//        int pos = columnPointersT[j];
+//        result.rowIndexes[pos] = this->columnPointers[j];
+//        result.elements[pos] = this->elements[i];
+//        columnPointersT[j]++;
+//    }
+//
+//    // Fix the column pointers of the transposed matrix
+//    for (int i = this->rows; i >= 1; i--) {
+//        columnPointersT[i] = columnPointersT[i - 1];
+//    }
+//    columnPointersT[0] = 0;
+//
+//    // Assign the column pointers and row indexes of the transposed matrix
+//    result.columnPointers = columnPointersT;
+//    result.rowIndexes = this->columnPointers;
+//
+//    // Free the memory of columnSize array
+//    delete[] columnSize;
+//
+//    return result;
+//}
+
+//void Matrix::transpose() {
+//    // Swap rows and columns
+//    int temp = this->rows;
+//    this->rows = this->columns;
+//    this->columns = temp;
+//
+//    // Swap row and column indexes
+//    int *tempIndexes = this->rowIndexes;
+//    this->rowIndexes = this->columnPointers;
+//    this->columnPointers = tempIndexes;
+//
+//    // Update column pointers
+//    int *tempColPtr = new int[this->rows + 1];
+//    tempColPtr[0] = 0;
+//    int currentPos = 0;
+//
+//    for (int i = 0; i < this->rows; i++) {
+//        int count = 0;
+//        for (int j = 0; j < this->columns; j++) {
+//            int start = this->columnPointers[j];
+//            int end = this->columnPointers[j + 1];
+//            for (int k = start; k < end; k++) {
+//                if (this->rowIndexes[k] == i) {
+//                    count++;
+//                    break;
+//                }
+//            }
+//        }
+//        currentPos += count;
+//        tempColPtr[i + 1] = currentPos;
+//    }
+//
+//    delete[] this->columnPointers;
+//    this->columnPointers = tempColPtr;
+//}
+
+Matrix Matrix::transpose() {
+    // Allocate memory for the transposed matrix
+    Matrix transposed(nrColumns(), nrLines());
+
+    // Iterate through the column pointers of the original matrix
+    for (int j = 0; j < nrColumns(); j++) {
+        int start = columnPointers[j];
+        int end = columnPointers[j + 1];
+
+        // Iterate through the non-zero elements of the column
+        for (int k = start; k < end; k++) {
+            int i_orig = rowIndexes[k];
+            TElem value = elements[k];
+
+            // Place the element in the corresponding row and column of the transpose
+            transposed.modify(j, i_orig, value);
+        }
+    }
+
+    // Swap the number of rows and columns, as well as the elements and column pointers
+    std::swap(rows, columns);
+    std::swap(elements, transposed.elements);
+    std::swap(rowCapacity, transposed.rowCapacity);
+    std::swap(rowSize, transposed.rowSize);
+    std::swap(elementsCapacity, transposed.elementsCapacity);
+    std::swap(columnPointers, transposed.columnPointers);
+    std::swap(rowIndexes, transposed.rowIndexes);
+    std::swap(elements, transposed.elements);
+}
+
+close one
+//void Matrix::transpose() {
+//    int* newColumnPointers = new int[this->rows + 1]{0};
+//    int* newRowIndexes = new int[this->rowCapacity]{0};
+//    auto* newElements = new TElem[this->rowCapacity]{0};
+//
+//    // count the number of elements in each row
+//    for (int j = 0; j < this->columns; j++) {
+//        for (int idx = columnPointers[j]; idx < columnPointers[j + 1]; idx++) {
+//            newColumnPointers[rowIndexes[idx] + 1]++;
+//        }
+//    }
+//
+//    // calculate the column pointers for the transposed matrix
+//    for (int i = 1; i <= this->rows; i++) {
+//        newColumnPointers[i] += newColumnPointers[i - 1];
+//    }
+//
+//    // transpose the matrix by swapping rowIndexes and columnPointers and swapping rows and columns
+//    for (int j = 0; j < this->columns; j++) {
+//        for (int idx = columnPointers[j]; idx < columnPointers[j + 1]; idx++) {
+//            int row = rowIndexes[idx];
+//            int destIdx = newColumnPointers[row];
+//            newRowIndexes[destIdx] = j;
+//            newElements[destIdx] = elements[idx];
+//            newColumnPointers[row]++;
+//        }
+//    }
+//
+//    // restore the correct column pointers for the transposed matrix
+//    for (int i = this->rows; i >= 1; i--) {
+//        newColumnPointers[i] = newColumnPointers[i - 1];
+//    }
+//    newColumnPointers[0] = 0;
+//
+//    // swap the old arrays with the transposed arrays
+//    swap(this->rowIndexes, newColumnPointers);
+//    swap(this->columnPointers, newColumnPointers);
+//    swap(this->rows, this->columns);
+//    swap(this->rowSize, this->columns);
+//    //swap(this->rowCapacity, this->columnCapacity);
+//    swap(this->elements, newElements);
+//
+//    // free the memory of the temporary arrays
+//    delete[] newColumnPointers;
+//    delete[] newRowIndexes;
+//    delete[] newElements;
+//}
+
+
+ASTA MERGE
+//void Matrix::transpose() {
+//    auto* transposed = new Matrix(this->columns, this->rows);
+//
+//    //check to see if the matrix is a square matrix
+//
+//    for (int j = 0; j < this->columns; j++) {
+//        for (int i = this->columnPointers[j]; i < this->columnPointers[j + 1]; i++) {
+//            transposed->addToPosition(transposed->columnPointers[rowIndexes[i] + 1], j, rowIndexes[i], elements[i]);
+//        }
+//    }
+//
+//    this->columns = transposed->columns;
+//    this->rows = transposed->rows;
+//    this->rowCapacity = transposed->rowCapacity;
+//    this->rowSize = transposed->rowSize;
+//    this->elementsSize = transposed->elementsSize;
+//    delete[] this->columnPointers;
+//    delete[] this->rowIndexes;
+//    delete[] this->elements;
+//    this->columnPointers = transposed->columnPointers;
+//    this->rowIndexes = transposed->rowIndexes;
+//    this->elements = transposed->elements;
+//
+//    transposed->columnPointers = nullptr;
+//    transposed->rowIndexes = nullptr;
+//    transposed->elements = nullptr;
+//    delete transposed;
+//}
+
+
+
+//void Matrix::transpose() {
+//    auto* transposed = new Matrix(this->columns, this->rows);
+//
+//    //check to see if the matrix is a square matrix
+//
+//    for (int j = 0; j < this->columns; j++) {
+//        for (int i = this->columnPointers[j]; i < this->columnPointers[j + 1]; i++) {
+//            transposed->addToPosition(transposed->columnPointers[rowIndexes[i] + 1], j, rowIndexes[i], elements[i]);
+//        }
+//    }
+//
+//    this->columns = transposed->columns;
+//    this->rows = transposed->rows;
+//    this->rowCapacity = transposed->rowCapacity;
+//    this->rowSize = transposed->rowSize;
+//    this->elementsSize = transposed->elementsSize;
+//    delete[] this->columnPointers;
+//    delete[] this->rowIndexes;
+//    delete[] this->elements;
+//    this->columnPointers = transposed->columnPointers;
+//    this->rowIndexes = transposed->rowIndexes;
+//    this->elements = transposed->elements;
+//
+//    transposed->columnPointers = nullptr;
+//    transposed->rowIndexes = nullptr;
+//    transposed->elements = nullptr;
+//    delete transposed;
+//}
+
+//void Matrix::transpose() {
+//    swap(this->rows, this->columns);
+//
+//    //transpose the matrix
+//    int* newColumnPointers = new int[this->columns + 1];
+//    int* newRowIndexes = new int[this->elementsSize];
+//    TElem* newElements = new TElem[this->elementsSize];
+//
+//    for (int j = 0; j < this->columns; j++) {
+//        newColumnPointers[j] = 0;
+//    }
+//
+//    for (int i = 0; i < this->elementsSize; i++) {
+//        newColumnPointers[this->rowIndexes[i] + 1]++;
+//    }
+//
+//    for (int j = 1; j < this->columns + 1; j++) {
+//        newColumnPointers[j] += newColumnPointers[j - 1];
+//    }
+//
+//    for (int j = 0; j < this->columns; j++) {
+//        for (int i = this->columnPointers[j]; i < this->columnPointers[j + 1]; i++) {
+//            int position = newColumnPointers[this->rowIndexes[i]]++;
+//            newRowIndexes[position] = j;
+//            newElements[position] = this->elements[i];
+//        }
+//    }
+//
+//    delete[] this->columnPointers;
+//    delete[] this->rowIndexes;
+//    delete[] this->elements;
+//    this->columnPointers = newColumnPointers;
+//    this->rowIndexes = newRowIndexes;
+//    this->elements = newElements;
+//
+//
+//}

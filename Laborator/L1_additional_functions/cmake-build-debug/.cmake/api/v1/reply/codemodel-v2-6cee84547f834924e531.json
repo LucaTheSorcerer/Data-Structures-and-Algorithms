@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "L1_additional_functions",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "L1_additional_functions::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-L1_additional_functions-Debug-a66919c01391f52109b9.json",
+					"name" : "L1_additional_functions",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L1_additional_functions/cmake-build-debug",
+		"source" : "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L1_additional_functions"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -1,0 +1,103 @@
+BEGIN
+IF rows EQUALS TO columns THEN
+FOR i FROM 0 TO rows-1 DO
+FOR j FROM i+1 TO columns-1 DO
+temp ← element(i, j)
+modify(i, j, element(j, i))
+modify(j, i, temp)
+ENDFOR
+ENDFOR
+RETURN
+ENDIF
+
+// Create a transposed matrix
+transposed ← new Matrix(columns, rows)
+
+// Loop over columns and rows to fill the transposed matrix
+FOR j FROM 0 TO columns-1 DO
+    FOR i FROM columnPointers[j] TO columnPointers[j+1]-1 DO
+        transposed.addToPosition(transposed.columnPointers[rowIndexes[i]+1], j, rowIndexes[i], elements[i])
+    ENDFOR
+ENDFOR
+
+// Swap the current matrix with the transposed matrix
+swap columns WITH transposed.columns
+swap rows WITH transposed.rows
+swap rowCapacity WITH transposed.rowCapacity
+swap rowSize WITH transposed.rowSize
+swap elementsSize WITH transposed.elementsSize
+
+swap columnPointers WITH transposed.columnPointers
+swap rowIndexes WITH transposed.rowIndexes
+swap elements WITH transposed.elements
+
+// Free memory
+delete transposed
+
+END
+
+function transpose(matrix)
+    // Check for square matrix case
+    if matrix.rows = matrix.columns then
+        for i = 0 to matrix.rows - 1 do
+            for j = i + 1 to matrix.columns - 1 do
+                temp = matrix.element(i, j)
+                matrix.modify(i, j, matrix.element(j, i))
+                matrix.modify(j, i, temp)
+            end for
+        end for
+        return
+    end if
+
+    // Non-square matrix case
+    transposed = new Matrix(matrix.columns, matrix.rows)
+
+    for j = 0 to matrix.columns - 1 do
+        for i = matrix.columnPointers[j] to matrix.columnPointers[j + 1] - 1 do
+            transposed.addToPosition(transposed.columnPointers[matrix.rowIndexes[i] + 1], j, matrix.rowIndexes[i], matrix.elements[i])
+        end for
+    end for
+
+    // Swap matrix dimensions and data structures
+    swap(matrix.columns, transposed.columns)
+    swap(matrix.rows, transposed.rows)
+    swap(matrix.rowCapacity, transposed.rowCapacity)
+    swap(matrix.rowSize, transposed.rowSize)
+    swap(matrix.elementsSize, transposed.elementsSize)
+    swap(matrix.columnPointers, transposed.columnPointers)
+    swap(matrix.rowIndexes, transposed.rowIndexes)
+    swap(matrix.elements, transposed.elements)
+
+    // Deallocate temporary transposed matrix
+    delete transposed
+end function
+
+
+Preconditions:
+
+    The Matrix object must be initialized with valid row and column sizes.
+    The element() and modify() methods of the Matrix object must be defined and implemented correctly.
+    The columnPointers, rowIndexes, and elements arrays of the Matrix object must be allocated and filled with valid data.
+
+Postconditions:
+
+    If the Matrix is square, the function will have transposed the matrix in place (i.e., it will have modified the Matrix object's columnPointers, rowIndexes, and elements arrays to represent the transposed matrix).
+    If the Matrix is not square, the function will have created a new Matrix object representing the transposed matrix, and swapped the data in the original Matrix object with the data in the new Matrix object.
+    In either case, the original Matrix object will have been modified to represent the transposed matrix.
+    Any dynamically allocated memory used by the function (e.g., the new Matrix object) will have been properly deallocated.
+
+Best, Average, Worst case - theta(N^2)
+
+Best case:
+
+If the Matrix is already square (i.e., rows == columns), the function will simply perform an in-place transposition of the matrix. The time complexity of this operation is O(n^2), where n is the number of rows/columns in the matrix. Therefore, the best-case time complexity of the transpose() function is O(n^2).
+
+Average case:
+
+In the average case, the Matrix is not square, so the function will create a new Matrix object to represent the transposed matrix. The function then loops over the columns and rows of the original Matrix object to fill in the new Matrix object. The time complexity of this operation is O(nnz), where nnz is the number of non-zero elements in the original Matrix object. In general, nnz is much smaller than n^2, so the average-case time complexity of the transpose() function is much closer to linear time, or O(nnz).
+
+Worst case:
+
+The worst-case time complexity of the transpose() function is also O(nnz). This occurs when the Matrix is dense, i.e., when all elements are non-zero. In this case, nnz = n^2, so the time complexity of the function is O(n^2).
+
+Note that in the worst-case scenario where the matrix is dense, the Matrix object will also require O(n^2) space, as all elements are non-zero. In the best-case scenario where the matrix is already square, the function requires no extra space beyond the Matrix object itself. In the average case, the amount of extra space required depends on the sparsity of the Matrix object.

@@ -1,0 +1,16 @@
+# ninja log v5
+2	270	1680862424750127282	CMakeFiles/L1_additional_functions.dir/Matrix.cpp.o	9c61158009c28d7a
+2	264	1680862424743901325	CMakeFiles/L1_additional_functions.dir/App.cpp.o	3834131aaf588691
+0	40	1680798867110266741	build.ninja	accc5bf0315bee6c
+2	306	1680863363338453439	CMakeFiles/L1_additional_functions.dir/ExtendedTest.cpp.o	aeef7ed9ceac7c41
+2	52	1680862424531024402	CMakeFiles/L1_additional_functions.dir/ShortTest.cpp.o	7374aa223e0e7ac1
+306	345	1680863363380153182	L1_additional_functions	6e13b25e180c8456
+1	526	1680873999139288248	CMakeFiles/L1_additional_functions.dir/Matrix.cpp.o	9c61158009c28d7a
+527	575	1680873999190310495	L1_additional_functions	6e13b25e180c8456
+2	562	1680874563507538787	CMakeFiles/L1_additional_functions.dir/Matrix.cpp.o	9c61158009c28d7a
+562	621	1680874563569036358	L1_additional_functions	6e13b25e180c8456
+2	1880	1680879343461180129	CMakeFiles/L1_additional_functions.dir/ShortTest.cpp.o	7374aa223e0e7ac1
+2	2090	1680879343670064035	CMakeFiles/L1_additional_functions.dir/App.cpp.o	3834131aaf588691
+2	2097	1680879343677853612	CMakeFiles/L1_additional_functions.dir/Matrix.cpp.o	9c61158009c28d7a
+2	2098	1680879343678602157	CMakeFiles/L1_additional_functions.dir/ExtendedTest.cpp.o	aeef7ed9ceac7c41
+2098	2309	1680879343891406331	L1_additional_functions	6e13b25e180c8456

@@ -1,3 +1,24 @@
+/**
+ _____________________________________________________________________________________________________
+/ @Author: Luca Tudor, group 713, Faculty of Computer Science                                         \
+| **************************************************************************************************** |
+| Sparse Matrix in Compressed Column Storage Format                                                    |
+| **************************************************************************************************** |
+| Methods:                                                                                             |
+|     - nrLines (number of lines)                                                                      |
+|     - nrColumns (number of columns)                                                                  |
+|     - element (returns element from line i and column j)                                             |
+\     - modify (checks if list contains given data)                                                    /
+ ------------------------------------------------------------------------------------------------------
+  \
+   \   \_\_    _/_/
+    \      \__/
+           (oo)\_______
+           (__)\       )\/\
+               ||----w |
+               ||     ||
+*/
+
 #pragma once
 
 //DO NOT CHANGE THIS PART
@@ -60,4 +81,9 @@ public:
     // destructor
     ~Matrix();
 
+    bool areEqual(Matrix m) const;
+
+    void resize(int newRows, int newCols);
+
+    void resize1(int newLines, int newColumns, int NewCapacity);
 };
