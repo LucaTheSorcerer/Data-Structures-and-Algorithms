@@ -7,7 +7,7 @@ typedef int TElem;
 #define NULL_TELEM -11111
 
 struct Node {
-    TElem info;
+    basic_string<char, char_traits<char>, allocator<char>> info;
     Node* next;
 };
 

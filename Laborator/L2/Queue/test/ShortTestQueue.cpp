@@ -1,8 +1,8 @@
-#include "ShortTest.h"
-#include "Queue.h"
-#include <assert.h>
+#include "ShortQueueTest.h"
+#include "../src/Queue.h"
+#include <cassert>
 
-void testAll() { 
+void testAllQueue() {
 	Queue q;
 	assert(q.isEmpty() == true);
 	q.push(5);

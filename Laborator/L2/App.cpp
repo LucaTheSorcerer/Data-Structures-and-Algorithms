@@ -1,15 +1,17 @@
-#include "Queue.h"
-#include "ExtendedTest.h"
-#include "ShortTest.h"
+#include "Queue/test/ExtendedQueueTest.h"
+#include "Queue/test/ShortQueueTest.h"
+#include "Stack/test/ShortStackTest.h"
+#include "Stack/test/ExtendedStackTest.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
 
-	testAll();
-	testAllExtended();
+//	testAllQueue();
+//	testAllExtendedQueue();
+	testAllStack();
 
 	cout << "Test end" << endl;
-
+    cin.get();
 }

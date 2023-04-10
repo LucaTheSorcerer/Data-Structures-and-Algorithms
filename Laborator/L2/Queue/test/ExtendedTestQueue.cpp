@@ -1,6 +1,6 @@
 #include <assert.h>
-#include "Queue.h"
-#include "ExtendedTest.h"
+#include "../src/Queue.h"
+#include "ExtendedQueueTest.h"
 #include <vector>
 #include <exception>
 #include <iostream>
@@ -134,7 +134,7 @@ void testQuantity() {
 	}
 }
 
-void testAllExtended() {
+void testAllExtendedQueue() {
 	testCreate();
 	testPush();
 	testPop();
