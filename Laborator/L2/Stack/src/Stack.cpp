@@ -11,41 +11,42 @@ Stack::Stack() {
     this -> tail = nullptr;
 }
 
-void Stack::push(TChar c) {
+void Stack::push(TElem e) {
 
     //This is the push function of the stack that pushes the operators for postfix conversion
     //using the shunting yard algorithm
     //First check if the stack is empty
     if(isEmpty()) {
-        Node *newNode = new Node;
-        newNode -> info = std::move(c);
-        newNode -> previous = head;
-        newNode -> next = tail;
-        tail = head;
+        head = new Node;
+        head -> info = e;
+        head -> previous = head;
+        head -> next = tail;
+        this->tail = head;
     }
     else {
+
         Node *newNode = new Node;
-        newNode -> info = std::move(c);
-        newNode -> previous = tail;
+        newNode -> info = e;
         newNode -> next = nullptr;
+        newNode -> previous = tail;
         tail -> next = newNode;
         tail = newNode;
     }
 }
 
-basic_string<char, char_traits<char>, allocator<char>> Stack::top() const {
+TElem Stack::top()  {
     //This is the top or peek function of the stack
 
     //First we check if the stack is empty and if it is we throw an exception
     if(isEmpty()) {
-        throw std::invalid_argument("The stack is empty");
+        throw std::exception();
     }
 
     //If the stack is not empty we return the value of the top element
-    return head -> info;
+    return tail -> info;
 }
 
-basic_string<char, char_traits<char>, allocator<char>> Stack::pop() {
+TElem Stack::pop() {
     //This is the pop function of the stack
     // First we check if the stack is empty
     if(isEmpty()) {
@@ -55,7 +56,7 @@ basic_string<char, char_traits<char>, allocator<char>> Stack::pop() {
     //We create a new node that will be the new head of our stack
     //Get the top first element in the stack, pop it and return its value
 
-    TChar top = tail->info;
+    TElem top = tail->info;
 
     if(isEmpty()) {
         delete head;

@@ -6,11 +6,10 @@ using namespace std;
 
 //DO NOT CHANGE THIS PART
 typedef int TElem;
-typedef char TChar;
 #define NULL_TELEM -11111
 
 struct Node {
-    basic_string<char, char_traits<char>, allocator<char>> info;
+    int info;
     Node* previous;
     Node* next;
 };
@@ -24,18 +23,18 @@ public:
     Stack();
 
     //pushes an element to the end of the stack
-    void push(TChar c);
+    void push(TElem e);
 
     //returns the element from the top of the stack
     //throws exception if the stack is empty
-    top() const;
+    TElem top();
 
     //removes and returns the element from the top of the stack
     //throws exception if the stack is empty
-    basic_string<char, char_traits<char>, allocator<char>> pop();
+    TElem pop();
 
     //checks if the stack is empty
-    bool isEmpty() const;
+    [[nodiscard]] bool isEmpty() const;
 
     // destructor
     ~Stack();

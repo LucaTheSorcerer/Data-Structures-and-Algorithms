@@ -11,6 +11,7 @@ int main() {
 //	testAllQueue();
 //	testAllExtendedQueue();
 	testAllStack();
+    //testAllExtendedStack();
 
 	cout << "Test end" << endl;
     cin.get();
