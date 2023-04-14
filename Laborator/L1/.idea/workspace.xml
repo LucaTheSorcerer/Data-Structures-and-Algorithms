@@ -21,104 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../CCS_transpose/CCS.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-c65c82e930bb8b84e63c.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-18076128b01712a67c98.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-04-06T16-34-27-0632.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/.idea/L1_additional_functions.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/App.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/ExtendedTest.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/ExtendedTest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/Matrix.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/Matrix.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/ShortTest.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/ShortTest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/additional" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/cache-v2-b9a352f2bbc97d527b09.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-5056a8c85ce857b64e23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-6cee84547f834924e531.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/index-2023-04-06T16-34-27-0127.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/target-L1_additional_functions-Debug-a66919c01391f52109b9.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-7a74340b98d914420f22.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/CMakeError.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/L1_additional_functions.dir/App.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/L1_additional_functions.dir/ExtendedTest.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/L1_additional_functions.dir/Matrix.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/L1_additional_functions.dir/ShortTest.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/L1_additional_functions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/build.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../L1_additional_functions/pseudocode" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dynamic_Array.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dynamic_Array.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ExtendedTest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelperArray.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelperArray.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-bc0aafd64487d4ab5dad.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-99173b8909b171cf6a10.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-16T14-14-10-0336.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.24.2/CompilerIdCXX/CMakeCXXCompilerId.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeError.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeError.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ExtendedTest.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/Matrix.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L1.dir/ShortTest.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/samacac" beforeDir="false" />
     </list>
     <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,6 +141,7 @@
       <workItem from="1680879218402" duration="8000" />
       <workItem from="1680879241619" duration="152000" />
       <workItem from="1680879664352" duration="6480000" />
+      <workItem from="1681419493848" duration="181000" />
     </task>
     <servers />
   </component>
