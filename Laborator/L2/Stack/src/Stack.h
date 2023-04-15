@@ -8,16 +8,17 @@ using namespace std;
 typedef int TElem;
 #define NULL_TELEM -11111
 
-struct Node {
+struct SNode {
     int info;
-    Node* previous;
-    Node* next;
+    SNode* previous;
+    SNode* next;
 };
 
 class Stack {
 private:
-    Node* head;
-    Node* tail;
+    SNode* head;
+    SNode* tail;
+
 
 public:
     Stack();
@@ -27,7 +28,7 @@ public:
 
     //returns the element from the top of the stack
     //throws exception if the stack is empty
-    TElem top();
+    [[nodiscard]] TElem top() const;
 
     //removes and returns the element from the top of the stack
     //throws exception if the stack is empty
@@ -38,5 +39,8 @@ public:
 
     // destructor
     ~Stack();
+
+
+    [[nodiscard]] SNode* getTail() const;
 };
 

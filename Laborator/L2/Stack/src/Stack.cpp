@@ -17,7 +17,7 @@ void Stack::push(TElem e) {
     //using the shunting yard algorithm
     //First check if the stack is empty
     if(isEmpty()) {
-        head = new Node;
+        head = new SNode;
         head -> info = e;
         head -> previous = head;
         head -> next = tail;
@@ -25,7 +25,7 @@ void Stack::push(TElem e) {
     }
     else {
 
-        Node *newNode = new Node;
+        auto *newNode = new SNode;
         newNode -> info = e;
         newNode -> next = nullptr;
         newNode -> previous = tail;
@@ -34,7 +34,29 @@ void Stack::push(TElem e) {
     }
 }
 
-TElem Stack::top()  {
+//void Stack::push(TElem e) {
+//    //This is the push function of the stack that pushes the operators for postfix conversion
+//    //using the shunting yard algorithm
+//    //First check if the stack is empty
+//    if(isEmpty()) {
+//        head = new SNode;
+//        head -> info = e;
+//        head -> previous = nullptr; // set previous to nullptr
+//        head -> next = nullptr; // set next to nullptr
+//        this->tail = head;
+//    }
+//    else {
+//        auto *newNode = new SNode;
+//        newNode -> info = e;
+//        newNode -> next = nullptr;
+//        newNode -> previous = tail;
+//        tail -> next = newNode;
+//        tail = newNode;
+//    }
+//}
+
+
+TElem Stack::top() const  {
     //This is the top or peek function of the stack
 
     //First we check if the stack is empty and if it is we throw an exception
@@ -46,6 +68,7 @@ TElem Stack::top()  {
     return tail -> info;
 }
 
+
 TElem Stack::pop() {
     //This is the pop function of the stack
     // First we check if the stack is empty
@@ -53,25 +76,25 @@ TElem Stack::pop() {
         throw std::invalid_argument("The stack is empty");
     }
 
-    //We create a new node that will be the new head of our stack
-    //Get the top first element in the stack, pop it and return its value
-
+    //Get the top element in the stack, pop it and return its value
     TElem top = tail->info;
 
-    if(isEmpty()) {
-        delete head;
+    //Update the tail pointer if this is the last element in the stack
+    if (head == tail) {
+        delete tail;
         head = nullptr;
         tail = nullptr;
     }
-
     else {
-        Node *newNode = tail;
-        tail = tail -> previous;
-        delete newNode;
+        SNode *newTail = tail -> previous;
+        newTail -> next = nullptr;
+        delete tail;
+        tail = newTail;
     }
 
     return top;
 }
+
 
 bool Stack::isEmpty() const {
     //Checks if the stack is empty
@@ -81,9 +104,9 @@ bool Stack::isEmpty() const {
 Stack::~Stack() {
     //This is the destructor of the stack
 
-    Node *current = head;
+    SNode *current = head;
     while(current != nullptr) {
-        Node *next = current -> next;
+        SNode *next = current -> next;
         delete current;
         current = next;
     }
@@ -91,3 +114,12 @@ Stack::~Stack() {
     this->head = nullptr;
     this->tail = nullptr;
 }
+
+SNode *Stack::getTail() const {
+    SNode* current = head;
+    while (current != nullptr && current->next != nullptr) {
+        current = current->next;
+    }
+    return current;
+}
+

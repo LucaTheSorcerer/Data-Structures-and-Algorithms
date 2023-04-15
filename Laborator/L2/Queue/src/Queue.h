@@ -6,16 +6,16 @@ using namespace std;
 typedef int TElem;
 #define NULL_TELEM -11111
 
-struct Node {
-    char info;
-    Node* next;
+struct QNode {
+    TElem info;
+    QNode* next;
 };
 
 class Queue
 {
 private:
-    Node* head;
-    Node* tail;
+    QNode* head;
+    QNode* tail;
 public:
 	Queue();
 
@@ -24,14 +24,14 @@ public:
 
 	//returns the element from the front of the queue
 	//throws exception if the queue is empty
-	TElem top() const;
+	[[nodiscard]] TElem top() const;
 
 	//removes and returns the element from the front of the queue
 	//throws exception if the queue is empty
 	TElem pop();
 
 	//checks if the queue is empty
-	bool isEmpty() const;
+	[[nodiscard]] bool isEmpty() const;
 
 	// destructor
 	~Queue();

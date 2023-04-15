@@ -49,11 +49,11 @@ cmake_ninja_workdir = /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithm
 
 build cmake_object_order_depends_target_L2: phony || CMakeFiles/L2.dir
 
-build CMakeFiles/L2.dir/App.cpp.o: CXX_COMPILER__L2_Debug /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L2/App.cpp || cmake_object_order_depends_target_L2
-  DEP_FILE = CMakeFiles/L2.dir/App.cpp.o.d
+build CMakeFiles/L2.dir/Main/App.cpp.o: CXX_COMPILER__L2_Debug /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L2/Main/App.cpp || cmake_object_order_depends_target_L2
+  DEP_FILE = CMakeFiles/L2.dir/Main/App.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -std=gnu++20
   OBJECT_DIR = CMakeFiles/L2.dir
-  OBJECT_FILE_DIR = CMakeFiles/L2.dir
+  OBJECT_FILE_DIR = CMakeFiles/L2.dir/Main
 
 build CMakeFiles/L2.dir/Queue/src/Queue.cpp.o: CXX_COMPILER__L2_Debug /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L2/Queue/src/Queue.cpp || cmake_object_order_depends_target_L2
   DEP_FILE = CMakeFiles/L2.dir/Queue/src/Queue.cpp.o.d
@@ -91,6 +91,18 @@ build CMakeFiles/L2.dir/Stack/test/ShortStackTest.cpp.o: CXX_COMPILER__L2_Debug 
   OBJECT_DIR = CMakeFiles/L2.dir
   OBJECT_FILE_DIR = CMakeFiles/L2.dir/Stack/test
 
+build CMakeFiles/L2.dir/Shunting_Yard/src/shunting_yard.cpp.o: CXX_COMPILER__L2_Debug /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L2/Shunting_Yard/src/shunting_yard.cpp || cmake_object_order_depends_target_L2
+  DEP_FILE = CMakeFiles/L2.dir/Shunting_Yard/src/shunting_yard.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -std=gnu++20
+  OBJECT_DIR = CMakeFiles/L2.dir
+  OBJECT_FILE_DIR = CMakeFiles/L2.dir/Shunting_Yard/src
+
+build CMakeFiles/L2.dir/Shunting_Yard/test/shunting_yard_test.cpp.o: CXX_COMPILER__L2_Debug /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L2/Shunting_Yard/test/shunting_yard_test.cpp || cmake_object_order_depends_target_L2
+  DEP_FILE = CMakeFiles/L2.dir/Shunting_Yard/test/shunting_yard_test.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -std=gnu++20
+  OBJECT_DIR = CMakeFiles/L2.dir
+  OBJECT_FILE_DIR = CMakeFiles/L2.dir/Shunting_Yard/test
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target L2
@@ -99,7 +111,7 @@ build CMakeFiles/L2.dir/Stack/test/ShortStackTest.cpp.o: CXX_COMPILER__L2_Debug 
 #############################################
 # Link the executable L2
 
-build L2: CXX_EXECUTABLE_LINKER__L2_Debug CMakeFiles/L2.dir/App.cpp.o CMakeFiles/L2.dir/Queue/src/Queue.cpp.o CMakeFiles/L2.dir/Stack/src/Stack.cpp.o CMakeFiles/L2.dir/Queue/test/ShortTestQueue.cpp.o CMakeFiles/L2.dir/Queue/test/ExtendedTestQueue.cpp.o CMakeFiles/L2.dir/Stack/test/ExtendedStackTest.cpp.o CMakeFiles/L2.dir/Stack/test/ShortStackTest.cpp.o
+build L2: CXX_EXECUTABLE_LINKER__L2_Debug CMakeFiles/L2.dir/Main/App.cpp.o CMakeFiles/L2.dir/Queue/src/Queue.cpp.o CMakeFiles/L2.dir/Stack/src/Stack.cpp.o CMakeFiles/L2.dir/Queue/test/ShortTestQueue.cpp.o CMakeFiles/L2.dir/Queue/test/ExtendedTestQueue.cpp.o CMakeFiles/L2.dir/Stack/test/ExtendedStackTest.cpp.o CMakeFiles/L2.dir/Stack/test/ShortStackTest.cpp.o CMakeFiles/L2.dir/Shunting_Yard/src/shunting_yard.cpp.o CMakeFiles/L2.dir/Shunting_Yard/test/shunting_yard_test.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/L2.dir
   POST_BUILD = :

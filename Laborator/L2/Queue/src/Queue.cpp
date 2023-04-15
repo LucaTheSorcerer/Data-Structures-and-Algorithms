@@ -10,7 +10,7 @@ Queue::Queue(): head(nullptr), tail(nullptr) {}
 
 void Queue::push(TElem elem) {
     //This is the push function of the queue
-    Node *newNode = new Node;
+    auto *newNode = new QNode;
     newNode -> info = elem;
     newNode -> next = nullptr;
     if (isEmpty()) {
@@ -40,10 +40,10 @@ TElem Queue::pop() {
     //We create a node that will be the new head of our queue
     //Get the top first element in the queue, pop it and return the value
     TElem top = head -> info;
-    Node *newHead = head;
+    QNode *newHead = head;
     head = head -> next;
-
     //If the queue is empty, we set the tail to nullptr
+
     if(isEmpty()) {
         tail = nullptr;
     }
@@ -62,9 +62,9 @@ bool Queue::isEmpty() const {
 
 Queue::~Queue() {
     //This is the destructor of the queue
-    Node *current = head;
+    QNode *current = head;
     while(current != nullptr) {
-        Node *next = current->next;
+        QNode *next = current->next;
         delete current;
         current = next;
     }

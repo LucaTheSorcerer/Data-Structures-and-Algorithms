@@ -4,8 +4,12 @@
 #include "../src/Stack.h"
 #include "ExtendedStackTest.h"
 #include <cassert>
+#include <iostream>
+
+using namespace std;
 
 void test_push_pop() {
+    cout << "Test push pop" << endl;
     Stack s;
     for (int i = 1; i <= 10; i++) {
         s.push(i);
@@ -14,8 +18,8 @@ void test_push_pop() {
     }
     for (int i = 10; i >= 1; i--) {
         assert(s.top() == i);
-        s.pop();
         assert(!s.isEmpty());
+        s.pop();
     }
 }
 

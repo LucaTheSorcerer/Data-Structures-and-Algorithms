@@ -4,8 +4,12 @@
 #include "ShortStackTest.h"
 #include "../src/Stack.h"
 #include <cassert>
+#include <iostream>
+
+using namespace std;
 
 void testAllStack() {
+    cout << "Test all stack" << endl;
     Stack s;
     assert(s.isEmpty());
     s.push(5);
