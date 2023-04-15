@@ -3,13 +3,13 @@
 //
 #include "Stack.h"
 
-#include <utility>
 
 Stack::Stack() {
     //This is the constructor of the stack
     this -> head = nullptr;
     this -> tail = nullptr;
 }
+
 
 void Stack::push(TElem e) {
 
@@ -33,28 +33,6 @@ void Stack::push(TElem e) {
         tail = newNode;
     }
 }
-
-//void Stack::push(TElem e) {
-//    //This is the push function of the stack that pushes the operators for postfix conversion
-//    //using the shunting yard algorithm
-//    //First check if the stack is empty
-//    if(isEmpty()) {
-//        head = new SNode;
-//        head -> info = e;
-//        head -> previous = nullptr; // set previous to nullptr
-//        head -> next = nullptr; // set next to nullptr
-//        this->tail = head;
-//    }
-//    else {
-//        auto *newNode = new SNode;
-//        newNode -> info = e;
-//        newNode -> next = nullptr;
-//        newNode -> previous = tail;
-//        tail -> next = newNode;
-//        tail = newNode;
-//    }
-//}
-
 
 TElem Stack::top() const  {
     //This is the top or peek function of the stack
@@ -122,4 +100,3 @@ SNode *Stack::getTail() const {
     }
     return current;
 }
-

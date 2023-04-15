@@ -70,4 +70,3 @@ Queue::~Queue() {
     }
     head = nullptr;
 }
-

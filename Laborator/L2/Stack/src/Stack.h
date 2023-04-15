@@ -43,4 +43,3 @@ public:
 
     [[nodiscard]] SNode* getTail() const;
 };
-

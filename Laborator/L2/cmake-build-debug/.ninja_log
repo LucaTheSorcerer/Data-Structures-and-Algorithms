@@ -31,3 +31,11 @@
 2	266	1681550574023050743	CMakeFiles/L2.dir/Stack/test/ExtendedStackTest.cpp.o	408948b1edf233f9
 3	284	1681550574041675155	CMakeFiles/L2.dir/Shunting_Yard/src/shunting_yard.cpp.o	27b1062c021c3adf
 284	320	1681550574079678564	L2	c23cf79e69251d02
+2	210	1681550928696590577	CMakeFiles/L2.dir/Queue/test/ShortTestQueue.cpp.o	e250cb6d8309abd7
+2	238	1681550928725093665	CMakeFiles/L2.dir/Stack/src/Stack.cpp.o	2e47e4708c6f7d9e
+3	283	1681550928770036922	CMakeFiles/L2.dir/Stack/test/ExtendedStackTest.cpp.o	408948b1edf233f9
+3	284	1681550928770266588	CMakeFiles/L2.dir/Stack/test/ShortStackTest.cpp.o	5582b26b378cc9d3
+1	289	1681550928776068131	CMakeFiles/L2.dir/Queue/src/Queue.cpp.o	b6d94ba061da3652
+2	294	1681550928781773798	CMakeFiles/L2.dir/Queue/test/ExtendedTestQueue.cpp.o	ef645d0b4aee398b
+4	300	1681550928788171008	CMakeFiles/L2.dir/Shunting_Yard/src/shunting_yard.cpp.o	27b1062c021c3adf
+300	339	1681550928828679264	L2	c23cf79e69251d02
