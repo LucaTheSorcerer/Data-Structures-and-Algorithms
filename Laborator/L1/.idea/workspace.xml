@@ -23,6 +23,8 @@
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L2/Queue/src/Queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L2/Queue/src/Queue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +144,7 @@
       <workItem from="1680879241619" duration="152000" />
       <workItem from="1680879664352" duration="6480000" />
       <workItem from="1681419493848" duration="181000" />
+      <workItem from="1681981159935" duration="7000" />
     </task>
     <servers />
   </component>
