@@ -1,0 +1,18 @@
+# ninja log v5
+1	201	1682340869948404884	CMakeFiles/L2_queue_and_stack.dir/Queue/test/ShortTestQueue.cpp.o	4bc52ef6d27f75c8
+1	280	1682340870027807671	CMakeFiles/L2_queue_and_stack.dir/Queue/src/Queue.cpp.o	80fe4c32a665d3e6
+1	238	1682340869983160129	CMakeFiles/L2_queue_and_stack.dir/Stack/src/Stack.cpp.o	bf202c80aa63a609
+1	273	1682340870019884242	CMakeFiles/L2_queue_and_stack.dir/Stack/test/ShortStackTest.cpp.o	7b98885f959741ee
+1	277	1682340870024643683	CMakeFiles/L2_queue_and_stack.dir/Stack/test/ExtendedStackTest.cpp.o	2310dd17e16d1e84
+1	273	1682340870019224828	CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o	6caf8384c5d5aee9
+2	320	1682340870067469148	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard/src/shunting_yard.cpp.o	1e3f1d11f02038ab
+461	496	1682340870245530318	L2_queue_and_stack	e5f7bc776fd13746
+1	301	1682340870049146842	CMakeFiles/L2_queue_and_stack.dir/Queue/test/ExtendedTestQueue.cpp.o	9e2a2b41d8aa1ef1
+202	461	1682340870208738455	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard/test/shunting_yard_test.cpp.o	57ac38ce0cf32e08
+4	305	1682341498301886950	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp.o	133dd08fcb2af2ec
+4	307	1682341498304387899	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/src/shunting_yard_with_both.cpp.o	dfaab19aec22f88d
+307	340	1682341498338740396	L2_queue_and_stack	3bb9e5aed7b1d241
+2	275	1682341605761980321	CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o	6caf8384c5d5aee9
+275	309	1682341605797224148	L2_queue_and_stack	3bb9e5aed7b1d241
+2	284	1682341654726539637	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp.o	133dd08fcb2af2ec
+284	317	1682341654761638381	L2_queue_and_stack	3bb9e5aed7b1d241
