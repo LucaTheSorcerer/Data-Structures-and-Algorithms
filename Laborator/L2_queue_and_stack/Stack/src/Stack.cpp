@@ -53,6 +53,28 @@ void Stack::push(TElem e) {
     }
 }
 
+//void Stack::push(TElem e) {
+//
+//    //This is the push function of the stack that pushes the operators for postfix conversion
+//    //using the shunting yard algorithm
+//    //First check if the stack is empty
+//    if(!isEmpty()) {
+//        auto *newNode = new SNode;
+//        newNode -> info = e;
+//        newNode -> next = nullptr;
+//        newNode -> previous = tail;
+//        tail -> next = newNode;
+//        tail = newNode;
+//    }
+//    else {
+//        head = new SNode;
+//        head -> info = e;
+//        head -> previous = head;
+//        head -> next = tail;
+//        this->tail = head;
+//    }
+//}
+
 /**
  * @brief: This is the top function of the stack. This function returns the element from the top of the stack without
  * deleting it.

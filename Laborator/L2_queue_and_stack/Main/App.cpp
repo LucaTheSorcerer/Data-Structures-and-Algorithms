@@ -21,7 +21,8 @@ int main() {
     test_shunting_yard_small_with_both();
     test_shunting_yard_bigger_with_both();
     test_shunting_yard_even_bigger_with_both();
-
+    test_shunting_yard_with_both_all_operations();
+    test_shunting_yard_with_both_all_operations_bigger();
     cout << "Test end" << endl;
     cin.get();
 }

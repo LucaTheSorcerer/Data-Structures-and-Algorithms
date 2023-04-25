@@ -50,3 +50,28 @@ void test_shunting_yard_even_bigger_with_both() {
     cout << "Result: " << result << endl;
 }
 
+void test_shunting_yard_with_both_all_operations(){
+    cout << "Test shunting yard with all operations" << endl;
+    string infix = "2 ^ 2 + ( 3 * 4 ) - 5 + 2";
+    string postfix = infix_to_postfix_conversion_both(infix);
+    int result = evaluate_postfix_both(postfix);
+    assert(infix == "2 ^ 2 + ( 3 * 4 ) - 5 + 2");
+    assert(postfix == "2 2 ^ 3 4 * + 5 - 2 + ");
+    assert(result == 13);
+    cout << "Infix: " << infix << endl;
+    cout << "Postfix: " << postfix << endl;
+    cout << "Result: " << result << endl;
+}
+
+void test_shunting_yard_with_both_all_operations_bigger() {
+    cout << "Test shunting yard with all operations bigger" << endl;
+    string infix = "5 ^ 5 + 7 * 6 - ( 2 * 3 + 2 - 1 ) + 4 ^ 4 - 15 * 2";
+    string postfix = infix_to_postfix_conversion_both(infix);
+    int result = evaluate_postfix_both(postfix);
+    assert(infix == "5 ^ 5 + 7 * 6 - ( 2 * 3 + 2 - 1 ) + 4 ^ 4 - 15 * 2");
+    assert(postfix == "5 5 ^ 7 6 * + 2 3 * 2 + 1 - - 4 4 ^ + 15 2 * - ");
+    assert(result == 3386);
+    cout << "Infix: " << infix << endl;
+    cout << "Postfix: " << postfix << endl;
+    cout << "Result: " << result << endl;
+}
