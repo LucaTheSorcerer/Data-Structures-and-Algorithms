@@ -95,7 +95,6 @@ TElem Queue::pop() {
     //We delete the old head and return the value of the top element
     delete newHead;
     return top;
-
 }
 
 /**

@@ -1,3 +1,28 @@
+/**
+ _____________________________________________________________________________________________________
+/ @Author: Luca Tudor, group 713, Faculty of Computer Science                                         \
+| **************************************************************************************************** |
+| Shunting Yard Algorithm for infix to postfix with queue and stack                                    |
+| **************************************************************************************************** |
+| Data Structures:
+|     - Queue implemented with Single Linked Lists (push, pop, top, isEmpty                            |
+|     - Stack implemented with Double Linked Lists (push, pop, top, isEmpty, getTail)                  |
+|                                                                                                      |
+| Methods:                                                                                             |
+|     - infix_to_postfix_conversion (converts infix to postfix)                                        |
+|     - evaluate_postfix (evaluates postfix expression)                                                |
+|     - get_precedence (returns the precedence of operators as integers)                               |
+\     - modify (checks if list contains given data)                                                    /
+ ------------------------------------------------------------------------------------------------------
+  \
+   \   \_\_    _/_/
+    \      \__/
+           (oo)\_______
+           (__)\       )\/\
+               ||----w |
+               ||     ||
+*/
+
 #include "../Queue/test/ExtendedQueueTest.h"
 #include "../Queue/test/ShortQueueTest.h"
 #include "../Stack/test/ShortStackTest.h"
