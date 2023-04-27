@@ -117,7 +117,7 @@ TElem Stack::pop() {
         throw std::invalid_argument("The stack is empty");
     }
 
-    //Get the top element in the stack, pop it and return its value
+    //We get the element at the top of the stack, we pop it and return the value
     TElem top = tail->info;
 
     //Update the tail pointer if this is the last element in the stack
@@ -183,10 +183,22 @@ Stack::~Stack() {
  * @TimeComplexity-WorstCase θ(n)
  * @n: the number of elements in the stack
  */
-SNode *Stack::getTail() const {
-    SNode* current = head;
-    while (current != nullptr && current->next != nullptr) {
-        current = current->next;
-    }
-    return current;
+//SNode *Stack::getTail() const {
+//    SNode* current = head;
+//    while (current != nullptr && current->next != nullptr) {
+//        current = current->next;
+//    }
+//    return current;
+//}
+
+/**
+ * @brief: This is the getTail() function of the stack.
+ * @return returns the tail pointer
+ * @TimeComplexity-BestCase θ(1)
+ * @TimeComplexity-MediumCase θ(1)
+ * @TimeComplexity-WorstCase θ(1)
+ * @note regarding the time complexity, it is more efficient that the above implementation
+ */
+SNode* Stack::getTail() const {
+    return tail;
 }

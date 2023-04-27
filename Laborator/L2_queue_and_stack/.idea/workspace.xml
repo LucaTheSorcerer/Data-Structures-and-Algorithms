@@ -22,15 +22,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f3c5bf6a-8be8-48e6-991f-5573b4ce709a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Main/App.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shunting_Yard_With_Both/src/shunting_yard_with_both.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Shunting_Yard_With_Both/src/shunting_yard_with_both.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.h" beforeDir="false" afterPath="$PROJECT_DIR$/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stack/src/Stack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Stack/src/Stack.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/src/shunting_yard_with_both.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/src/shunting_yard_with_both.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Stack/src/Stack.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Stack/src/Stack.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/L2_queue_and_stack" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L2_queue_and_stack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
@@ -97,7 +93,7 @@
       <workItem from="1682573236012" duration="1055000" />
       <workItem from="1682595023835" duration="191000" />
       <workItem from="1682595623720" duration="4000" />
-      <workItem from="1682612678729" duration="1502000" />
+      <workItem from="1682612678729" duration="2864000" />
     </task>
     <servers />
   </component>
