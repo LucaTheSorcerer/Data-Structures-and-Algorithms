@@ -15,12 +15,16 @@ using namespace std;
 Queue::Queue(): head(nullptr), tail(nullptr) {}
 
 /**
- * @brief: This is the push function of the queue. We create a new node and we have two cases. If the queue is empty,
- * we set the head and the tail to the new node. If the queue is not empty, we set the next pointer of the tail
- * to the new node and we update the tail pointer to the new node.
+ * @brief This is the push function of the queue. We create a new node that will hold the new element to be added to the
+ * queue. We initialize the info field of the new node to the element that we want to push and the next field is set to
+ * nullptr since this node will be the last node in the queue.
+ * We have two cases.
+ * One one hand, If the queue is empty, then both the head and the tail pointer are set to the new node and the tail
+ * pointer is updated to point to the new node
+ * On the other hand, If the queue is not empty, then the next member of the current tail is set to point
  * The element will be pushed into the queue and the tail pointer will be updated
  * @param elem: this is the element that we wish to push into the queue
- * @return: nothing
+ * @return nothing
  * @timeComplexity-BestCase θ(1)
  * @timeComplexity-MediumCase θ(1)
  * @timeComplexity-Worst θ(1)
@@ -57,9 +61,14 @@ TElem Queue::top() const {
 }
 
 /**
- * @brief: This is the pop function of the queue. This function removes the first element of the queue and returns it.
+ * @brief This is the pop function of the queue. This function removes the first element of the queue and returns it.
  * It also updates the head pointer to the next element in the queue.
- * @param: none
+ * First case is when we check is the queue is empty and if it is, we throw an exception
+ * Then we get the value of the front element in the queue and save it to a variable top and this value will be returned
+ * later. We updated the head pointer. The head pointer is updated to point to the next node in the queue. If the queue
+ * becomes empty at this point, then we set the tail pointer to nullptr. Then the old head is deleted  and we return the
+ * value of the top element that was removed
+ * @param none
  * @return the first element of the queue
  * @timeComplexity-BestCase θ(1)
  * @timeComplexity-MediumCase θ(1)

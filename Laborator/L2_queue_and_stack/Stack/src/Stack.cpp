@@ -5,8 +5,8 @@
 
 /**
  * @brief: This is the constructor of the stack. It sets the head and the tail to nullptr
- * @param head: this is the head of the stack
- * @param tail: this is the tail of the stack
+ * @param head: this is the head of the stack so the first element of the stack
+ * @param tail: this is the tail of the stack so the last element of the stack meaning the top of the stack
  * @TimeComplexity-BestCase θ(1)
  * @TimeComplexity-MediumCase θ(1)
  * @TimeComplexity-WorstCase θ(1)
@@ -21,8 +21,18 @@ Stack::Stack() {
  * @brief: This is the push function of the stack.
  * @details: This function adds a new element  to the top of the stack. There are two cases regarding the stack.
  * On one hand, if the stack is empty, the function creates a new node and set the head and the tail to the new node.
+ * We set the info to the element that we want to push and then we set the previous and next pointers to head and tail
+ * that represent the first and the last element of the stack. Previous is set to to head to indicate that the head is
+ * the first node in the stack and has no previous node. Next is set to tail in order to indicate that the first node in
+ * the stack has no next node. The tail is also set to head to indicate that the tail is the last node.
  * On the other hand, if the stack is not empty, the function creates a new node and set the previous pointer of the new
- * node to the tail and the next pointer to the new node. The tail pointer is then updated to the new node.
+ * node to the tail and the next pointer to the new node. The tail pointer is then updated to the new node. We set the
+ * info to the element e that we want to push. Its next pointer is set to nullptr because it indicates that it will be
+ * the last node in the list and its previous pointer is set to the current tail node, which will become its predecessor
+ * Then, the next pointer of the curent tail node is updated to point to the new node, to link the current tail node
+ * with the new node as its successor. Then the tail pointer is updated in order to point to the new node, because the
+ * new node is now the last node in the list. This simplifies the implementation of the pop and top functions, which can
+ * simply access the info field of the last node in the list.
  * @param e This is the element that we push to the stack
  * @return: nothing
  * @TimeComplexity-BestCase θ(1)
@@ -103,8 +113,14 @@ TElem Stack::top() const  {
  * @brief: This is the pop function of the stack.
  * @details: This function removes the element from the top of the stack and returns it.
  * There are three cases regarding the pop function. First, if the stack is empty, the function will throw an exception.
- * Second, if the stack has only one element or the element in the last, the function will delete the element and set the head and the tail to nullptr.
- * Third, if the stack has more than one element, the function will delete the element pointed by tail and update the tail
+ * Second, if the stack has only one element or the element in the last, the function will delete the element and set
+ * the head and the tail to nullptr. The head and tail pointers are set to nullptr and the memory allocated for the
+ * node is deallocated using the delete operator.
+ * Third, if the stack has more than one element, the function will delete the element pointed by tail and update the
+ * tail to point to the previous node in the list. The newTail pointer is first set to point to the previous node in the
+ * list so the node that is currently pointed by the previous pointer of the current tail node
+ * The next pointer of the new tail node is set to nullptr because it is
+ * now the last element in the list.
  * @return the value of the info field of the node pointed by tail
  * @TimeComplexity-BestCase θ(1)
  * @TimeComplexity-MediumCase θ(1)
@@ -120,7 +136,7 @@ TElem Stack::pop() {
     //We get the element at the top of the stack, we pop it and return the value
     TElem top = tail->info;
 
-    //Update the tail pointer if this is the last element in the stack
+    //We update the tail pointer if it is the last element in the stack.
     if (head == tail) {
         delete tail;
         head = nullptr;
