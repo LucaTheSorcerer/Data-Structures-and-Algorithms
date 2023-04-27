@@ -75,3 +75,16 @@ void test_shunting_yard_with_both_all_operations_bigger() {
     cout << "Postfix: " << postfix << endl;
     cout << "Result: " << result << endl;
 }
+
+void test_shunting_yard_with_both_mismatched_parentheses() {
+    cout << "Test shunting yard with all operations" << endl;
+    string infix = "2 ^ 2 + ( 3 * 4 - 5 + 2";
+    try {
+        string postfix = infix_to_postfix_conversion_both(infix);
+        cout << "Infix: " << infix << endl;
+        cout << "Postfix: " << postfix << endl;
+    }
+    catch (const std::runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+};

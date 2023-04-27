@@ -13,3 +13,4 @@ void test_shunting_yard_bigger_with_both();
 void test_shunting_yard_even_bigger_with_both();
 void test_shunting_yard_with_both_all_operations();
 void test_shunting_yard_with_both_all_operations_bigger();
+void test_shunting_yard_with_both_mismatched_parentheses();

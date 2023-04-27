@@ -113,9 +113,14 @@ int evaluate_postfix_both(string postfix) {
  * from the stack. If the token is an operator, the function will pop operators from the stack and add them to the string
  * stream until an operator with lower precedence is found and then it pushes the operator onto the stack.
  * After it reads all the token, it pops the remaining operators from the stack and adds them to the stringstream output
- * and queue. The function returns the output string.
+ * and queue. The function returns the output string. There are also checks for mismatched parentheses. When an opening
+ * parenthesis is encountered, the variable open_parentheses is incremented by 1. Then when we encounter a closing
+ * parenthesis, the variable open_parenthesis is decremented by 1. We check if it is less than 0. If it is then it means
+ * that there is a mismatched parenthesis. After iterating through the whole expression, we check again if the variable
+ * is less than 0. If it is, then it means that there is a mismatched parenthesis.
  * @param infix the infix expression to be converted
  * @return the postfix expression
+ * @throw runetime_error if there is a mismatched parenthesis
  * @TimeComplexity-BestCase θ(n)
  * @TimeComplexity-MediumCase θ(n)
  * @TimeComplexity-WorstCase θ(n)
@@ -129,6 +134,7 @@ string infix_to_postfix_conversion_both(const string& infix) {
     Stack operator_stack;
     Queue postfix_queue;
     string token;
+    int open_parentheses = 0;
     while (getline(input, token, ' ')) {
         if (isdigit(token[0])) {
             output += token;
@@ -137,8 +143,13 @@ string infix_to_postfix_conversion_both(const string& infix) {
         }
         else if (token[0] == '(') {
             operator_stack.push(token[0]);
+            open_parentheses++;
         }
         else if (token[0] == ')') {
+            if(--open_parentheses < 0) {
+                throw runtime_error("Mismatched parentheses");
+            }
+
             while (operator_stack.top() != '(') {
                 output += operator_stack.top();
                 output += " ";
@@ -157,6 +168,11 @@ string infix_to_postfix_conversion_both(const string& infix) {
             operator_stack.push(token[0]);
         }
     }
+
+    if(open_parentheses != 0) {
+        throw runtime_error("Mismatched parentheses");
+    }
+
     while (!operator_stack.isEmpty()) {
         output += operator_stack.top();
         output += " ";
