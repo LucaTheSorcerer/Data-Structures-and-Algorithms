@@ -78,3 +78,10 @@
 269	301	1682624945169358815	L2_queue_and_stack	3bb9e5aed7b1d241
 2	283	1682625005666073846	CMakeFiles/L2_queue_and_stack.dir/Queue/src/Queue.cpp.o	80fe4c32a665d3e6
 283	316	1682625005700104899	L2_queue_and_stack	3bb9e5aed7b1d241
+2	1974	1682684307057204820	CMakeFiles/L2_queue_and_stack.dir/Stack/src/Stack.cpp.o	bf202c80aa63a609
+1974	2194	1682684307279373521	L2_queue_and_stack	3bb9e5aed7b1d241
+1	263	1682691164651384188	CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o	6caf8384c5d5aee9
+263	307	1682691164697766592	L2_queue_and_stack	3bb9e5aed7b1d241
+2	2101	1682694727450604496	CMakeFiles/L2_queue_and_stack.dir/Main/App.cpp.o	6caf8384c5d5aee9
+2	2108	1682694727457335282	CMakeFiles/L2_queue_and_stack.dir/Shunting_Yard_With_Both/test/shunting_yard_with_both_test.cpp.o	133dd08fcb2af2ec
+2109	2315	1682694727666089003	L2_queue_and_stack	3bb9e5aed7b1d241

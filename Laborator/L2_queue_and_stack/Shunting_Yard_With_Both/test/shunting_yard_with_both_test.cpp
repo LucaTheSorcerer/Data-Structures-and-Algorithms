@@ -88,3 +88,13 @@ void test_shunting_yard_with_both_mismatched_parentheses() {
         cout << "Error: " << e.what() << endl;
     }
 };
+
+void test_shunting_yard_new() {
+    cout << "New expression" << endl;
+    string infix = "( 2 ^ 3 + 5 ) * ( 3 - 1 )";
+    string postfix = infix_to_postfix_conversion_both(infix);
+    int result = evaluate_postfix_both(postfix);
+    cout <<"Infix: " <<  infix << endl;
+    cout << "Postfix: " << postfix << endl;
+    cout << "Result: " << result << endl;
+}

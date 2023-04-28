@@ -190,6 +190,7 @@ Stack::~Stack() {
 }
 
 /**
+ * DEPRECATED
  * @brief: This is the getTail() function of the stack.
  * @details: The implementation sets a current pointer to head and then it iterates through the list until the end.
  * It returns the current pointer representing the tail of the list.

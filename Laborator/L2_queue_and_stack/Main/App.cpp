@@ -11,8 +11,7 @@
 | Methods:                                                                                             |
 |     - infix_to_postfix_conversion (converts infix to postfix)                                        |
 |     - evaluate_postfix (evaluates postfix expression)                                                |
-|     - get_precedence (returns the precedence of operators as integers)                               |
-\     - modify (checks if list contains given data)                                                    /
+\     - get_precedence (returns the precedence of operators as integers)                               /
  ------------------------------------------------------------------------------------------------------
   \
    \   \_\_    _/_/
@@ -49,6 +48,7 @@ int main() {
     test_shunting_yard_with_both_all_operations();
     test_shunting_yard_with_both_all_operations_bigger();
     test_shunting_yard_with_both_mismatched_parentheses();
+    test_shunting_yard_new();
     cout << "Test end" << endl;
     cin.get();
 }
