@@ -22,11 +22,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f3c5bf6a-8be8-48e6-991f-5573b4ce709a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Queue/src/Queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Queue/src/Queue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Queue/src/Queue.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L2_queue_and_stack.dir/Queue/src/Queue.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/L2_queue_and_stack" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/L2_queue_and_stack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +87,8 @@
       <workItem from="1682573236012" duration="1055000" />
       <workItem from="1682595023835" duration="191000" />
       <workItem from="1682595623720" duration="4000" />
-      <workItem from="1682612678729" duration="10815000" />
+      <workItem from="1682612678729" duration="12521000" />
+      <workItem from="1682626305772" duration="63000" />
     </task>
     <servers />
   </component>
