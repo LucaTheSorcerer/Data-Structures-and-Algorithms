@@ -1,0 +1,6 @@
+# ninja log v5
+1	312	1683382131614383803	CMakeFiles/L3.dir/ShortTest.cpp.o	461ef62e1baa7b22
+1	313	1683382131616269753	CMakeFiles/L3.dir/Matrix.cpp.o	cd987c31cdb10d09
+0	315	1683382131618488117	CMakeFiles/L3.dir/App.cpp.o	b6224d8d3b4e4fc4
+1	319	1683382131622536598	CMakeFiles/L3.dir/ExtendedTest.cpp.o	39c4b8ffe102cfe0
+319	353	1683382131657294601	L3	7dfc87ee0cf660fa
