@@ -3,7 +3,6 @@
 //DO NOT CHANGE THIS PART
 typedef int TElem;
 #define NULL_TELEM 0
-#define NULL_NODE -1, -1, -1
 #include <iostream>
 
 using namespace std;
@@ -14,7 +13,7 @@ struct Node {
     TElem value;
     int nextLine;
     int nextColumn;
-    Node():line(-1), column(-1), value(-1), nextLine(-1), nextColumn(-1){};
+    Node():line(-1), column(-1), value(-1), nextLine(0), nextColumn(0){};
 };
 
 class Matrix {
@@ -50,9 +49,10 @@ public:
     //throws exception if (i,j) is not a valid position in the Matrix
     TElem modify(int i, int j, TElem e);
 
-    void resizeUp();
 
-    void resizeDown();
+    void automaticResize();
+
+    void resize(int newCapacity);
 
     // destructor
     ~Matrix();
