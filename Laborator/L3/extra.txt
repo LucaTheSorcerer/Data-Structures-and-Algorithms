@@ -1,0 +1,94 @@
+//    for (int i = 0; i < nrLines; ++i) {
+//        lineHead[i] = lastLine[i] = -1;
+//        nodes[(i + 1) * nrCols - 1].nextLine = (i + 1) * nrCols - nrCols;
+//    }
+//
+//    for (int i = 0; i < nrCols; ++i) {
+//        columnHead[i] = lastColumn[i] = -1;
+//        nodes[nrLines * nrCols + i - 1].nextColumn = i;
+//    }
+
+
+
+
+//    for (int i = 0; i < lines; ++i) {
+//        if (lastLine[i] != -1) {
+//            nodes[lastLine[i]].nextLine = i * columns;
+//            nodes[i * columns].nextLine = lineHead[i];
+//        }
+//        if (lineHead[i] != -1) {
+//            nodes[i * columns + columns - 1].nextLine = lineHead[i];
+//            nodes[lineHead[i]].nextLine = i * columns + columns - 1;
+//        }
+//    }
+//    for (int i = 0; i < columns; ++i) {
+//        if (lastColumn[i] != -1) {
+//            nodes[lastColumn[i]].nextColumn = i;
+//            nodes[i].nextColumn = columnHead[i];
+//        }
+//        if (columnHead[i] != -1) {
+//            nodes[(lines - 1) * columns + i].nextColumn = columnHead[i];
+//            nodes[columnHead[i]].nextColumn = (lines - 1) * columns + i;
+//        }
+//    }
+
+
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    int index = lineHead[i];
+//    int prevIndex = -1;
+//
+//    while (index != -1) {
+//        if (nodes[index].column == j) {
+//            TElem oldValue = nodes[index].value;
+//            nodes[index].value = e;
+//            return oldValue;
+//        }
+//        prevIndex = index;
+//        index = nodes[index].nextLine;
+//    }
+//
+//    if (e == NULL_TELEM)
+//        return NULL_TELEM;
+//
+//    if (firstEmpty == -1) {
+//        automaticResize();
+//    }
+//
+//    int newNodeIndex = firstEmpty;
+//    firstEmpty = nodes[firstEmpty].nextLine;
+//
+//    nodes[newNodeIndex].line = i;
+//    nodes[newNodeIndex].column = j;
+//    nodes[newNodeIndex].value = e;
+//
+//    if (lineHead[i] == -1 || nodes[lineHead[i]].column > j) {
+//        nodes[newNodeIndex].nextLine = lineHead[i];
+//        lineHead[i] = newNodeIndex;
+//    } else {
+//        nodes[newNodeIndex].nextLine = nodes[prevIndex].nextLine;
+//        nodes[prevIndex].nextLine = newNodeIndex;
+//    }
+//
+//    int colIndex = columnHead[j];
+//    int prevColIndex = -1;
+//
+//    while (colIndex != -1 && nodes[colIndex].line < i) {
+//        prevColIndex = colIndex;
+//        colIndex = nodes[colIndex].nextColumn;
+//    }
+//
+//    if (prevColIndex == -1) {
+//        nodes[newNodeIndex].nextColumn = columnHead[j];
+//        columnHead[j] = newNodeIndex;
+//    } else {
+//        nodes[newNodeIndex].nextColumn = nodes[prevColIndex].nextColumn;
+//        nodes[prevColIndex].nextColumn = newNodeIndex;
+//    }
+//
+//    size++;
+//
+//    return NULL_TELEM;
+//}
