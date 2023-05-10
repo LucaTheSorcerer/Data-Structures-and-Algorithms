@@ -7,7 +7,7 @@ Matrix::Matrix(int nrLines, int nrCols) {
 
     lines = nrLines;
     columns = nrCols;
-    capacity = 4 * (nrLines + nrCols);
+    capacity = 5;
     size = 0;
 
     nodes = new Node[capacity];
@@ -42,26 +42,26 @@ Matrix::Matrix(int nrLines, int nrCols) {
     nodes[capacity - 1].nextLine = -1;
     nodes[capacity - 1].nextColumn = -1;
 
-    for (int i = 0; i < lines; ++i) {
-        if (lastLine[i] != -1) {
-            nodes[lastLine[i]].nextLine = i * columns;
-            nodes[i * columns].nextLine = lineHead[i];
-        }
-        if (lineHead[i] != -1) {
-            nodes[i * columns + columns - 1].nextLine = lineHead[i];
-            nodes[lineHead[i]].nextLine = i * columns + columns - 1;
-        }
-    }
-    for (int i = 0; i < columns; ++i) {
-        if (lastColumn[i] != -1) {
-            nodes[lastColumn[i]].nextColumn = i;
-            nodes[i].nextColumn = columnHead[i];
-        }
-        if (columnHead[i] != -1) {
-            nodes[(lines - 1) * columns + i].nextColumn = columnHead[i];
-            nodes[columnHead[i]].nextColumn = (lines - 1) * columns + i;
-        }
-    }
+//    for (int i = 0; i < lines; ++i) {
+//        if (lastLine[i] != -1) {
+//            nodes[lastLine[i]].nextLine = i * columns;
+//            nodes[i * columns].nextLine = lineHead[i];
+//        }
+//        if (lineHead[i] != -1) {
+//            nodes[i * columns + columns - 1].nextLine = lineHead[i];
+//            nodes[lineHead[i]].nextLine = i * columns + columns - 1;
+//        }
+//    }
+//    for (int i = 0; i < columns; ++i) {
+//        if (lastColumn[i] != -1) {
+//            nodes[lastColumn[i]].nextColumn = i;
+//            nodes[i].nextColumn = columnHead[i];
+//        }
+//        if (columnHead[i] != -1) {
+//            nodes[(lines - 1) * columns + i].nextColumn = columnHead[i];
+//            nodes[columnHead[i]].nextColumn = (lines - 1) * columns + i;
+//        }
+//    }
 
 
     // create a circular connection between the last and the first element in each line and column
@@ -100,7 +100,33 @@ TElem Matrix::element(int i, int j) const {
     return NULL_TELEM;
 }
 
-
+/**
+ * @brief This is the modify function of the matrix
+ * @details The function first checks if the given position is valid. If it is, it searches for the element in the
+ * matrix. It does this by traversing the linked list of nodes corresponding to the row index i. The variable
+ * index is initialized with the index of the first node in the list. The variable prevIndex is used to keep track of
+ * the node that comes before the current node being searched. PrevIndex is initialized with -1. A while loop is used to
+ * traverse the linked list until the node containing the column index j is found or the end of the linked list is
+ * reached. If the node containing the column index j is found, the function updates the value of the node with the new
+ * value e and returns the old value of the node. If the new value e is equal to NULL_TELEM, then the function removes
+ * the node from both row and column linked lists. If the node is the head of the row linked list, then the head is
+ * updated to point to the next node in the list. Otherwise, the nextLine pointer of the node before the current node
+ * is updated to point to the next node in the list. the same is done for the column linked list. After the node is
+ * removed from the linked lists, it is added to the list of empty nodes to be reused later. The var size is decremented
+ * by 1. If the new value e is not equal to NULL_TELEM and the node was not found in the linked list, then a new node is
+ * created and it is inserted into the linked list. IF there are no empty nodes available, then the function
+ * automatically resizes the matrix to create more nodes. The new node is assigned the row index i, col j and val e. The
+ * function then finds the correct position to insert the node in both the row and column linked lists, It does this by
+ * traversing the linked list for the column index j. A while loop is used to loop through the linked list until the
+ * correct position is found. The same is done for the row linked list. Once the position is found, the node is inserted
+ * into the linked list by updating the nextLine and nextColumn pointers. The function returns NULL_TELEM to indicate
+ * that no old value was replaced if the node was not found in the linked list.
+ *
+ * @param i
+ * @param j
+ * @param e
+ * @return
+ */
 TElem Matrix::modify(int i, int j, TElem e) {
     if (i < 0 || i >= lines || j < 0 || j >= columns)
         throw std::exception();
@@ -214,7 +240,7 @@ void Matrix::resize(int newCapacity) {
 
     Node *newNodes = new Node[newCapacity];
 
-    for (int i = 0; i < capacity; ++i) {
+    for (int i = 0; i < newCapacity; ++i) {
         newNodes[i] = nodes[i];
     }
 
