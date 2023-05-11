@@ -362,8 +362,10 @@ Matrix::~Matrix() {
 void Matrix::automaticResize() {
     if (firstEmpty == -1)
         resize(capacity * 2);
-    else if (size <= capacity / 4 && capacity >= 10)
+    else if (size <= capacity / 4 && capacity >= 10) {
+        cout << "resize" << endl;
         resize(capacity / 2);
+    }
 }
 
 void Matrix::resize(int newCapacity) {
