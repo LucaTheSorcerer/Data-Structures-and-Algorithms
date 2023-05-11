@@ -1,0 +1,156 @@
+//TElem Matrix::element(int i, int j) const {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    Node *curr = &nodes[head];
+//
+//    // curr = header node for line i
+//    while (curr->line != i) {
+//        curr = &nodes[curr->nextLine];
+////        cout << "curr.line = " << curr->line << endl;
+//    }
+//
+//    // curr = node(i, j) || head
+//    while (nodes[curr->nextColumn].column != -1) {
+//        curr = &nodes[curr->nextColumn];
+////        cout << "curr.column = " << curr->column << endl;
+//        if (curr->column == j)
+//            return curr->value;
+//    }
+//
+//    return NULL_TELEM;
+//}
+
+
+/**
+ * @brief Search Node with indexes i and j
+ * @returns SearchResult(prevLine, prevCol, idx) \n
+ * idx = the index of the element with index (i, j)               || -1 \n
+ * prevLine = the index of element with index (i-z, j) , z ∈ N    || -1 \n
+ * prevCol = the index of element with index (i, j-z)  , z ∈ N    || -1
+ * @param i
+ * @param j
+ */
+SearchResult Matrix::searchIndex(int i, int j) const {
+    Node *curr = &nodes[head];
+    int prevLineIdx = head;
+    int prevColIdx = head;
+    int currIdx = head;
+
+    while (curr->line != i)
+        curr = &nodes[curr->nextLine];
+
+    // find prevColIdx and currIdx
+    while (nodes[curr->nextColumn].column != -1 && nodes[curr->nextColumn].column < j) {
+        if (nodes[curr->nextColumn].column == j) {
+            prevColIdx = (curr - nodes) / sizeof(Node);
+            currIdx = curr->nextColumn;
+            break;
+        }
+        curr = &nodes[curr->nextColumn];
+    }
+
+    curr = &nodes[head];
+
+    while (curr->column != j)
+        curr = &nodes[curr->nextColumn];
+
+    while (nodes[curr->nextLine].line != -1 && nodes[curr->nextLine].line < i) {
+        if (nodes[curr->nextLine].line == i) {
+            prevLineIdx = (curr - nodes) / sizeof(Node);
+            break;
+        }
+        curr = &nodes[curr->nextLine];
+    }
+
+    return {prevLineIdx, prevColIdx, currIdx};
+}
+
+
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    Node *curr = &nodes[head];
+//
+//    // Find the header node for line i
+//    while (curr->line != i) {
+//        curr = &nodes[curr->nextLine];
+//    }
+//
+//    Node *prev = curr;
+//
+//    // Find the node with column j in line i, or the node before where it should be
+//    while (nodes[curr->nextColumn].column != -1 && nodes[curr->nextColumn].column <= j) {
+//        prev = curr;
+//        curr = &nodes[curr->nextColumn];
+//        if (curr->column == j) {
+//            TElem oldValue = curr->value;
+//            if (e == NULL_TELEM) {
+//                // Delete the node
+//                prev->nextColumn = curr->nextColumn;
+//                curr->nextColumn = firstEmpty;
+//                firstEmpty = int(curr - nodes)/sizeof(Node);
+//                curr->line = -1;
+//                curr->column = -1;
+//                curr->value = NULL_TELEM;
+//                size--;
+//            } else {
+//                // Update the value of the existing node
+//                curr->value = e;
+//            }
+//            automaticResize();
+//            return oldValue;
+//        }
+//    }
+//
+//    // Node with column j not found, so insert a new node
+//    if (e != NULL_TELEM) {
+//        int newNodeIdx;
+//        if (firstEmpty != -1) {
+//            newNodeIdx = firstEmpty;
+//            firstEmpty = nodes[firstEmpty].nextColumn;
+//        } else {
+//            newNodeIdx = size;
+//            size++;
+//            if (size >= capacity) {
+//                resize(capacity * 2);
+//            }
+//        }
+//        Node *newNode = &nodes[newNodeIdx];
+//        newNode->line = i;
+//        newNode->column = j;
+//        newNode->value = e;
+//        newNode->nextColumn = curr->nextColumn;
+//        curr->nextColumn = newNodeIdx;
+//        automaticResize();
+//        return NULL_TELEM;
+//    }
+//
+//    return NULL_TELEM;
+//}
+
+//TElem Matrix::element(int i, int j) const {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    Node *curr = &nodes[head];
+//
+//    // curr = header node for line i
+//    while (curr->line != i) {
+//        curr = &nodes[curr->nextLine];
+////        cout << "curr.line = " << curr->line << endl;
+//    }
+//
+//    // curr = node(i, j) || head
+//    while (nodes[curr->nextColumn].column != -1) {
+//        if (curr->nextColumn >= capacity) {
+//            throw std::out_of_range("Index out of range");
+//        }
+//        curr = &nodes[curr->nextColumn];
+//        if (curr->column == j)
+//            return curr->value;
+//    }
+//
+//    return NULL_TELEM;
+//}

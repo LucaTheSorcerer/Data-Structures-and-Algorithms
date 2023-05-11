@@ -8,11 +8,6 @@ typedef int TElem;
 
 using namespace std;
 
-struct SearchResult {
-    int prevLineIdx{-1}; // Index of Node from previous line
-    int prevColIdx{-1}; // Index of Node from previous column
-    int currIdx{-1}; // Index of Node found
-};
 
 struct Node {
     int line{-1};
@@ -39,7 +34,6 @@ private:
     void createHeaderNodes();
 
     // Returns the indexes of previous Nodes and current Node with (i, j)
-    SearchResult searchIndex(int i, int j) const;
 
 public:
     //constructor

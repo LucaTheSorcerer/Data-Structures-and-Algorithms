@@ -1,6 +1,19 @@
 #include "Matrix.h"
 #include <exception>
 
+/**
+ * @brief constructor for the Matrix class
+ * @details: the constructor receives the number of lines and columns of the matrix as parameters and initializes
+ * the matrix with the given dimensions.
+ * @param nrLines number of lines of the matrix
+ * @param nrCols number of columns of the matrix
+ * @throws exception if the dimensions are invalid
+ * @TimeComplexity-BestCase: θ(n + m)
+ * @TimeComplexity-AverageCase: θ(n + m)
+ * @TimeComplexity-WorstCase: θ(n + m)
+ * @note n = nrLines, m = nrCols, the time complexity is dominated by the createHeaderNodes() function
+ *
+ */
 Matrix::Matrix(int nrLines, int nrCols) {
     if (nrLines <= 0 || nrCols <= 0)
         throw std::out_of_range("Invalid dimensions");
@@ -17,13 +30,29 @@ Matrix::Matrix(int nrLines, int nrCols) {
 
     createHeaderNodes();
 
-    for (int i = 0; i < size; i++) {
-//        cout << '[' << i << "]. ";
-//        nodes[i].print();
-    }
 }
 
+/**
+ * @brief function that creates the necessary header nodes for a circular sparse matrix.
+ * @details: the head is initialized with the index position (-1,-1). The head node is the top-left corner of the matrix
+ * It does not store any element value but acts as a sentinel node to simplify the algorithms that manipulate the matrix
+ * The initialization of the header node distinguishes is from the regular matrix columns and lines nodes
+ * Then there are header nodes for lines created. The first loop iterates over the lines of the matrix and for each line
+ * it creates a header node with the index arrIdx, which stores the line index, the index of the next line header and
+ * the index of the first non-zero element of the line. The arrIdx is incremented after each iteration to keep track of
+ * the next available index for a header node.
+ * With the second for loop we iterate over the columns of the matrix. For each column, it creates a header node with
+ * index arrIdx which stores the column index, the index of the next column header and the index of the first non-zero
+ * element of the column. The arrIdx is incremented after each iteration to keep track of the next available index for
+ * a header node.
+ * @TimeComplexity-BestCase θ(n + m)
+ * @TimeComplexity-AverageCase θ(n + m)
+ * @TimeComplexity-WorstCase θ(n + m)
+ * @note n = number of lines, m = number of columns
+ */
 void Matrix::createHeaderNodes() {
+    nodes[head].line = -1;
+    nodes[head].column = -1;
     nodes[head].nextLine = 1; // first line header (0, -1)
     nodes[head].nextColumn = 1 + lines; // first column header (-1, 0)
 
@@ -53,96 +82,68 @@ void Matrix::createHeaderNodes() {
     size = arrIdx;
 }
 
-
+/**
+ * @brief function that returns the number of lines of the matrix
+ * @return line - number of lines
+ * @TimeComplexity-BestCase θ(1)
+ * @TimeComplexity-AverageCase θ(1)
+ * @TimeComplexity-WorstCase θ(1)
+ */
 int Matrix::nrLines() const {
     return lines;
 }
 
+/**
+ * @brief function that returns the number of columns of the matrix
+ * @return column - number of columns
+ * @TimeComplexity-BestCase θ(1)
+ * @TimeComplexity-AverageCase θ(1)
+ * @TimeComplexity-WorstCase θ(1)
+ */
 int Matrix::nrColumns() const {
     return columns;
 }
 
+
+/**
+ * @brief function that returns the element from the given position (i,j) of the matrix
+ * @details the function first checks if the specified position is valid. If it is not, it throws an exception. This is
+ * to ensure that the indices are valid and that the function does not try to access elements outside the matrix.
+ * Next the function initializes a variable curr to the index of the first node in the matrix.
+ * The first while loop iterates over the nodes until it find the node with line equal to 'i'.
+ * The next while loop iterates over the nodes starting at the node with line equal to 'i' until it finds the node with
+ * column equal to 'j'. If the node with column j is found, the function returns the value of the node, because it means
+ * that the element (i,j) exists in the matrix. If the node with column j is not found, it means that the element (i,j)
+ * does not exist in the matrix, so the function returns NULL_TELEM.
+ * @param i - line index
+ * @param j - column index
+ * @return value of the element (i,j) if it exists in the matrix, NULL_TELEM otherwise
+ * @throws exception if the indexes are invalid
+ * @TimeComplexity-BestCase θ(1) - the element is the first element in the matrix
+ * @TimeComplexity-AverageCase θ(n) - the element is in the middle of the matrix
+ * @TimeComplexity-WorstCase θ(n) - the element is the last element in the matrix
+ * @note n = number of elements in the matrix
+ */
+
 TElem Matrix::element(int i, int j) const {
     if (i < 0 || i >= lines || j < 0 || j >= columns)
-        throw std::exception();
+        throw std::invalid_argument("Invalid indexes!");
 
-    Node *curr = &nodes[head];
+    int curr = nodes[head].nextLine;
 
-    // curr = header node for line i
-    while (curr->line != i) {
-        curr = &nodes[curr->nextLine];
-//        cout << "curr.line = " << curr->line << endl;
+    // curr = index of the first node in line i
+    while (nodes[curr].line != i) {
+        curr = nodes[curr].nextLine;
     }
 
-    // curr = node(i, j) || head
-    while (nodes[curr->nextColumn].column != -1) {
-        curr = &nodes[curr->nextColumn];
-//        cout << "curr.column = " << curr->column << endl;
-        if (curr->column == j)
-            return curr->value;
-    }
-
-    return NULL_TELEM;
-}
-
-TElem Matrix::modify(int i, int j, TElem e) {
-    if (i < 0 || i >= lines || j < 0 || j >= columns)
-        throw std::exception();
-
-    Node *curr = &nodes[head];
-
-    // Find the header node for line i
-    while (curr->line != i) {
-        curr = &nodes[curr->nextLine];
-    }
-
-    Node *prev = curr;
-
-    // Find the node with column j in line i, or the node before where it should be
-    while (nodes[curr->nextColumn].column != -1 && nodes[curr->nextColumn].column <= j) {
-        prev = curr;
-        curr = &nodes[curr->nextColumn];
-        if (curr->column == j) {
-            TElem oldValue = curr->value;
-            if (e == NULL_TELEM) {
-                // Delete the node
-                prev->nextColumn = curr->nextColumn;
-                curr->nextColumn = firstEmpty;
-                firstEmpty = int(curr - nodes)/sizeof(Node);
-                curr->line = -1;
-                curr->column = -1;
-                curr->value = NULL_TELEM;
-                size--;
-            } else {
-                // Update the value of the existing node
-                curr->value = e;
-            }
-            automaticResize();
-            return oldValue;
+    // curr = index of node(i, j) || head
+    while (nodes[nodes[curr].nextColumn].column != -1) {
+        if (nodes[curr].nextColumn >= capacity) {
+            throw std::out_of_range("Index out of range");
         }
-    }
-
-    // Node with column j not found, so insert a new node
-    if (e != NULL_TELEM) {
-        int newNodeIdx;
-        if (firstEmpty != -1) {
-            newNodeIdx = firstEmpty;
-            firstEmpty = nodes[firstEmpty].nextColumn;
-        } else {
-            newNodeIdx = size;
-            size++;
-            if (size >= capacity) {
-                resize(capacity * 2);
-            }
-        }
-        Node *newNode = &nodes[newNodeIdx];
-        newNode->line = i;
-        newNode->column = j;
-        newNode->value = e;
-        newNode->nextColumn = curr->nextColumn;
-        curr->nextColumn = newNodeIdx;
-        automaticResize();
-        return NULL_TELEM;
+        curr = nodes[curr].nextColumn;
+        if (nodes[curr].column == j)
+            return nodes[curr].value;
     }
 
     return NULL_TELEM;
@@ -151,77 +152,207 @@ TElem Matrix::modify(int i, int j, TElem e) {
 
 
 /**
- * @brief Search Node with indexes i and j
- * @returns SearchResult(prevLine, prevCol, idx) \n
- * idx = the index of the element with index (i, j)               || -1 \n
- * prevLine = the index of element with index (i-z, j) , z ∈ N    || -1 \n
- * prevCol = the index of element with index (i, j-z)  , z ∈ N    || -1
+ * @brief function that modifies the element from the given position (i,j) and returns the previous value from that
+ * position
  * @param i
  * @param j
+ * @param e
+ * @return
  */
-SearchResult Matrix::searchIndex(int i, int j) const {
-    Node *curr = &nodes[head];
-    int prevLineIdx = head;
-    int prevColIdx = head;
-    int currIdx = head;
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    int curr = head;
+//
+//    // Find the header node for line i
+//    while (nodes[curr].line != i) {
+//        curr = nodes[curr].nextLine;
+//    }
+//
+//    int prev = curr;
+//
+//    // Find the node with column j in line i, or the node before where it should be
+//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
+//        if (curr >= capacity) {
+//            throw std::out_of_range("Index out of range");
+//        }
+//        prev = curr;
+//        curr = nodes[curr].nextColumn;
+//    }
+//
+//    // If the node doesn't exist, create it
+//    if (nodes[curr].column != j) {
+//        // If there are no more empty nodes, resize the array
+//        if (firstEmpty == -1)
+//            automaticResize();
+//
+//        int newIdx = firstEmpty;
+//        firstEmpty = nodes[firstEmpty].nextColumn;
+//
+//        nodes[newIdx].line = i;
+//        nodes[newIdx].column = j;
+//        nodes[newIdx].nextLine = curr;
+//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
+//        nodes[prev].nextColumn = newIdx;
+//
+//        size++;
+//        curr = newIdx;
+//    }
+////    else if(e == NULL_TELEM) {
+////        // If the node exists and the new value is NULL_TELEM, delete the node
+////        nodes[prev].nextColumn = nodes[curr].nextColumn;
+////        nodes[curr].nextColumn = firstEmpty;
+////        nodes[curr].nextLine = nodes[curr].nextLine;
+////
+////        firstEmpty = curr;
+////        size--;
+////        return NULL_TELEM;
+////    }
+//
+//    // Update the value of the node and return the old value
+//    TElem oldValue = nodes[curr].value;
+//    nodes[curr].value = e;
+//    return oldValue;
+//}
 
-    while (curr->line != i)
-        curr = &nodes[curr->nextLine];
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    int curr = head;
+//
+//    // Find the header node for line i
+//    while (nodes[curr].line != i) {
+//        curr = nodes[curr].nextLine;
+//    }
+//
+//    int prev = curr;
+//
+//    // Find the node with column j in line i, or the node before where it should be
+//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
+//        if (curr >= capacity) {
+//            throw std::out_of_range("Index out of range");
+//        }
+//        prev = curr;
+//        curr = nodes[curr].nextColumn;
+//    }
+//
+//    //If we found the node with column j in line i, we update the value of the node and return the old value
+//    if (nodes[curr].column == j && nodes[curr].line == i) {
+//        cout << "found" << endl;
+//        if(e != NULL_TELEM) {
+//            TElem oldValue = nodes[curr].value;
+//            nodes[curr].value = e;
+//            return oldValue;
+//        }
+//        else {
+//            // If the node exists and the new value is NULL_TELEM, delete the node
+//            nodes[prev].nextColumn = nodes[curr].nextColumn;
+//            nodes[curr].nextColumn = firstEmpty;
+//            nodes[curr].nextLine = nodes[curr].nextLine;
+//
+//            firstEmpty = curr;
+//            size--;
+//            return NULL_TELEM;
+//        }
+//    }
+//
+//    // If the node doesn't exist, create it
+//
+////    // If the node doesn't exist, create it
+//    if (nodes[curr].column != j) {
+//        cout << "not found" << endl;
+//        // If there are no more empty nodes, resize the array
+//        if (firstEmpty == -1)
+//            automaticResize();
+//
+//
+//        int newIdx = firstEmpty;
+//        firstEmpty = nodes[firstEmpty].nextColumn;
+//
+//        nodes[newIdx].line = i;
+//        nodes[newIdx].column = j;
+//        nodes[newIdx].nextLine = curr;
+//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
+//        nodes[prev].nextColumn = newIdx;
+//
+//        size++;
+//        curr = newIdx;
+//
+//        // Update the value of the node and return the old value
+//        TElem oldValue = nodes[curr].value;
+//        nodes[curr].value = e;
+//        return oldValue;
+//    }
+//
+//}
 
-    // find prevColIdx and currIdx
-    while (nodes[curr->nextColumn].column != -1 && nodes[curr->nextColumn].column < j) {
-        if (nodes[curr->nextColumn].column == j) {
-            prevColIdx = (curr - nodes) / sizeof(Node);
-            currIdx = curr->nextColumn;
-            break;
-        }
-        curr = &nodes[curr->nextColumn];
+TElem Matrix::modify(int i, int j, TElem e) {
+    if (i < 0 || i >= lines || j < 0 || j >= columns)
+        throw std::invalid_argument("Invalid indexes!");
+
+    // Find the line and column header nodes
+    int lineHead = head;
+    while (nodes[lineHead].line < i)
+        lineHead = nodes[lineHead].nextLine;
+
+    int columnHead = head;
+    while (nodes[columnHead].column < j)
+        columnHead = nodes[columnHead].nextColumn;
+
+    // Find the node with (i, j)
+    int nodePrev = lineHead;
+    int nodeCurr = nodes[lineHead].nextColumn;
+
+    while (nodeCurr != lineHead && nodes[nodeCurr].column < j) {
+        nodePrev = nodeCurr;
+        nodeCurr = nodes[nodeCurr].nextColumn;
     }
 
-    curr = &nodes[head];
-
-    while (curr->column != j)
-        curr = &nodes[curr->nextColumn];
-
-    while (nodes[curr->nextLine].line != -1 && nodes[curr->nextLine].line < i) {
-        if (nodes[curr->nextLine].line == i) {
-            prevLineIdx = (curr - nodes) / sizeof(Node);
-            break;
+    if (nodeCurr != lineHead && nodes[nodeCurr].column == j) { // node with (i,j) already exists
+        TElem oldValue = nodes[nodeCurr].value;
+        if (e == NULL_TELEM) { // Case when a non-null element is modified to a null element
+            cout << "non null to null when node exists" << endl;
+            // Delete the node with (i,j)
+            nodes[nodePrev].nextColumn = nodes[nodeCurr].nextColumn;
+            nodes[nodeCurr].nextColumn = firstEmpty;
+            firstEmpty = nodeCurr;
+            size--;
+            automaticResize();
         }
-        curr = &nodes[curr->nextLine];
+        else { // Case when a non-null element is modified to another non-null element or a null element is modified to a non-null element
+            cout << "non null to non null when node exists" << endl;
+            nodes[nodeCurr].value = e;
+        }
+        return oldValue;
     }
-
-    return {prevLineIdx, prevColIdx, currIdx};
+    else { // node with (i,j) doesn't exist
+        if (e == NULL_TELEM) { // Case when a null element is turned to a non-null element
+            cout << "null to non null when node does not exist" << endl;
+            // Do nothing, return NULL_TELEM
+            return NULL_TELEM;
+        }
+        else { // Case when a non-null element is inserted
+            // Create a new node with (i,j)
+            cout << "non null inserted when node does not exist" << endl;
+            int newNode = firstEmpty;
+            if (newNode == -1) { // No more empty slots in the array, resize the array
+                automaticResize();
+                newNode = firstEmpty;
+            }
+            firstEmpty = nodes[firstEmpty].nextColumn;
+            nodes[newNode].line = i;
+            nodes[newNode].column = j;
+            nodes[newNode].value = e;
+            nodes[newNode].nextColumn = nodeCurr;
+            nodes[nodePrev].nextColumn = newNode;
+            size++;
+            return NULL_TELEM;
+        }
+    }
 }
 
-//SearchResult Matrix::searchIndex(int i, int j) const {
-//    Node *curr = &nodes[head];
-//    int prevLineIdx = -1;
-//    int prevColIdx = -1;
-//    int currIdx = -1;
-//
-//    // find prevLineIdx and currIdx
-//    while (curr->line != i && nodes[curr->nextLine].line != -1 && nodes[curr->nextLine].line < i) {
-//        curr = &nodes[curr->nextLine];
-//    }
-//
-//    if (curr->line == i) {
-//        prevLineIdx = (curr - nodes)/sizeof(Node);
-//        currIdx = curr->nextColumn;
-//    }
-//
-//    // find prevColIdx
-//    curr = &nodes[head];
-//    while (curr->column != j && nodes[curr->nextColumn].column != -1 && nodes[curr->nextColumn].column < j) {
-//        curr = &nodes[curr->nextColumn];
-//    }
-//
-//    if (curr->column == j) {
-//        prevColIdx = (curr - nodes)/sizeof(Node);
-//    }
-//
-//    return {prevLineIdx, prevColIdx, currIdx};
-//}
 
 
 Matrix::~Matrix() {
@@ -241,7 +372,7 @@ void Matrix::resize(int newCapacity) {
 
     Node *newNodes = new Node[newCapacity];
 
-    for (int i = 0; i < newCapacity; ++i) {
+    for (int i = 0; i < std::min(capacity,newCapacity); ++i) {
         newNodes[i] = nodes[i];
     }
 

@@ -21,14 +21,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d27d0877-d948-4eee-bc7b-45df85dce31f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../L3_2/extra.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/Matrix.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/cmake-build-debug/CMakeFiles/L3.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/cmake-build-debug/CMakeFiles/L3.dir/Matrix.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/cmake-build-debug/L3" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/cmake-build-debug/L3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3/extra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L3/extra.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/ExtendedTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/Matrix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/ShortTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/ShortTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/ExtendedTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/Matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/Matrix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/CMakeFiles/L3_2.dir/ShortTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/L3_2" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/L3_2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L3_3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <list id="3c97e27a-996f-4953-9ca7-03a62c64198d" name="Changes by Alin" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,6 +162,7 @@
       <workItem from="1683379665400" duration="598000" />
       <workItem from="1683396183041" duration="1107000" />
       <workItem from="1683788689087" duration="7000" />
+      <workItem from="1683827368906" duration="2416000" />
     </task>
     <servers />
   </component>
