@@ -42,27 +42,6 @@ Matrix::Matrix(int nrLines, int nrCols) {
     nodes[capacity - 1].nextLine = -1;
     nodes[capacity - 1].nextColumn = -1;
 
-//    for (int i = 0; i < lines; ++i) {
-//        if (lastLine[i] != -1) {
-//            nodes[lastLine[i]].nextLine = i * columns;
-//            nodes[i * columns].nextLine = lineHead[i];
-//        }
-//        if (lineHead[i] != -1) {
-//            nodes[i * columns + columns - 1].nextLine = lineHead[i];
-//            nodes[lineHead[i]].nextLine = i * columns + columns - 1;
-//        }
-//    }
-//    for (int i = 0; i < columns; ++i) {
-//        if (lastColumn[i] != -1) {
-//            nodes[lastColumn[i]].nextColumn = i;
-//            nodes[i].nextColumn = columnHead[i];
-//        }
-//        if (columnHead[i] != -1) {
-//            nodes[(lines - 1) * columns + i].nextColumn = columnHead[i];
-//            nodes[columnHead[i]].nextColumn = (lines - 1) * columns + i;
-//        }
-//    }
-
 
     // create a circular connection between the last and the first element in each line and column
     for (int i = 0; i < lines; i++) {
@@ -70,11 +49,11 @@ Matrix::Matrix(int nrLines, int nrCols) {
             nodes[lastLine[i]].nextLine = lineHead[i];
         }
     }
-    for (int i = 0; i < columns; i++) {
-        if (lastColumn[i] != -1) {
-            nodes[lastColumn[i]].nextColumn = columnHead[i];
-        }
-    }
+//    for (int i = 0; i < columns; i++) {
+//        if (lastColumn[i] != -1) {
+//            nodes[lastColumn[i]].nextColumn = columnHead[i];
+//        }
+//    }
 }
 
 int Matrix::nrLines() const {
