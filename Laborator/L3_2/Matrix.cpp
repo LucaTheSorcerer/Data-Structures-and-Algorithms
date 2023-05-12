@@ -218,8 +218,8 @@ TElem Matrix::modify(int i, int j, TElem e) {
             // Delete the node with (i,j)
             nodes[nodePrev].nextColumn = nodes[nodeCurr].nextColumn;
             nodes[nodeCurr].nextColumn = firstEmpty;
-            nodes[nodeCurr].line = -1;
-            nodes[nodeCurr].column = -1;
+//            nodes[nodeCurr].line = -1;
+//            nodes[nodeCurr].column = -1;
             nodes[nodeCurr].value = NULL_TELEM;
             firstEmpty = nodeCurr;
             size--;
