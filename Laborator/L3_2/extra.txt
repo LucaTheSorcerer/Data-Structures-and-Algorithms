@@ -154,3 +154,132 @@ SearchResult Matrix::searchIndex(int i, int j) const {
 //
 //    return NULL_TELEM;
 //}
+
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    int curr = head;
+//
+//    // Find the header node for line i
+//    while (nodes[curr].line != i) {
+//        curr = nodes[curr].nextLine;
+//    }
+//
+//    int prev = curr;
+//
+//    // Find the node with column j in line i, or the node before where it should be
+//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
+//        if (curr >= capacity) {
+//            throw std::out_of_range("Index out of range");
+//        }
+//        prev = curr;
+//        curr = nodes[curr].nextColumn;
+//    }
+//
+//    // If the node doesn't exist, create it
+//    if (nodes[curr].column != j) {
+//        // If there are no more empty nodes, resize the array
+//        if (firstEmpty == -1)
+//            automaticResize();
+//
+//        int newIdx = firstEmpty;
+//        firstEmpty = nodes[firstEmpty].nextColumn;
+//
+//        nodes[newIdx].line = i;
+//        nodes[newIdx].column = j;
+//        nodes[newIdx].nextLine = curr;
+//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
+//        nodes[prev].nextColumn = newIdx;
+//
+//        size++;
+//        curr = newIdx;
+//    }
+////    else if(e == NULL_TELEM) {
+////        // If the node exists and the new value is NULL_TELEM, delete the node
+////        nodes[prev].nextColumn = nodes[curr].nextColumn;
+////        nodes[curr].nextColumn = firstEmpty;
+////        nodes[curr].nextLine = nodes[curr].nextLine;
+////
+////        firstEmpty = curr;
+////        size--;
+////        return NULL_TELEM;
+////    }
+//
+//    // Update the value of the node and return the old value
+//    TElem oldValue = nodes[curr].value;
+//    nodes[curr].value = e;
+//    return oldValue;
+//}
+
+//TElem Matrix::modify(int i, int j, TElem e) {
+//    if (i < 0 || i >= lines || j < 0 || j >= columns)
+//        throw std::exception();
+//
+//    int curr = head;
+//
+//    // Find the header node for line i
+//    while (nodes[curr].line != i) {
+//        curr = nodes[curr].nextLine;
+//    }
+//
+//    int prev = curr;
+//
+//    // Find the node with column j in line i, or the node before where it should be
+//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
+//        if (curr >= capacity) {
+//            throw std::out_of_range("Index out of range");
+//        }
+//        prev = curr;
+//        curr = nodes[curr].nextColumn;
+//    }
+//
+//    //If we found the node with column j in line i, we update the value of the node and return the old value
+//    if (nodes[curr].column == j && nodes[curr].line == i) {
+//        cout << "found" << endl;
+//        if(e != NULL_TELEM) {
+//            TElem oldValue = nodes[curr].value;
+//            nodes[curr].value = e;
+//            return oldValue;
+//        }
+//        else {
+//            // If the node exists and the new value is NULL_TELEM, delete the node
+//            nodes[prev].nextColumn = nodes[curr].nextColumn;
+//            nodes[curr].nextColumn = firstEmpty;
+//            nodes[curr].nextLine = nodes[curr].nextLine;
+//
+//            firstEmpty = curr;
+//            size--;
+//            return NULL_TELEM;
+//        }
+//    }
+//
+//    // If the node doesn't exist, create it
+//
+////    // If the node doesn't exist, create it
+//    if (nodes[curr].column != j) {
+//        cout << "not found" << endl;
+//        // If there are no more empty nodes, resize the array
+//        if (firstEmpty == -1)
+//            automaticResize();
+//
+//
+//        int newIdx = firstEmpty;
+//        firstEmpty = nodes[firstEmpty].nextColumn;
+//
+//        nodes[newIdx].line = i;
+//        nodes[newIdx].column = j;
+//        nodes[newIdx].nextLine = curr;
+//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
+//        nodes[prev].nextColumn = newIdx;
+//
+//        size++;
+//        curr = newIdx;
+//
+//        // Update the value of the node and return the old value
+//        TElem oldValue = nodes[curr].value;
+//        nodes[curr].value = e;
+//        return oldValue;
+//    }
+//
+//}

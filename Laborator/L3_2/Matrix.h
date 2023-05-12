@@ -16,6 +16,7 @@ struct Node {
     int nextLine{-1};
     int nextColumn{-1};
 
+
     void print() const {
         cout << line << ' ' << column << ' ' << value << ' ' << nextLine << ' ' << nextColumn << endl;
     }

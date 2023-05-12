@@ -152,141 +152,42 @@ TElem Matrix::element(int i, int j) const {
 
 
 /**
- * @brief function that modifies the element from the given position (i,j) and returns the previous value from that
- * position
- * @param i
- * @param j
- * @param e
- * @return
+ * @brief function that is used to modify the element at the given position (i,j) in the matrix and returns
+ * the previous value from that.
+ * @details the function first checks if the specified position is valid. If the indexes are out of bounds, the function
+ * throws an exception. This is to ensure that the indices are valid and that the function does not try to access
+ * elements outside the matrix. If the indexes are valid, the function proceeds to find the node in the sparse matrix
+ * corresponding to the (i, j) position. Each node is stored in an array, which defined the slla idea, and each node
+ * has three fields: the line index, the column index, and the value. The function starts by finding the line and column
+ * header nodes. Next, the function searched for the node with (i,j) in the matrix, by iterating through the linked list
+ * starting from the node next to the line header for the i-th row. If the node is found, its value is updated to the
+ * new value e. If e is NULL_TELEM, meaning that node is being deleted from the matrix. To delete the node, the function
+ * sets the nextColumn field of the previous node to point to the next next, and update nextColumn pointer of the node
+ * to be deleted to point to the first empty slot. Then firstEmpty is updated to point to the deleted node, so that it
+ * can be used for future insertions. If the new value e is not a null element, we simply update the value of the
+ * existing node with the new value e, as a non null element is either modified to another non null element, or a null
+ * element is being changed to a non null element. If the node does not exist in the matrix and the new value e is not
+ * a null element, the function creates a new nodes with (i,j) and the new value is inserted into the matrix in the
+ * correct position based on the line and column indexes.
+ * @param i - line index
+ * @param j - column index
+ * @param e - new value of the element (i,j) in the matrix
+ * @return the previous value of the element (i,j) in the matrix
+ * @throws invalid_argument if the indexes are invalid
+ * @TimeComplexity-BestCase θ(1) - the element is the first element in the matrix || the e = NULL_TELEM and the node
+ * does not exist in the matrix, then the function does not have to perform any actions.
+ * @TimeComplexity-AverageCase θ(n) - the element is in the middle of the matrix and  e != NULL_TELEM. It depends on the
+ * position of the node in the matrix to be modified, so we can say that it is based on the average of non zero elements
+ * @TimeComplexity-WorstCase θ(n) - the element or the node is located near the end of a row or a column, the algorithm
+ * has to iterate through the entire row or column to find the node to be modified.
+ * @note n = number of elements in the matrix
+ *
  */
-//TElem Matrix::modify(int i, int j, TElem e) {
-//    if (i < 0 || i >= lines || j < 0 || j >= columns)
-//        throw std::exception();
-//
-//    int curr = head;
-//
-//    // Find the header node for line i
-//    while (nodes[curr].line != i) {
-//        curr = nodes[curr].nextLine;
-//    }
-//
-//    int prev = curr;
-//
-//    // Find the node with column j in line i, or the node before where it should be
-//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
-//        if (curr >= capacity) {
-//            throw std::out_of_range("Index out of range");
-//        }
-//        prev = curr;
-//        curr = nodes[curr].nextColumn;
-//    }
-//
-//    // If the node doesn't exist, create it
-//    if (nodes[curr].column != j) {
-//        // If there are no more empty nodes, resize the array
-//        if (firstEmpty == -1)
-//            automaticResize();
-//
-//        int newIdx = firstEmpty;
-//        firstEmpty = nodes[firstEmpty].nextColumn;
-//
-//        nodes[newIdx].line = i;
-//        nodes[newIdx].column = j;
-//        nodes[newIdx].nextLine = curr;
-//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
-//        nodes[prev].nextColumn = newIdx;
-//
-//        size++;
-//        curr = newIdx;
-//    }
-////    else if(e == NULL_TELEM) {
-////        // If the node exists and the new value is NULL_TELEM, delete the node
-////        nodes[prev].nextColumn = nodes[curr].nextColumn;
-////        nodes[curr].nextColumn = firstEmpty;
-////        nodes[curr].nextLine = nodes[curr].nextLine;
-////
-////        firstEmpty = curr;
-////        size--;
-////        return NULL_TELEM;
-////    }
-//
-//    // Update the value of the node and return the old value
-//    TElem oldValue = nodes[curr].value;
-//    nodes[curr].value = e;
-//    return oldValue;
-//}
 
-//TElem Matrix::modify(int i, int j, TElem e) {
-//    if (i < 0 || i >= lines || j < 0 || j >= columns)
-//        throw std::exception();
-//
-//    int curr = head;
-//
-//    // Find the header node for line i
-//    while (nodes[curr].line != i) {
-//        curr = nodes[curr].nextLine;
-//    }
-//
-//    int prev = curr;
-//
-//    // Find the node with column j in line i, or the node before where it should be
-//    while (nodes[curr].column != -1 && nodes[curr].column <= j) {
-//        if (curr >= capacity) {
-//            throw std::out_of_range("Index out of range");
-//        }
-//        prev = curr;
-//        curr = nodes[curr].nextColumn;
-//    }
-//
-//    //If we found the node with column j in line i, we update the value of the node and return the old value
-//    if (nodes[curr].column == j && nodes[curr].line == i) {
-//        cout << "found" << endl;
-//        if(e != NULL_TELEM) {
-//            TElem oldValue = nodes[curr].value;
-//            nodes[curr].value = e;
-//            return oldValue;
-//        }
-//        else {
-//            // If the node exists and the new value is NULL_TELEM, delete the node
-//            nodes[prev].nextColumn = nodes[curr].nextColumn;
-//            nodes[curr].nextColumn = firstEmpty;
-//            nodes[curr].nextLine = nodes[curr].nextLine;
-//
-//            firstEmpty = curr;
-//            size--;
-//            return NULL_TELEM;
-//        }
-//    }
-//
-//    // If the node doesn't exist, create it
-//
-////    // If the node doesn't exist, create it
-//    if (nodes[curr].column != j) {
-//        cout << "not found" << endl;
-//        // If there are no more empty nodes, resize the array
-//        if (firstEmpty == -1)
-//            automaticResize();
-//
-//
-//        int newIdx = firstEmpty;
-//        firstEmpty = nodes[firstEmpty].nextColumn;
-//
-//        nodes[newIdx].line = i;
-//        nodes[newIdx].column = j;
-//        nodes[newIdx].nextLine = curr;
-//        nodes[newIdx].nextColumn = nodes[prev].nextColumn;
-//        nodes[prev].nextColumn = newIdx;
-//
-//        size++;
-//        curr = newIdx;
-//
-//        // Update the value of the node and return the old value
-//        TElem oldValue = nodes[curr].value;
-//        nodes[curr].value = e;
-//        return oldValue;
-//    }
-//
-//}
+// 1 2 3 4
+// 5 6 7 8
+// 9 10 11 12
+// 13 14 15 16
 
 TElem Matrix::modify(int i, int j, TElem e) {
     if (i < 0 || i >= lines || j < 0 || j >= columns)
@@ -317,6 +218,9 @@ TElem Matrix::modify(int i, int j, TElem e) {
             // Delete the node with (i,j)
             nodes[nodePrev].nextColumn = nodes[nodeCurr].nextColumn;
             nodes[nodeCurr].nextColumn = firstEmpty;
+            nodes[nodeCurr].line = -1;
+            nodes[nodeCurr].column = -1;
+            nodes[nodeCurr].value = NULL_TELEM;
             firstEmpty = nodeCurr;
             size--;
             automaticResize();
@@ -336,37 +240,72 @@ TElem Matrix::modify(int i, int j, TElem e) {
         else { // Case when a non-null element is inserted
             // Create a new node with (i,j)
             cout << "non null inserted when node does not exist" << endl;
+//            if (firstEmpty == -1 &&)// No more empty slots in the array, resize the array
+            automaticResize();
             int newNode = firstEmpty;
-            if (newNode == -1) { // No more empty slots in the array, resize the array
-                automaticResize();
-                newNode = firstEmpty;
-            }
             firstEmpty = nodes[firstEmpty].nextColumn;
             nodes[newNode].line = i;
             nodes[newNode].column = j;
             nodes[newNode].value = e;
-            nodes[newNode].nextColumn = nodeCurr;
-            nodes[nodePrev].nextColumn = newNode;
+            nodes[newNode].nextColumn = nodeCurr;//updates the nextColumn pointer of the new node to point to the next node.
+            nodes[nodePrev].nextColumn = newNode;//updates the nextColumn pointer of the previous node to point to the new node
             size++;
             return NULL_TELEM;
         }
     }
 }
 
+// 1 2 3
+// 4 0 6
+// 7 8 9
 
 
+
+/**
+ * @brief The destructor function for the Matrix class
+ * @details it frees the memory allocated for the nodes array
+ * @Best_case  θ(1)
+ * @Medium_case  θ(1)
+ * @Worst_case θ(1)
+ */
 Matrix::~Matrix() {
     delete[] nodes;
 }
 
+
+
+/**
+ * @brief function used to automatically resize the nodes array
+ * @details the function calls the function resize with a new capacity determined by the fullness of the array.
+ * takes the time complexity of the resizeRowIndexes function
+ * @Best_case - θ(1)
+ * @Average_case - θ(1)
+ * @Worst_case - θ(n)
+ */
 void Matrix::automaticResize() {
-    if (firstEmpty == -1)
+    if (firstEmpty == -1 && size != capacity) {
+        cout << "resize up" << endl;
         resize(capacity * 2);
+    }
     else if (size <= capacity / 4 && capacity >= 10) {
-        cout << "resize" << endl;
         resize(capacity / 2);
     }
 }
+
+/**
+ * @brief function used to resize the nodes array
+ * @details the function resizes the capacity of the nodes array when needed with a newCapacity that is given by the
+ * function automaticElementsIndexes. It check whether the new capacity is smaller than the current one and if it is
+ * it throws an exception. A new nodes array is created with the new capacity. A for loop is used to copy the elements
+ * from the old array to the new one then the old array gets deleted. The pointer to the old array is set
+ * to the new nodes array. The capacity of the nodes array is modified to the new capacity
+ * @param newCapacity: represents the new capacity of the nodes array
+ * @Best_case - θ(n)
+ * @Average_case - θ(n)
+ * @Worst_case - θ(n)
+ */
+
+// 1 -> 2 3 4 5 6 7 8 9 -> 0 -> 0 -> 0 0 0 0 0
 
 void Matrix::resize(int newCapacity) {
     if (newCapacity < size)
@@ -395,6 +334,12 @@ void Matrix::resize(int newCapacity) {
     nodes = newNodes;
 }
 
+/**
+ * @brief function used to print the matrix
+ * @details the function prints the matrix by using a for loop to iterate through the lines and columns of the matrix
+ * and calls the function element to print the element at the current position. Only used for debugging and testing
+ * purposes
+ */
 void Matrix::print() const {
     for (int i = 0; i < lines; ++i) {
         for (int j = 0; j < columns; ++j) {
@@ -403,3 +348,5 @@ void Matrix::print() const {
         std::cout << std::endl;
     }
 }
+
+
