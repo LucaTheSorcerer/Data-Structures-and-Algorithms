@@ -9,29 +9,44 @@ typedef int TValue;
 typedef std::pair<TKey, TValue> TElem;
 #define NULL_TVALUE -111111
 #define NULL_TELEM pair<TKey, TValue>(-111111, -111111)
+const int INITIAL_SIZE = 10;
 class MapIterator;
 
-struct Entry {
-    TElem elem;
-    bool valid;
+struct Node
+{
+    bool occupied;
+    TElem element;
+
+    Node()
+    {
+        occupied = false;
+        element.first = NULL_TVALUE;
+        element.second = NULL_TVALUE;
+    }
 };
+
 
 class Map {
 	//DO NOT CHANGE THIS PART
 	friend class MapIterator;
 	private:
 		//TODO - Representation
-        Entry *table1, *table2;
-        int size_, count;
-        int hash1(TKey key) const;
-        int hash2(TKey key) const;
+        static const int INITIAL_CAPACITY = 10;
+        static const int MAX_REHASHES = 20;
+        static const double LOAD_FACTOR_THRESHOLD;
 
-        void resize(int newSize);
-        void insertInTable(Entry *table, int tableSize, int (*hash)(TKey), const Entry &e);
-        bool removeInTable(Entry *table, int tableSize, int (*hash)(TKey), TKey key);
-        TValue searchInTable(Entry *table, int tableSize, int (*hash)(TKey), TKey key) const;
+        Node* table1;
+        Node* table2;
+        int capacity;
+        int size_;
 
-	public:
+        size_t hashFunction1(TKey key) const;
+        size_t hashFunction2(TKey key) const;
+        void automaticResize();
+        void resize(int newCapacity);
+        void rehash();
+
+public:
 
 	// implicit constructor
 	Map();
@@ -59,6 +74,7 @@ class Map {
 	// destructor
 	~Map();
 
+    void printMap() const;
 };
 
 

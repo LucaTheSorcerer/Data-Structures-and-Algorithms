@@ -7,7 +7,7 @@ class MapIterator
 private:
 	const Map& map;
 	//TODO - Representation
-    int index1, index2;
+    int currentPosition, currentTable;
 
 	MapIterator(const Map& m);
 public:
