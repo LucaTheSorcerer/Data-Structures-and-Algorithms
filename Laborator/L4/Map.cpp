@@ -18,73 +18,7 @@ Map::~Map() {
     delete[] table2;
 }
 
-//TValue Map::add(TKey c, TValue v){
-//	//TODO - Implementation
-//    automaticResize();
-//
-//    size_t hash1 = hashFunction1(c);
-//    size_t hash2 = hashFunction2(c);
-//
-//    //Check if the key already exists in the map
-//
-//    if(table1[hash1].occupied && table1[hash1].element.first == c) {
-//        TValue oldValue = table1[hash1].element.second;
-//        table1[hash1].element.second = v;
-//        return oldValue;
-//    } else if(table2[hash2].occupied && table2[hash2].element.first == c) {
-//        TValue oldValue = table2[hash2].element.second;
-//        table2[hash2].element.second = v;
-//        return oldValue;
-//    }
-//
-//    //Check if the key doesn't exist in the map
-//    //If it doesn't exist, add it in table 1
-//
-//    Node newNode;
-//    newNode.element = std::make_pair(c, v);
-//    newNode.occupied = true;
-//
-////    if(!table1[hash1].occupied) {
-////        table1[hash1] = newNode;
-////        size_++;
-////        return NULL_TVALUE;
-////    }
-////
-////    //If it does exist, add it in table 2
-////
-////    if(!table2[hash2].occupied) {
-////        table2[hash2] = newNode;
-////        size_++;
-////        return NULL_TVALUE;
-////    }
-//
-//    for (int i = 0; i < MAX_REHASHES; i++) {
-//        std::swap(table1[hash1], newNode);
-//        if (!newNode.occupied) {
-//            size_++;
-//            return NULL_TVALUE;
-//        }
-//
-//        // Insert evicted element in table 2
-//        std::swap(table2[hash2], newNode);
-//        if (!newNode.occupied) {
-//            size_++;
-//            return NULL_TVALUE;
-//        }
-//
-//        hash1 = hashFunction1(newNode.element.first);
-//        hash2 = hashFunction2(newNode.element.first);
-//    }
-//
-//
-//    //If both tables are occupied, rehash and add the element in the new table 1
-//
-//    automaticResize();
-//
-//    return add(newNode.element.first, newNode.element.second);
-//
-////	return NULL_TVALUE;
-//}
+
 
 TValue Map::add(TKey key, TValue value) {
     if (size_ >= capacity * LOAD_FACTOR_THRESHOLD)
@@ -126,7 +60,7 @@ TValue Map::add(TKey key, TValue value) {
         index2 = hashFunction2(newNode.element.first);
     }
 
-    rehash();
+    automaticResize();
     return add(key, value);
 }
 
@@ -154,11 +88,13 @@ TValue Map::remove(TKey c){
         TValue oldValue = table1[hash1].element.second;
         table1[hash1].occupied = false;
         size_--;
+        automaticResize();
         return oldValue;
     } else if(table2[hash2].occupied && table2[hash2].element.first == c) {
         TValue oldValue = table2[hash2].element.second;
         table2[hash2].occupied = false;
         size_--;
+        automaticResize();
         return oldValue;
     }
 	return NULL_TVALUE;
@@ -192,12 +128,10 @@ size_t Map::hashFunction2(TKey key) const {
 }
 
 void Map::automaticResize() {
-    if (size_ > LOAD_FACTOR_THRESHOLD * capacity) {
-        int newCapacity = capacity * 2;
-        resize(newCapacity);
-    } else if (size_ < (1 - LOAD_FACTOR_THRESHOLD) * capacity && capacity > INITIAL_CAPACITY) {
-        int newCapacity = capacity / 2;
-        resize(newCapacity);
+    if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
+        resize(capacity * 2);
+    } else if (size_ <= capacity / 4) {
+        resize(capacity / 2);
     }
 }
 
@@ -236,8 +170,7 @@ void Map::resize(int newCapacity) {
     capacity = newCapacity;
 }
 
-void Map::rehash() {
-}
+
 
 void Map::printMap() const {
     std::cout << "Map contents: " << std::endl;
