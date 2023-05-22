@@ -1,138 +1,134 @@
 #include "Map.h"
 
-// Constructor
+ const double Map::LOAD_FACTOR_THRESHOLD = 0.5;
+
 Map::Map() {
-    tableSize = 0;
+    capacity = INITIAL_CAPACITY;
+    size_ = 0;
+    table1 = new Node[capacity];
+    table2 = new Node[capacity];
 }
 
-// Destructor
 Map::~Map() {
-    // No dynamic memory to deallocate
+    delete[] table1;
+    delete[] table2;
 }
 
-// Adds a pair (key, value) to the map
+void Map::automaticResize() {
+    if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
+        int newCapacity = capacity * 2;
+        resizeAndRehash(newCapacity);
+    }
+}
+
+void Map::resizeAndRehash(int newCapacity) {
+    Node* newTable1 = new Node[newCapacity];
+    Node* newTable2 = new Node[newCapacity];
+
+    for (int i = 0; i < capacity; i++) {
+        if (table1[i].occupied) {
+            insertElement(newTable1, table1[i].element);
+        }
+        if (table2[i].occupied) {
+            insertElement(newTable2, table2[i].element);
+        }
+    }
+
+    delete[] table1;
+    delete[] table2;
+
+    table1 = newTable1;
+    table2 = newTable2;
+    capacity = newCapacity;
+}
+
+bool Map::insertElement(Node *table, TElem element) {
+    int position = hashFunction1(element.first);
+    for (int i = 0; i < MAX_REHASHES; i++) {
+        if (!table[position].occupied) {
+            table[position].occupied = true;
+            table[position].element = element;
+            size_++;
+            return true;
+        }
+        std::swap(table[position].element, element);
+        position = hashFunction2(element.first);
+    }
+    return false;
+}
+
 TValue Map::add(TKey key, TValue value) {
-    // Check if the key already exists in the map
-    TValue oldValue = search(key);
-    if (oldValue != NULL_TVALUE) {
-        // Update the value and return the old value
-        int h1 = hashFunction1(key);
-        int h2 = hashFunction2(key);
-        if (table1[h1].element.first == key) {
-            table1[h1].element.second = value;
-        } else {
-            table2[h2].element.second = value;
-        }
-        return oldValue;
+    automaticResize();
+
+    TElem element(key, value);
+    if (insertElement(table1, element)) {
+        return NULL_TVALUE;
     }
 
-    // Attempt to add the pair to the tables
-    int rehashesCount = 0;
-    TKey currentKey = key;
-    TValue currentValue = value;
-    while (rehashesCount < TABLE_SIZE) {
-        int h1 = hashFunction1(currentKey);
-        int h2 = hashFunction2(currentKey);
-        Bucket& bucket1 = table1[h1];
-        Bucket& bucket2 = table2[h2];
+    resizeAndRehash(capacity * 2);
 
-        // Check if the slot in table1 is available
-        if (!bucket1.occupied) {
-            bucket1.occupied = true;
-            bucket1.element = std::make_pair(currentKey, currentValue);
-            tableSize++;
-            return NULL_TVALUE;
-        }
-
-        // Check if the slot in table2 is available
-        if (!bucket2.occupied) {
-            bucket2.occupied = true;
-            bucket2.element = std::make_pair(currentKey, currentValue);
-            tableSize++;
-            return NULL_TVALUE;
-        }
-
-        // If both slots are occupied, perform a swap and continue rehashing
-        std::swap(currentKey, bucket1.element.first);
-        std::swap(currentValue, bucket1.element.second);
-        rehashesCount++;
+    if (insertElement(table1, element)) {
+        return NULL_TVALUE;
     }
 
-    // If the maximum number of rehashes is reached, resize the tables and try again
-    resize();
-    return add(currentKey, currentValue);
+    return value;
 }
 
-// Searches for the key and returns the value associated with the key if found, or NULL_TVALUE otherwise
+TValue Map::searchElement(Node *table, TKey key) const {
+    int position1 = hashFunction1(key);
+    int position2 = hashFunction2(key);
+
+    if (table[position1].occupied && table[position1].element.first == key) {
+        return table[position1].element.second;
+    }
+
+    if (table[position2].occupied && table[position2].element.first == key) {
+        return table[position2].element.second;
+    }
+
+    return NULL_TVALUE;
+}
+
 TValue Map::search(TKey key) const {
-    int h1 = hashFunction1(key);
-    int h2 = hashFunction2(key);
+    return searchElement(table1, key);
+}
 
-    if (table1[h1].occupied && table1[h1].element.first == key) {
-        return table1[h1].element.second;
+TValue Map::removeElement(Node *table, TKey key) {
+    int position1 = hashFunction1(key);
+    int position2 = hashFunction2(key);
+
+    if (table[position1].occupied && table[position1].element.first == key) {
+        TValue value = table[position1].element.second;
+        table[position1].occupied = false;
+        table[position1].element = NULL_TELEM;
+        size_--;
+        return value;
     }
 
-    if (table2[h2].occupied && table2[h2].element.first == key) {
-        return table2[h2].element.second;
+    if (table[position2].occupied && table[position2].element.first == key) {
+        TValue value = table[position2].element.second;
+        table[position2].occupied = false;
+        table[position2].element = NULL_TELEM;
+        size_--;
+        return value;
     }
 
     return NULL_TVALUE;
 }
 
-// Removes a key from the map and returns the value associated with the key if found, or NULL_TVALUE otherwise
 TValue Map::remove(TKey key) {
-    int h1 = hashFunction1(key);
-    int h2 = hashFunction2(key);
-
-    if (table1[h1].occupied && table1[h1].element.first == key) {
-        TValue value = table1[h1].element.second;
-        table1[h1].occupied = false;
-        table1[h1].element = NULL_TELEM;
-        tableSize--;
+    TValue value = removeElement(table1, key);
+    if (value != NULL_TVALUE) {
         return value;
     }
-
-    if (table2[h2].occupied && table2[h2].element.first == key) {
-        TValue value = table2[h2].element.second;
-        table2[h2].occupied = false;
-        table2[h2].element = NULL_TELEM;
-        tableSize--;
-        return value;
-    }
-
-    return NULL_TVALUE;
+    value = removeElement(table2, key);
+    return value;
 }
 
-void Map::resize() {
-    Bucket* oldTable1 = table1;
-    Bucket* oldTable2 = table2;
-    int oldSize = TABLE_SIZE;
-
-    TABLE_SIZE *= 2;
-    tableSize = 0;
-
-    table1 = new Bucket[TABLE_SIZE];
-    table2 = new Bucket[TABLE_SIZE];
-
-    for (int i = 0; i < oldSize; i++) {
-        if (oldTable1[i].occupied) {
-            add(oldTable1[i].element.first, oldTable1[i].element.second);
-        }
-        if (oldTable2[i].occupied) {
-            add(oldTable2[i].element.first, oldTable2[i].element.second);
-        }
-    }
-
-    delete[] oldTable1;
-    delete[] oldTable2;
-}
-
-// Returns the number of pairs (key, value) in the map
 int Map::size() const {
-    return tableSize;
+    return size_;
 }
 
-// Checks whether the map is empty
 bool Map::isEmpty() const {
-    return tableSize == 0;
+    return size_ == 0;
 }

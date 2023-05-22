@@ -7,15 +7,15 @@
 
 using namespace std;
 
-//void testIteratorSteps(Map& m) {
-//	MapIterator mi = m.iterator();
-//	int count = 0;
-//	while (mi.valid()) {
-//		count++;
-//		mi.next();
-//	}
-//	assert(count == m.size());
-//}
+void testIteratorSteps(Map& m) {
+	MapIterator mi = m.iterator();
+	int count = 0;
+	while (mi.valid()) {
+		count++;
+		mi.next();
+	}
+	assert(count == m.size());
+}
 
 void testCreate() {
 	cout << "Test create" << endl;
@@ -91,8 +91,8 @@ void testAdd() {
 	for (int i = 10000; i > -10000; i--) {
 		m.add(i, i);
 	}
-//	testIteratorSteps(m);
-//	assert(m.size() == 20000);
+	testIteratorSteps(m);
+	assert(m.size() == 20000);
 }
 
 
@@ -104,7 +104,8 @@ void testRemove() {
 		assert(m.remove(i) == NULL_TVALUE);
 	}
 	assert(m.size() == 0);
-	for (int i = -100; i < 100; i = i + 2) { 
+	for (int i = -100; i < 100; i = i + 2) {
+        cout << "i= " << i << endl;
 		assert(m.add(i, i) == NULL_TVALUE);
 	}
 	for (int i = -100; i < 100; i++) { 
@@ -268,9 +269,9 @@ void testQuantity() {
 void testAllExtended() {
 	testCreate();
 	testAdd();
+    testQuantity();
 	testRemove();
 //	testIterator();
-	testQuantity();
 }
 
 

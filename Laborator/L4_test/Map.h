@@ -1,66 +1,69 @@
 #pragma once
 #include <utility>
+#include <complex>
 
 typedef int TKey;
 typedef int TValue;
 typedef std::pair<TKey, TValue> TElem;
 #define NULL_TVALUE -111111
-#define NULL_TELEM std::make_pair(-111111, -111111)
-const int INITIAL_SIZE = 0;
-const long long int INITIAL_CAPACITY = 20;
-const int MAX_REHASHES = 100000;
-const double LOAD_FACTOR_THRESHOLD = 0.75;
-#define TABLE_SIZE 10
+#define NULL_TELEM std::pair<TKey, TValue>(-111111, -111111)
 
-class MapIterator;
-
-struct Node
-{
-    bool occupied;
-    TElem element;
-
-    Node()
-    {
-        occupied = false;
-        element.first = NULL_TVALUE;
-        element.second = NULL_TVALUE;
-    }
-};
 class Map {
-    friend class MapIterator;
-
 private:
     static const int INITIAL_CAPACITY = 16;
-    static const float MAX_LOAD_FACTOR;
-    static const int MAX_REHASHES;
+    static const double LOAD_FACTOR_THRESHOLD;
 
+    struct Node {
+        bool occupied;
+        TElem element;
 
-
-    struct Bucket {
-        bool occupied = false;
-        TElem element = NULL_TELEM;
+        Node() : occupied(false), element(NULL_TELEM) {}
     };
 
-    Bucket table1[TABLE_SIZE];
-    Bucket table2[TABLE_SIZE];
-    int tableSize;
+    Node* table1;
+    Node* table2;
+    int capacity;
+    int size_;
+    int MAX_REHASHES = 10;
 
     int hashFunction1(TKey key) const {
-        return key % TABLE_SIZE;
+        return std::abs(key) % capacity;
     }
 
     int hashFunction2(TKey key) const {
-        return (key * 13) % TABLE_SIZE;
+        return (std::abs(key) * 13) % capacity;
     }
 
-    void resize();
-public:
-    Map();
-    ~Map();
+    void automaticResize();
+    void resizeAndRehash(int newCapacity);
+    bool insertElement(Node *table, TElem element);
+    TValue searchElement(Node *table, TKey key) const;
+    TValue removeElement(Node *table, TKey key);
 
+public:
+    // implicit constructor
+    Map();
+
+    // adds a pair (key, value) to the map
+    // if the key already exists in the map, then the value associated with the key is replaced by the new value,
+    // and the old value is returned
+    // if the key does not exist, a new pair is added, and the value NULL_TVALUE is returned
     TValue add(TKey key, TValue value);
+
+    // searches for the key and returns the value associated with the key if the map contains the key,
+    // or NULL_TVALUE otherwise
     TValue search(TKey key) const;
+
+    // removes a key from the map and returns the value associated with the key if the key existed,
+    // or NULL_TVALUE otherwise
     TValue remove(TKey key);
+
+    // returns the number of pairs (key, value) in the map
     int size() const;
+
+    // checks whether the map is empty or not
     bool isEmpty() const;
+
+    // destructor
+    ~Map();
 };
