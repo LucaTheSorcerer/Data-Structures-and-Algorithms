@@ -1,0 +1,131 @@
+//TValue Map::add(TKey c, TValue v){
+//	//TODO - Implementation
+//    automaticResize();
+//
+//    size_t hash1 = hashFunction1(c);
+//    size_t hash2 = hashFunction2(c);
+//
+//    //Check if the key already exists in the map
+//
+//    if(table1[hash1].occupied && table1[hash1].element.first == c) {
+//        TValue oldValue = table1[hash1].element.second;
+//        table1[hash1].element.second = v;
+//        return oldValue;
+//    } else if(table2[hash2].occupied && table2[hash2].element.first == c) {
+//        TValue oldValue = table2[hash2].element.second;
+//        table2[hash2].element.second = v;
+//        return oldValue;
+//    }
+//
+//    //Check if the key doesn't exist in the map
+//    //If it doesn't exist, add it in table 1
+//
+//    Node newNode;
+//    newNode.element = std::make_pair(c, v);
+//    newNode.occupied = true;
+//
+////    if(!table1[hash1].occupied) {
+////        table1[hash1] = newNode;
+////        size_++;
+////        return NULL_TVALUE;
+////    }
+////
+////    //If it does exist, add it in table 2
+////
+////    if(!table2[hash2].occupied) {
+////        table2[hash2] = newNode;
+////        size_++;
+////        return NULL_TVALUE;
+////    }
+//
+//    for (int i = 0; i < MAX_REHASHES; i++) {
+//        std::swap(table1[hash1], newNode);
+//        if (!newNode.occupied) {
+//            size_++;
+//            return NULL_TVALUE;
+//        }
+//
+//        // Insert evicted element in table 2
+//        std::swap(table2[hash2], newNode);
+//        if (!newNode.occupied) {
+//            size_++;
+//            return NULL_TVALUE;
+//        }
+//
+//        hash1 = hashFunction1(newNode.element.first);
+//        hash2 = hashFunction2(newNode.element.first);
+//    }
+//
+//
+//    //If both tables are occupied, rehash and add the element in the new table 1
+//
+//    automaticResize();
+//
+//    return add(newNode.element.first, newNode.element.second);
+//
+////	return NULL_TVALUE;
+//}
+
+uint32_t Map::ThomasWangHash(TKey key) const {
+
+    key += ~(key << 15);
+    key ^=  (key >> 10);
+    key +=  (key << 3);
+    key ^=  (key >> 6);
+    key += ~(key << 11);
+    key ^=  (key >> 16);
+    return key;
+}
+
+uint32_t Map::BobJenkinsHash(TKey key) const {
+
+    key = (key + 0x7ed55d16) + (key << 12);
+    key = (key ^ 0xc761c23c) ^ (key >> 19);
+    key = (key + 0x165667b1) + (key << 5);
+    key = (key + 0xd3a2646c) ^ (key << 9);
+    key = (key + 0xfd7046c5) + (key << 3);
+    key = (key ^ 0xb55a4f09) ^ (key >> 16);
+    return key;
+}
+
+size_t Map::murmurHash1(TKey key) const {
+    const uint64_t seed = 0x7F3F1D02;
+    const uint64_t m = 0xC6A4A7935BD1E995;
+    const int r = 47;
+
+    uint64_t h = seed ^ (sizeof(key) * m);
+
+    key *= m;
+    key ^= key >> r;
+    key *= m;
+
+    h ^= key;
+    h *= m;
+
+    h ^= h >> r;
+    h *= m;
+    h ^= h >> r;
+
+    return static_cast<size_t>(h) % capacity;
+}
+
+size_t Map::murmurHash2(TKey key) const {
+    const uint64_t seed = 0xE2BBD3C855093F69;
+    const uint64_t m = 0xC6A4A7935BD1E995;
+    const int r = 47;
+
+    uint64_t h = seed ^ (sizeof(key) * m);
+
+    key *= m;
+    key ^= key >> r;
+    key *= m;
+
+    h ^= key;
+    h *= m;
+
+    h ^= h >> r;
+    h *= m;
+    h ^= h >> r;
+
+    return static_cast<size_t>(h) % capacity;
+}

@@ -1,69 +1,150 @@
-#include "Map.h"
+//#include "Map.h"
+//#include "MapIterator.h"
+//#include <exception>
+//using namespace std;
+//
+//
+//MapIterator::MapIterator(const Map& d) : map(d)
+//{
+//	//TODO - Implementation
+//    first();
+//}
+//
+//
+//void MapIterator::first() {
+//	//TODO - Implementation
+//
+//    currentPosition = -1;
+//    currentTable = 0;
+//    next();
+//}
+//
+//
+//void MapIterator::next() {
+//	//TODO - Implementation
+//    if(!valid()) {
+//        throw std::exception();
+//    }
+//
+//    if (currentTable == 0) {
+//        currentPosition++;
+//        if (currentPosition >= map.capacity || !map.table1[currentPosition].occupied) {
+//            currentTable = 1;
+//            currentPosition = -1;
+//            next();
+//        }
+//    }
+//    else {
+//        currentPosition++;
+//        while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
+//            currentPosition++;
+//        }
+//    }
+//}
+//
+//
+//TElem MapIterator::getCurrent(){
+//	//TODO - Implementation
+//
+//    if (!valid()) {
+//        throw std::exception();
+//    }
+//
+//    if (currentTable == 0) {
+//        return map.table1[currentPosition].element;
+//    }
+//    else {
+//        return map.table2[currentPosition].element;
+//    }
+//}
+//
+//
+//bool MapIterator::valid() const {
+//	//TODO - Implementation
+//    return currentPosition < map.capacity;
+//}
+//
+//
+//
 #include "MapIterator.h"
-#include <exception>
-using namespace std;
 
-
-MapIterator::MapIterator(const Map& d) : map(d)
-{
-	//TODO - Implementation
+MapIterator::MapIterator(const Map& m) : map(m) {
+    // Initialize the iterator to the first valid position
     first();
 }
 
-
 void MapIterator::first() {
-	//TODO - Implementation
+    // Start from the first position in the first table
+    currentTable = 1;
+    currentPosition = 0;
 
-    currentPosition = -1;
-    currentTable = 0;
-    next();
-}
-
-
-void MapIterator::next() {
-	//TODO - Implementation
-    if(!valid()) {
-        throw std::exception();
+    // Find the first occupied position
+    while (currentPosition < map.capacity && !map.table1[currentPosition].occupied) {
+        currentPosition++;
     }
 
-    if (currentTable == 0) {
-        currentPosition++;
-        if (currentPosition >= map.capacity || !map.table1[currentPosition].occupied) {
-            currentTable = 1;
-            currentPosition = -1;
-            next();
-        }
-    }
-    else {
-        currentPosition++;
+    // If no occupied position found in the first table, move to the second table
+    if (currentPosition == map.capacity) {
+        currentTable = 2;
+        currentPosition = 0;
+
+        // Find the first occupied position in the second table
         while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
             currentPosition++;
         }
     }
 }
 
+void MapIterator::next() {
+    // Move to the next position in the current table
+    currentPosition++;
 
-TElem MapIterator::getCurrent(){
-	//TODO - Implementation
+    // Check if there are more occupied positions in the current table
+    if (currentTable == 1) {
+        while (currentPosition < map.capacity && !map.table1[currentPosition].occupied) {
+            currentPosition++;
+        }
 
-    if (!valid()) {
-        throw std::exception();
-    }
+        // If no more occupied positions in the first table, move to the second table
+        if (currentPosition == map.capacity) {
+            currentTable = 2;
+            currentPosition = 0;
 
-    if (currentTable == 0) {
-        return map.table1[currentPosition].element;
+            // Find the first occupied position in the second table
+            while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
+                currentPosition++;
+            }
+        }
+    } else if (currentTable == 2) {
+        // Find the next occupied position in the second table
+        while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
+            currentPosition++;
+        }
     }
-    else {
-        return map.table2[currentPosition].element;
-    }
-	return NULL_TELEM;
 }
 
+TElem MapIterator::getCurrent() {
+    // Check if the iterator is valid
+    if (valid()) {
+        // Get the key-value pair at the current position
+        if (currentTable == 1) {
+            return map.table1[currentPosition].element;
+        } else if (currentTable == 2) {
+            return map.table2[currentPosition].element;
+        }
+    }
+
+    // If iterator is not valid, return a default-constructed TElem
+    return {};
+}
 
 bool MapIterator::valid() const {
-	//TODO - Implementation
-    return currentPosition < map.capacity;
+    // Check if the iterator is at a valid position
+    if (currentTable == 1) {
+        return currentPosition < map.capacity && map.table1[currentPosition].occupied;
+    } else if (currentTable == 2) {
+        return currentPosition < map.capacity && map.table2[currentPosition].occupied;
+    }
+
+    return false;
 }
-
-
-

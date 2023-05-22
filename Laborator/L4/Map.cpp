@@ -2,78 +2,103 @@
 #include "Map.h"
 #include "MapIterator.h"
 
-const double Map::LOAD_FACTOR_THRESHOLD = 0.7;
+const double Map::LOAD_FACTOR_THRESHOLD = 0.5;
 
 Map::Map() {
 	//TODO - Implementation
-    capacity = INITIAL_CAPACITY;
+    capacity = 40;
     size_ = 0;
     table1 = new Node[capacity];
     table2 = new Node[capacity];
+
 }
 
 Map::~Map() {
-	//TODO - Implementation
     delete[] table1;
     delete[] table2;
 }
 
 
-
-TValue Map::add(TKey key, TValue value) {
-    if (size_ >= capacity * LOAD_FACTOR_THRESHOLD)
+TValue Map::add(TKey c, TValue v) {
+    if (size_ == capacity)
         automaticResize();
 
-    size_t index1 = hashFunction1(key);
-    size_t index2 = hashFunction2(key);
+    int index1 = Jenkins1(c);
+    int index2 = Jenkins2(c);
 
     Node newNode;
-    newNode.element = std::make_pair(key, value);
+    newNode.element = std::make_pair(c, v);
     newNode.occupied = true;
 
-    for (int i = 0; i < MAX_REHASHES; i++) {
+    if (search(c) != NULL_TVALUE) {
+        int hash1 = Jenkins1(c);
+        int hash2 = Jenkins2(c);
+        TValue oldValue;
+
+        if (table1[hash1].element.first == c) {
+            oldValue = table1[hash1].element.second;
+            table1[hash1].element.second = v;
+        } else {
+            oldValue = table2[hash2].element.second;
+            table2[hash2].element.second = v;
+        }
+        return oldValue;
+    }
+
+    int rehashCount = 0;
+    while (rehashCount < MAX_REHASHES) {
+        // Try to insert the element in the first table
         if (!table1[index1].occupied) {
             table1[index1] = newNode;
             size_++;
             return NULL_TVALUE;
-        } else if (table1[index1].element.first == key) {
+        } else if (table1[index1].element.first == c) {
             TValue oldValue = table1[index1].element.second;
-            table1[index1].element.second = value;
+            table1[index1].element.second = v;
             return oldValue;
         }
 
+        // Evict the element in the first table and try placing it in the second table
         std::swap(table1[index1], newNode);
+        index2 = Jenkins2(newNode.element.first);
 
+        // Check if the evicted element can be placed in the second table
         if (!table2[index2].occupied) {
             table2[index2] = newNode;
             size_++;
             return NULL_TVALUE;
-        } else if (table2[index2].element.first == key) {
+        } else if (table2[index2].element.first == c) {
             TValue oldValue = table2[index2].element.second;
-            table2[index2].element.first = value;
+            table2[index2].element.second = v;
             return oldValue;
         }
 
+        // Evict the element in the second table and try placing it in the first table
         std::swap(table2[index2], newNode);
+        index1 = Jenkins1(newNode.element.first);
 
-        index1 = hashFunction1(newNode.element.first);
-        index2 = hashFunction2(newNode.element.first);
+
+        rehashCount++;
     }
 
-    automaticResize();
-    return add(key, value);
+    // Rehashing is not possible within the maximum rehashes limit, resize and rehash the table instead
+    if (rehashCount == MAX_REHASHES) {
+        automaticResize();
+        return add(c, v);
+    }
+
+    return NULL_TVALUE;
 }
 
-TValue Map::search(TKey c) const{
-	//TODO - Implementation
-    size_t hash1 = hashFunction1(c);
-    size_t hash2 = hashFunction2(c);
 
-    if(table1[hash1].occupied && table1[hash1].element.first == c) {
+TValue Map::search(TKey c) const{
+    int hash1 = Jenkins1(c);
+    int hash2 = Jenkins2(c);
+
+    if(table1[hash1].occupied && table1[hash1].element.first == c)
         return table1[hash1].element.second;
-    } else if(table2[hash2].occupied && table2[hash2].element.first == c) {
+    if(table2[hash2].occupied && table2[hash2].element.first == c)
         return table2[hash2].element.second;
-    }
 
     return NULL_TVALUE;
 }
@@ -81,20 +106,20 @@ TValue Map::search(TKey c) const{
 TValue Map::remove(TKey c){
 	//TODO - Implementation
 
-    size_t hash1 = hashFunction1(c);
-    size_t hash2 = hashFunction2(c);
+    int hash1 = Jenkins1(c);
+    int hash2 = Jenkins2(c);
 
     if(table1[hash1].occupied && table1[hash1].element.first == c) {
         TValue oldValue = table1[hash1].element.second;
         table1[hash1].occupied = false;
         size_--;
-        automaticResize();
+//        automaticResize();
         return oldValue;
     } else if(table2[hash2].occupied && table2[hash2].element.first == c) {
         TValue oldValue = table2[hash2].element.second;
         table2[hash2].occupied = false;
         size_--;
-        automaticResize();
+//        automaticResize();
         return oldValue;
     }
 	return NULL_TVALUE;
@@ -113,52 +138,72 @@ MapIterator Map::iterator() const {
 	return MapIterator(*this);
 }
 
-size_t Map::hashFunction1(TKey key) const {
-    key = ((key >> 16) ^ key) * 0x45d9f3b;
-    key = ((key >> 16) ^ key) * 0x45d9f3b;
-    key = (key >> 16) ^ key;
-    return key % capacity;
-}
 
-size_t Map::hashFunction2(TKey key) const {
-    key = ((key >> 16) ^ key) * 0x2d83bfb;
-    key = ((key >> 16) ^ key) * 0x2d83bfb;
-    key = (key >> 16) ^ key;
-    return key % capacity;
-}
+
 
 void Map::automaticResize() {
     if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
-        resize(capacity * 2);
-    } else if (size_ <= capacity / 4) {
-        resize(capacity / 2);
+        resizeAndRehash(capacity * 2);
+    } else if (size_ < capacity / 4) {
+        resizeAndRehash(capacity / 2);
     }
 }
 
 
 
-void Map::resize(int newCapacity) {
+void Map::resizeAndRehash(int newCapacity) {
     Node* newTable1 = new Node[newCapacity];
     Node* newTable2 = new Node[newCapacity];
 
-    for (int i = 0; i < capacity; i++) {
+    int oldCapacity = capacity;
+    capacity = newCapacity;
+    size_ = 0;
+
+    for (int i = 0; i < oldCapacity; i++) {
         if (table1[i].occupied) {
             TKey key = table1[i].element.first;
             TValue value = table1[i].element.second;
-            size_t pos1 = hashFunction1(key);
-            size_t pos2 = hashFunction2(key);
 
-            if (!newTable1[pos1].occupied) {
-                newTable1[pos1].element = std::make_pair(key, value);
-                newTable1[pos1].occupied = true;
-            } else if (!newTable2[pos2].occupied) {
-                newTable2[pos2].element = std::make_pair(key, value);
-                newTable2[pos2].occupied = true;
-            } else {
-                // Unable to rehash element, revert the resize and throw an exception
+            int index1 = Jenkins1(key);
+            int index2 = Jenkins2(key);
+
+            int rehashCount = 0;
+            while (rehashCount < MAX_REHASHES) {
+                // Try to insert the element into newTable1
+                if (!newTable1[index1].occupied) {
+                    newTable1[index1].element = std::make_pair(key, value);
+                    newTable1[index1].occupied = true;
+                    size_++;
+                    break;
+                } else {
+                    std::swap(key, newTable1[index1].element.first);
+                    std::swap(value, newTable1[index1].element.second);
+                    std::swap(table1[i], newTable1[index1]);
+                    index1 = Jenkins1(key);
+                }
+
+                // Try to insert the element into newTable2
+                if (!newTable2[index2].occupied) {
+                    newTable2[index2].element = std::make_pair(key, value);
+                    newTable2[index2].occupied = true;
+                    size_++;
+                    break;
+                } else {
+                    std::swap(key, newTable2[index2].element.first);
+                    std::swap(value, newTable2[index2].element.second);
+                    std::swap(table1[i], newTable2[index2]);
+                    index2 = Jenkins2(key);
+                }
+
+                rehashCount++;
+            }
+
+            if (rehashCount == MAX_REHASHES) {
+                // Rehashing is not possible within the maximum rehashes limit, revert the resizeAndRehash and throw an exception
                 delete[] newTable1;
                 delete[] newTable2;
-                throw std::runtime_error("Unable to rehash element during resize.");
+                capacity = oldCapacity;
+                throw std::runtime_error("Unable to rehash element during resizeAndRehash.");
             }
         }
     }
@@ -167,8 +212,8 @@ void Map::resize(int newCapacity) {
     delete[] table2;
     table1 = newTable1;
     table2 = newTable2;
-    capacity = newCapacity;
 }
+
 
 
 
@@ -189,6 +234,91 @@ void Map::printMap() const {
 
     std::cout << std::endl;
 }
+
+
+
+int Map::Jenkins1(TKey key) const {
+    key += (key << 12);
+    key ^= (key >> 22);
+    key += (key << 4);
+    key ^= (key >> 9);
+    key += (key << 10);
+    key ^= (key >> 2);
+    key += (key << 7);
+    key ^= (key >> 12);
+    return key % capacity;
+}
+
+int Map::Jenkins2(TKey key) const {
+    key += (key << 17);
+    key ^= (key >> 5);
+    key += (key << 4);
+    key ^= (key >> 13);
+    key += (key << 11);
+    key ^= (key >> 3);
+    key += (key << 16);
+    key ^= (key >> 7);
+    return key % capacity;
+}
+
+
+//size_t Map::hashFunction1(TKey key) const {
+//    key = ((key >> 16) ^ key) * 0x45d9f3b;
+//    key = ((key >> 16) ^ key) * 0x45d9f3b;
+//    key = (key >> 16) ^ key;
+//    return key % capacity;
+//}
+//
+//size_t Map::hashFunction2(TKey key) const {
+//    key = ((key >> 16) ^ key) * 0x2d83bfb;
+//    key = ((key >> 16) ^ key) * 0x2d83bfb;
+//    key = (key >> 16) ^ key;
+//    return key % capacity;
+//}
+
+Map &Map::operator=(const Map &other) {
+
+    if (this == &other)
+        return *this;
+
+    delete[] table1;
+    delete[] table2;
+
+    capacity = other.capacity;
+    size_ = other.size_;
+
+    table1 = new Node[capacity];
+    table2 = new Node[capacity];
+
+    for (int i = 0; i < capacity; i++) {
+        table1[i] = other.table1[i];
+        table2[i] = other.table2[i];
+    }
+
+    return *this;
+}
+
+Map Map::mapInterval(TKey key1, TKey key2) const {
+
+    Map newMap;
+
+    for (int i = 0; i < capacity; i++) {
+        if (table1[i].occupied) {
+            if (table1[i].element.first >= key1 && table1[i].element.first <= key2) {
+                newMap.add(table1[i].element.first, table1[i].element.second);
+            }
+        }
+
+        if (table2[i].occupied) {
+            if (table2[i].element.first >= key1 && table2[i].element.first <= key2) {
+                newMap.add(table2[i].element.first, table2[i].element.second);
+            }
+        }
+    }
+
+    return newMap;
+}
+
 
 
 

@@ -10,9 +10,7 @@ using namespace std;
 
 int main() {
 	testAll();
-//    testMapInterval();
 	testAllExtended();
-
 
 	cout << "That's all!" << endl;
 	cin.get();

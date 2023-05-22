@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -21,30 +21,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e745e4e4-2125-4073-ad77-c760819474cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../L1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../L1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3_2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L3_2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L3_2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/App.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/ExtendedTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/ExtendedTest.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/Map.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/Map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/.cmake/api/v1/reply/cache-v2-d16e45634f0d938a733c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-31b4342a83ab10cfea11.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/.cmake/api/v1/reply/index-2023-05-12T10-56-33-0991.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/MapIterator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/MapIterator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/ShortTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/ShortTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/ShortTest.h" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/ShortTest.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/App.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ExtendedTest.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/MapIterator.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ShortTest.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/App.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/App.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ExtendedTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/Map.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/Map.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/MapIterator.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/MapIterator.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ShortTest.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/L4" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/L4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/extra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/extra.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-a2735b720274a6b7fef4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-699fcf20a02b853eb9ca.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-05-18T07-52-56-0311.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-L4_test-Debug-edcefe46df9a15ce86a1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,24 +74,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L4_test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="L4_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="L4_test" TARGET_NAME="L4_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="L4_test" RUN_TARGET_NAME="L4_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -104,10 +107,20 @@
       <option name="presentableId" value="Default" />
       <updated>1684396374936</updated>
       <workItem from="1684396376333" duration="224000" />
+      <workItem from="1684594615839" duration="368000" />
+      <workItem from="1684595075955" duration="85000" />
+      <workItem from="1684739535673" duration="265000" />
+      <workItem from="1684740498434" duration="143000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
   </component>
 </project>

@@ -1,5 +1,7 @@
 #pragma once
 #include <utility>
+#include <cinttypes>
+#include "stdlib.h"
 //DO NOT INCLUDE MAPITERATOR
 
 
@@ -8,22 +10,23 @@ typedef int TKey;
 typedef int TValue;
 typedef std::pair<TKey, TValue> TElem;
 #define NULL_TVALUE -111111
-#define NULL_TELEM pair<TKey, TValue>(-111111, -111111)
-const int INITIAL_SIZE = 10;
+#define NULL_TELEM std::pair<TKey, TValue>(-111111, -111111)
 class MapIterator;
 
-struct Node
-{
-    bool occupied;
-    TElem element;
-
-    Node()
+    struct Node
     {
-        occupied = false;
-        element.first = NULL_TVALUE;
-        element.second = NULL_TVALUE;
-    }
-};
+        bool occupied;
+        TElem element;
+
+        Node()
+        {
+            occupied = false;
+            element.first = NULL_TVALUE;
+            element.second = NULL_TVALUE;
+        }
+    };
+
+
 
 
 class Map {
@@ -31,8 +34,7 @@ class Map {
 	friend class MapIterator;
 	private:
 		//TODO - Representation
-        static const int INITIAL_CAPACITY = 10;
-        static const int MAX_REHASHES = 20;
+        static const int MAX_REHASHES = 10;
         static const double LOAD_FACTOR_THRESHOLD;
 
         Node* table1;
@@ -40,11 +42,21 @@ class Map {
         int capacity;
         int size_;
 
-        size_t hashFunction1(TKey key) const;
-        size_t hashFunction2(TKey key) const;
+//        [[nodiscard]] size_t hashFunction1(TKey key) const;
+//        [[nodiscard]] size_t hashFunction2(TKey key) const;
         void automaticResize();
-        void resize(int newCapacity);
-        void rehash();
+        void resizeAndRehash(int newCapacity);
+
+    int hashFunction1( TKey& key) const {
+        return abs(key) % capacity;
+    }
+
+    int hashFunction2( TKey& key) const {
+        return (abs(key) * 13 ) % capacity;
+    }
+
+
+        //different hash functions
 
 public:
 
@@ -57,24 +69,39 @@ public:
 	TValue add(TKey c, TValue v);
 
 	//searches for the key and returns the value associated with the key if the map contains the key or null: NULL_TVALUE otherwise
-	TValue search(TKey c) const;
+	[[nodiscard]] TValue search(TKey c) const;
 
 	//removes a key from the map and returns the value associated with the key if the key existed ot null: NULL_TVALUE otherwise
 	TValue remove(TKey c);
 
 	//returns the number of pairs (key,value) from the map
-	int size() const;
+	[[nodiscard]] int size() const;
 
 	//checks whether the map is empty or not
-	bool isEmpty() const;
+	[[nodiscard]] bool isEmpty() const;
+
 
 	//returns an iterator for the map
-	MapIterator iterator() const;
+	[[nodiscard]] MapIterator iterator() const;
 
 	// destructor
 	~Map();
 
     void printMap() const;
+
+    [[nodiscard]] int Jenkins1(TKey key) const;
+
+    [[nodiscard]] int Jenkins2(TKey key) const;
+
+
+    void resize();
+
+    //Assignment operator for copy constructor
+
+    Map& operator=(const Map& other);
+
+    //function that returns a new map with the keys in the interval [key1, key2]
+    Map mapInterval(TKey key1, TKey key2) const;
 };
 
 
