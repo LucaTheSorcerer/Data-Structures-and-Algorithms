@@ -4,6 +4,15 @@
 
 const double Map::LOAD_FACTOR_THRESHOLD = 0.7;
 
+/**
+ * @brief This is the constructor of the Map class.
+ * @details: It initializes the capacity of the map to 6 and the size to 0. It also initializes the two tables to be of
+ * size 6 so capacity
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ *
+ */
 Map::Map() {
     capacity = 6;
     size_ = 0;
@@ -12,6 +21,13 @@ Map::Map() {
 
 }
 
+/**
+ * @brief This is the destructor of the Map class.
+ * @details: It deletes the two tables of the map.
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 Map::~Map() {
     delete[] table1;
     delete[] table2;
@@ -81,62 +97,19 @@ TValue Map::add(TKey c, TValue v) {
     return NULL_TVALUE;
 }
 
-//void Map::resize()
-//{
-//    int oldCapacity = capacity;
-//    capacity *= 2;
-//
-//    Node* oldTable1 = table1;
-//    Node* oldTable2 = table2;
-//
-//    table1 = new Node[capacity];
-//    table2 = new Node[capacity];
-//
-//    for (int i = 0; i < capacity; i++)
-//    {
-//        table1[i].element = NULL_TELEM;
-//        table2[i].element = NULL_TELEM;
-//    }
-//
-//    this->size_ = 0;
-//
-//    for (int i = 0; i < oldCapacity; i++)
-//    {
-//        if (oldTable1[i].element != NULL_TELEM)
-//        {
-//            TKey key = oldTable1[i].element.first;
-//            TValue value = oldTable1[i].element.second;
-//            add(key, value);
-//        }
-//        if (oldTable2[i].element != NULL_TELEM)
-//        {
-//            TKey key = oldTable2[i].element.first;
-//            TValue value = oldTable2[i].element.second;
-//            add(key, value);
-//        }
-//    }
-//    delete[] oldTable1;
-//    delete[] oldTable2;
-//}
 
 
 
 void Map::automaticResize() {
     if (size_ < capacity / 4 && capacity >= 10) {
-        std::cout << "Resizing downwards\n";
         resize(capacity / 2);
+        std::cout << "Resizing downwards\n";
+
     } else {
         resize(capacity * 2);
     }
 }
-//    if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
-//        resize(capacity * 2);
-//    } else if (size_ < capacity / 4 && capacity >= 10) {
-//        resize(capacity / 2);
-//    }else{
 
-//
-//}
 void Map::resize(int newCapacity)
 {
     int oldCapacity = capacity;
@@ -159,19 +132,9 @@ void Map::resize(int newCapacity)
     for (int i = 0; i < oldCapacity; i++)
     {
         if (oldTable1[i].element != NULL_TELEM)
-        {
-//            TKey key = oldTable1[i].element.first;
-//            TValue value = oldTable1[i].element.second;
-
-//            add(key, value);
             add(oldTable1[i].element.first, oldTable1[i].element.second);
-        }
         if (oldTable2[i].element != NULL_TELEM)
-        {
-//            TKey key = oldTable2[i].element.first;
-//            TValue value = oldTable2[i].element.second;
             add(oldTable2[i].element.first, oldTable2[i].element.second);
-        }
     }
 
     delete[] oldTable1;
@@ -365,10 +328,9 @@ Map Map::mapInterval(TKey key1, TKey key2) const {
 
 int Map::hashFunction1( TKey& key) const {
     return abs(key) % capacity;
-//    return abs(key) % 11;
 }
 
+
 int Map::hashFunction2( TKey& key) const {
-//    return (abs(key) / 11 ) % 11;
-    return (abs(key) * 13 ) % capacity;
+    return (abs(key) * 17 ) % capacity;
 }

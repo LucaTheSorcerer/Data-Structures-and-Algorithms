@@ -32,18 +32,18 @@ void testAll() { //call each function to see if it is implemented
 	assert(m.size() == 4);
 
 
-//	TElem e;
-//	MapIterator id = m.iterator();
-//	id.first();
-//	int s1 = 0, s2 = 0;
-//	while (id.valid()) {
-//		e = id.getCurrent();
-//		s1 += e.first;
-//		s2 += e.second;
-//		id.next();
-//	}
-//	assert(s1 == 19);
-//	assert(s2 == 19);
+	TElem e;
+	MapIterator id = m.iterator();
+	id.first();
+	int s1 = 0, s2 = 0;
+	while (id.valid()) {
+		e = id.getCurrent();
+		s1 += e.first;
+		s2 += e.second;
+		id.next();
+	}
+	assert(s1 == 19);
+	assert(s2 == 19);
 
 }
 

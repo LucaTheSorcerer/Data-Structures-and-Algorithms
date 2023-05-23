@@ -30,22 +30,22 @@ void testCreate() {
 		assert(m.search(i) == NULL_TVALUE);
 	}
 
-//	MapIterator it = m.iterator();
-//	assert(it.valid() == false);
-//	try {
-//		it.next();
-//		assert(false);
-//	}
-//	catch (exception&) {
-//		assert(true);
-//	}
-//	try {
-//		it.getCurrent();
-//		assert(false);
-//	}
-//	catch (exception&) {
-//		assert(true);
-//	}
+	MapIterator it = m.iterator();
+	assert(it.valid() == false);
+	try {
+		it.next();
+		assert(false);
+	}
+	catch (exception&) {
+		assert(true);
+	}
+	try {
+		it.getCurrent();
+		assert(false);
+	}
+	catch (exception&) {
+		assert(true);
+	}
 }
 
 
@@ -106,7 +106,7 @@ void testRemove() {
 	}
 	assert(m.size() == 0);
 	for (int i = -100; i < 100; i = i + 2) {
-        cout << "i= " << i << endl;
+//        cout << "i= " << i << endl;
 		assert(m.add(i, i) == NULL_TVALUE);
 	}
     m.printMap();
