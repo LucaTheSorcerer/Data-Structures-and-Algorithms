@@ -2,6 +2,7 @@
 #include "MapIterator.h"
 
 
+
 MapIterator::MapIterator(const Map& m) : map(m) {
     // Initialize the iterator to the first valid position
     first();
@@ -29,7 +30,40 @@ void MapIterator::first() {
     }
 }
 
+//void MapIterator::next() {
+//    // Move to the next position in the current table
+//    currentPosition++;
+//
+//    // Check if there are more occupied positions in the current table
+//    if (currentTable == 1) {
+//        while (currentPosition < map.capacity && !map.table1[currentPosition].occupied) {
+//            currentPosition++;
+//        }
+//
+//        // If no more occupied positions in the first table, move to the second table
+//        if (currentPosition == map.capacity) {
+//            currentTable = 2;
+//            currentPosition = 0;
+//
+//            // Find the first occupied position in the second table
+//            while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
+//                currentPosition++;
+//            }
+//        }
+//    } else if (currentTable == 2) {
+//        // Find the next occupied position in the second table
+//        while (currentPosition < map.capacity && !map.table2[currentPosition].occupied) {
+//            currentPosition++;
+//        }
+//    }
+//}
+
 void MapIterator::next() {
+    // Check if the iterator is already at an invalid position
+    if (!valid()) {
+        throw std::exception();  // Throw an exception to indicate invalid operation
+    }
+
     // Move to the next position in the current table
     currentPosition++;
 
@@ -59,19 +93,31 @@ void MapIterator::next() {
 
 TElem MapIterator::getCurrent() {
     // Check if the iterator is valid
-    if (valid()) {
-        // Get the key-value pair at the current position
-        if (currentTable == 1) {
-            return map.table1[currentPosition].element;
-        } else if (currentTable == 2) {
-            return map.table2[currentPosition].element;
-        }
+    if (!valid()) {
+        throw std::exception();  // Throw an exception to indicate invalid operation
     }
 
-    // If iterator is not valid, return a default-constructed TElem
+    // Get the key-value pair at the current position
+    if (currentTable == 1) {
+        return map.table1[currentPosition].element;
+    } else if (currentTable == 2) {
+        return map.table2[currentPosition].element;
+    }
+
+    // This point should not be reached
     return {};
 }
 
+//bool MapIterator::valid() const {
+//    // Check if the iterator is at a valid position
+//    if (currentTable == 1) {
+//        return currentPosition <= map.capacity && map.table1[currentPosition].occupied;
+//    } else if (currentTable == 2) {
+//        return currentPosition <= map.capacity && map.table2[currentPosition].occupied;
+//    }
+//
+//    return false;
+//}
 bool MapIterator::valid() const {
     // Check if the iterator is at a valid position
     if (currentTable == 1) {
@@ -82,3 +128,4 @@ bool MapIterator::valid() const {
 
     return false;
 }
+

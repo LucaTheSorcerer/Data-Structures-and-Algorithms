@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.h"
+#include <exception>
 class MapIterator
 {
 	//DO NOT CHANGE THIS PART
