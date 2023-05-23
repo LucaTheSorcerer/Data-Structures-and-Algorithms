@@ -767,3 +767,127 @@ void Map::resize()
 //    delete[] oldTable2;
 //
 //}
+
+
+//TValue Map::add(TKey c, TValue v) {
+//    int hash1 = hashFunction1(c);
+//    int hash2 = hashFunction2(c);
+//
+//    // Check if the key already exists in table1 or table2
+//    if (table1[hash1].occupied && table1[hash1].element.first == c) {
+//        TValue oldValue = table1[hash1].element.second;
+//        table1[hash1].element.second = v;
+//        return oldValue;
+//    }
+//    if (table2[hash2].occupied && table2[hash2].element.first == c) {
+//        TValue oldValue = table2[hash2].element.second;
+//        table2[hash2].element.second = v;
+//        return oldValue;
+//    }
+//
+//    // If the key doesn't exist, insert it into table1 or table2
+//    int rehashCount = 0;
+//    while (rehashCount < MAX_REHASHES) {
+//        if (!table1[hash1].occupied) {
+//            table1[hash1].element = std::make_pair(c, v);
+//            table1[hash1].occupied = true;
+//            size_++;
+//            automaticResize();
+//            return NULL_TVALUE;
+//        } else {
+//            std::swap(c, table1[hash1].element.first);
+//            std::swap(v, table1[hash1].element.second);
+//            std::swap(hash1, hash2);
+//            hash2 = hashFunction2(c);
+//        }
+//
+//        if (!table2[hash2].occupied) {
+//            table2[hash2].element = std::make_pair(c, v);
+//            table2[hash2].occupied = true;
+//            size_++;
+//            automaticResize();
+//            return NULL_TVALUE;
+//        } else {
+//            std::swap(c, table2[hash2].element.first);
+//            std::swap(v, table2[hash2].element.second);
+//            std::swap(hash1, hash2);
+//            hash2 = hashFunction2(c);
+//        }
+//
+//        rehashCount++;
+//    }
+//
+//    // Rehashing is not possible within the maximum rehashes limit, resize and rehash the table instead
+//    if (rehashCount == MAX_REHASHES) {
+//        automaticResize();
+//        return add(c, v);
+//    }
+//
+//    return NULL_TVALUE;
+//}
+
+
+
+//TValue Map::add(TKey c, TValue v) {
+//    if (size_ == capacity)
+//        resize();
+//
+//    int index1 = hashFunction1(c);
+//    int index2 = hashFunction2(c);
+//
+//    Node newNode;
+//    newNode.element = std::make_pair(c, v);
+//    newNode.occupied = true;
+//
+//    if (search(c) != NULL_TVALUE) {
+//        int hash1 = hashFunction1(c);
+//        int hash2 = hashFunction2(c);
+//        TValue oldValue;
+//
+//        if (table1[hash1].element.first == c) {
+//            oldValue = table1[hash1].element.second;
+//            table1[hash1].element.second = v;
+//            return oldValue;
+//        } else if (table2[hash2].element.first == c) {
+//            oldValue = table2[hash2].element.second;
+//            table2[hash2].element.second = v;
+//            return oldValue;
+//        }
+//    }
+//
+//    int rehashCount = 0;
+//    Node evictedNode;
+//    while (table1[index1].occupied && table1[index1].element.first != c && rehashCount < capacity) {
+//        if (!table2[index2].occupied) {
+//            evictedNode = table1[index1];
+//            table1[index1] = newNode;
+//            table2[index2] = evictedNode;
+//            size_++;
+//            return NULL_TVALUE;
+//        }
+//        index1 = (index1 + 1) % capacity;
+//        index2 = (index2 + 1) % capacity;
+//        rehashCount++;
+//    }
+//
+//    if (!table1[index1].occupied) {
+//        table1[index1] = newNode;
+//        size_++;
+//        return NULL_TVALUE;
+//    }
+//
+//    rehashCount = 0;
+//    while (table2[index2].occupied && table2[index2].element.first != c && rehashCount < capacity) {
+//        index2 = (index2 + 1) % capacity;
+//        rehashCount++;
+//    }
+//
+//    if (!table2[index2].occupied) {
+//        table2[index2] = newNode;
+//        size_++;
+//        return NULL_TVALUE;
+//    }
+//
+//    resize();
+//    return add(c, v);
+//}

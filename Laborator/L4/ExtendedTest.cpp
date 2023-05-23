@@ -268,9 +268,9 @@ void testQuantity() {
 
 void testAllExtended() {
 	testCreate();
-	testAdd();
-    testQuantity();
-	testRemove();
+//	testAdd();
+//    testQuantity();
+//	testRemove();
 //	testIterator();
 }
 

@@ -15,18 +15,10 @@ class MapIterator;
 
     struct Node
     {
-        bool occupied;
-        TElem element;
+        bool occupied = false;
+        TElem element = NULL_TELEM;
 
-        Node()
-        {
-            occupied = false;
-            element.first = NULL_TVALUE;
-            element.second = NULL_TVALUE;
-        }
     };
-
-
 
 
 class Map {
@@ -47,13 +39,9 @@ class Map {
         void automaticResize();
         void resizeAndRehash(int newCapacity);
 
-    int hashFunction1( TKey& key) const {
-        return abs(key) % capacity;
-    }
+    int hashFunction1( TKey& key) const;
 
-    int hashFunction2( TKey& key) const {
-        return (abs(key) * 13 ) % capacity;
-    }
+    int hashFunction2( TKey& key) const;
 
 
         //different hash functions

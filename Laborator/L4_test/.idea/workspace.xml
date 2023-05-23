@@ -33,15 +33,8 @@
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/CMakeFiles/L4.dir/ShortTest.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/L4" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/L4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../L4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../L4/extra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../L4/extra.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/App.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/App.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/ExtendedTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/ExtendedTest.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/Map.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/Map.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/ShortTest.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/L4_test.dir/ShortTest.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,6 +101,8 @@
       <workItem from="1684740498434" duration="143000" />
       <workItem from="1684766768070" duration="872000" />
       <workItem from="1684783790875" duration="598000" />
+      <workItem from="1684820491237" duration="598000" />
+      <workItem from="1684857036552" duration="598000" />
     </task>
     <servers />
   </component>
