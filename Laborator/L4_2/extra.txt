@@ -39,7 +39,7 @@
 //    if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
 //        resize(capacity * 2);
 //    } else if (size_ < capacity / 4 && capacity >= 10) {
-//        resize(capacity / 2);
+//        resizeAndRehash(capacity / 2);
 //    }else{
 
 //
@@ -47,3 +47,73 @@
 
 //    return abs(key) % 11;
 //    return (abs(key) / 11 ) % 11;
+
+void Map::resizeAndRehash(int newCapacity) {
+    Node* newTable1 = new Node[newCapacity];
+    Node* newTable2 = new Node[newCapacity];
+
+    int oldCapacity = capacity;
+    capacity = newCapacity;
+    size_ = 0;
+
+    for (int i = 0; i < oldCapacity; i++) {
+        if (table1[i].occupied) {
+            TKey key = table1[i].element.first;
+            TValue value = table1[i].element.second;
+
+            int index1 = hashFunction1(key);
+            int index2 = hashFunction2(key);
+
+            int rehashCount = 0;
+            while (rehashCount < MAX_REHASHES) {
+                // Try to insert the element into newTable1
+                if (!newTable1[index1].occupied) {
+                    newTable1[index1].element = std::make_pair(key, value);
+                    newTable1[index1].occupied = true;
+                    size_++;
+                    break;
+                } else {
+                    std::swap(key, newTable1[index1].element.first);
+                    std::swap(value, newTable1[index1].element.second);
+                    std::swap(table1[i], newTable1[index1]);
+                    index1 = hashFunction1(key);
+                }
+
+                // Try to insert the element into newTable2
+                if (!newTable2[index2].occupied) {
+                    newTable2[index2].element = std::make_pair(key, value);
+                    newTable2[index2].occupied = true;
+                    size_++;
+                    break;
+                } else {
+                    std::swap(key, newTable2[index2].element.first);
+                    std::swap(value, newTable2[index2].element.second);
+                    std::swap(table1[i], newTable2[index2]);
+                    index2 = hashFunction2(key);
+                }
+
+                rehashCount++;
+            }
+
+            if (rehashCount == MAX_REHASHES) {
+                // Rehashing is not possible within the maximum rehashes limit, revert the resizeAndRehash and throw an exception
+                delete[] newTable1;
+                delete[] newTable2;
+                capacity = oldCapacity;
+                throw std::runtime_error("Unable to rehash element during resizeAndRehash.");
+            }
+        }
+    }
+
+    delete[] table1;
+    delete[] table2;
+    table1 = newTable1;
+    table2 = newTable2;
+}
+
+    [[nodiscard]] int Jenkins1(TKey key) const;
+
+    [[nodiscard]] int Jenkins2(TKey key) const;
+
+    //        [[nodiscard]] size_t hashFunction1(TKey key) const;
+    //        [[nodiscard]] size_t hashFunction2(TKey key) const;

@@ -11,9 +11,9 @@ using namespace std;
 int main() {
 
 	testAll();
-//    testMapInterval();
 	testAllExtended();
 //    basicTest();
+//    testMapInterval();
 
 
 	cout << "That's all!" << endl;

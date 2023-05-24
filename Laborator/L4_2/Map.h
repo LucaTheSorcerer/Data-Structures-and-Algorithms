@@ -27,32 +27,28 @@ class MapIterator;
     };
 
 
-
-
 class Map {
 	//DO NOT CHANGE THIS PART
 	friend class MapIterator;
-	private:
+private:
+
 		//TODO - Representation
-        static const int MAX_REHASHES = 100;
-        static const double LOAD_FACTOR_THRESHOLD;
+    static const int MAX_REHASHES = 10;
+    static const double LOAD_FACTOR_THRESHOLD;
 
-        Node* table1;
-        Node* table2;
-        int capacity;
-        int size_;
+    Node* table1;
+    Node* table2;
+    int capacity;
+    int size_;
 
-//        [[nodiscard]] size_t hashFunction1(TKey key) const;
-//        [[nodiscard]] size_t hashFunction2(TKey key) const;
-        void automaticResize();
-        void resizeAndRehash(int newCapacity);
+
 
     int hashFunction1( TKey& key) const;
-
     int hashFunction2( TKey& key) const;
 
+    void resizeAndRehash(int newCapacity);
+    void automaticResize();
 
-        //different hash functions
 
 public:
 
@@ -85,13 +81,6 @@ public:
 
     void printMap() const;
 
-    [[nodiscard]] int Jenkins1(TKey key) const;
-
-    [[nodiscard]] int Jenkins2(TKey key) const;
-
-
-    void resize();
-
     //Assignment operator for copy constructor
 
     Map& operator=(const Map& other);
@@ -99,7 +88,6 @@ public:
     //function that returns a new map with the keys in the interval [key1, key2]
     Map mapInterval(TKey key1, TKey key2) const;
 
-    void resize(int newCapacity);
 };
 
 

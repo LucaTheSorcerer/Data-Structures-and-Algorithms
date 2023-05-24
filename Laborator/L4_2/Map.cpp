@@ -33,7 +33,29 @@ Map::~Map() {
     delete[] table2;
 }
 
-
+/**
+ * @brief function is responsible for inserting a new key-value pair in the map
+ * @details: The function first checks if the map needs to be resized. If it does, it calls the function automaticResize.
+ * A new node is created to store the new key-value pair.The node's element is set to the new key-value pair (c,v) and
+ * the node's occupied field is set to true. The function then checks if the key already exists in the map by calling
+ * the search function. If the key already exists, the value associated with it is updated, and the previous value is
+ * returned.If the key is not found, the function enters a loop that attempt to insert the new node into the hash map.
+ * The loop will run until either the node is successfully inserted or a maximum number of rehashes is reached.
+ * In each iteration of the loop, the positions for the key 'currentKey' are computed using the two hash functions.
+ * The function checks if the position in the first table is unoccupied. If it is, the new node is inserted there, the
+ * size is incremented, and NULL_TVALUE is returned. If the position in the first table is occupied, the function swaps
+ * the current node with the node at that position and updates the current key and value with the key and value of the
+ * swapped node. This process is then repeated for the second table. If the maximum number of rehashes is reached, and
+ * the node still cannot be inserted, the automaticResize function is called to resizeAndRehash the hash map, and the add
+ * function is recursively called with the original key and value. If the insertion is unsuccessful, the function
+ * returns NULL_TVALUE.
+ * @param c the key of the new node
+ * @param v the value of the new node
+ * @return the previous value associated with the key if the key already exists in the map, or NULL_TVALUE otherwise
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: O(1) amortized with reasonably high probability
+ * @TimeComplexity-WorstCase: O(n)
+ */
 TValue Map::add(TKey c, TValue v) {
     if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
         automaticResize();
@@ -99,18 +121,33 @@ TValue Map::add(TKey c, TValue v) {
 
 
 
-
+/**
+ * @brief function used to automatically resizeAndRehash the two hash tables
+ * @details: the function calls the function resizeAndRehash with a new capacity determined by the fullness of the hash tables
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
 void Map::automaticResize() {
     if (size_ < capacity / 4 && capacity >= 10) {
-        resize(capacity / 2);
+        resizeAndRehash(capacity / 2);
         std::cout << "Resizing downwards\n";
 
     } else {
-        resize(capacity * 2);
+        resizeAndRehash(capacity * 2);
+        std::cout << "Resizing upwards\n";
     }
 }
 
-void Map::resize(int newCapacity)
+/**
+ * @brief function used to resizeAndRehash the two hash tables
+ * @details: the function creates two new tables with the new capacity and rehashes all the elements from the old tables
+ * @param newCapacity the new capacity of the hash tables
+ * @TimeComplexity-BestCase: θ(n)
+ * @TimeComplexity-AverageCase: θ(n)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
+void Map::resizeAndRehash(int newCapacity)
 {
     int oldCapacity = capacity;
     capacity = newCapacity;
@@ -141,6 +178,17 @@ void Map::resize(int newCapacity)
     delete[] oldTable2;
 }
 
+/**
+ * @brief function used to find the value associated with a given key in the hash map
+ * @details the function uses the two hash functions to find the position of the key in the hash tables and then
+ * checks if the key is in the hash tables. If it is, it returns the value associated with the key, otherwise it
+ * returns NULL_TVALUE
+ * @param c the key of the element we are searching for
+ * @return the value associated with the key c if it is in the hash tables, otherwise it returns NULL_TVALUE
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 TValue Map::search(TKey c) const{
     int hash1 = hashFunction1(c);
     int hash2 = hashFunction2(c);
@@ -154,6 +202,22 @@ TValue Map::search(TKey c) const{
 }
 
 
+/**
+ * @brief function used to remove an element from the hash map
+ * @details This function removes an element with the given key from the map. It first calculates the two possible
+ * indices for the key using the two hash functions. Then, it checks if the element at the first index matches the key.
+ * If it does, it removes the element and returns its value. Otherwise, it checks if the element at the second index
+ * matches the key. If it does, it removes the element and returns its value. If neither index contains the key,
+ * it returns NULL_TVALUE.
+ * @param c the key of the element we want to remove
+ * @return the value associated with the key c if it is in the hash tables after removing the element, otherwise it
+ * returns NULL_TVALUE
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(n) because when resizing downwards the time complexity of the function is dominated by
+ * the time complexity of the automaticResize function that calls the resizeAndRehash function which has a time complexity of
+ * θ(n)
+ */
 TValue Map::remove(TKey c) {
     int index1 = hashFunction1(c);
     int index2 = hashFunction2(c);
@@ -181,87 +245,69 @@ TValue Map::remove(TKey c) {
 }
 
 
-
+/**
+ * @brief function used to return the current size of the hash map
+ * @return the current size of the hash map
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 int Map::size() const {
     return size_;
 }
 
+/**
+ * @brief function used to check if the hash map is empty
+ * @return true if the hash map is empty, false otherwise
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 bool Map::isEmpty() const{
     return size_ == 0;
 }
 
+/**
+ * @brief function used to return an iterator to the hash map
+ * @return an iterator to the hash map
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 MapIterator Map::iterator() const {
     return MapIterator(*this);
 }
 
 
 
-void Map::resizeAndRehash(int newCapacity) {
-    Node* newTable1 = new Node[newCapacity];
-    Node* newTable2 = new Node[newCapacity];
+/**
+ * @brief first hash function used to calculate the index of an element in the first hash table
+ * @param key the key of the element we want to find the index for
+ * @return the index of the element in the first hash table
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
+int Map::hashFunction1( TKey& key) const {
+    return abs(key) % capacity;
+}
 
-    int oldCapacity = capacity;
-    capacity = newCapacity;
-    size_ = 0;
-
-    for (int i = 0; i < oldCapacity; i++) {
-        if (table1[i].occupied) {
-            TKey key = table1[i].element.first;
-            TValue value = table1[i].element.second;
-
-            int index1 = hashFunction1(key);
-            int index2 = hashFunction2(key);
-
-            int rehashCount = 0;
-            while (rehashCount < MAX_REHASHES) {
-                // Try to insert the element into newTable1
-                if (!newTable1[index1].occupied) {
-                    newTable1[index1].element = std::make_pair(key, value);
-                    newTable1[index1].occupied = true;
-                    size_++;
-                    break;
-                } else {
-                    std::swap(key, newTable1[index1].element.first);
-                    std::swap(value, newTable1[index1].element.second);
-                    std::swap(table1[i], newTable1[index1]);
-                    index1 = hashFunction1(key);
-                }
-
-                // Try to insert the element into newTable2
-                if (!newTable2[index2].occupied) {
-                    newTable2[index2].element = std::make_pair(key, value);
-                    newTable2[index2].occupied = true;
-                    size_++;
-                    break;
-                } else {
-                    std::swap(key, newTable2[index2].element.first);
-                    std::swap(value, newTable2[index2].element.second);
-                    std::swap(table1[i], newTable2[index2]);
-                    index2 = hashFunction2(key);
-                }
-
-                rehashCount++;
-            }
-
-            if (rehashCount == MAX_REHASHES) {
-                // Rehashing is not possible within the maximum rehashes limit, revert the resizeAndRehash and throw an exception
-                delete[] newTable1;
-                delete[] newTable2;
-                capacity = oldCapacity;
-                throw std::runtime_error("Unable to rehash element during resizeAndRehash.");
-            }
-        }
-    }
-
-    delete[] table1;
-    delete[] table2;
-    table1 = newTable1;
-    table2 = newTable2;
+/**
+ * @brief second hash function used to calculate the index of an element in the second hash table
+ * @param key the key of the element we want to find the index for
+ * @return the index of the element in the second hash table
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
+int Map::hashFunction2( TKey& key) const {
+    return (abs(key) * 17 ) % capacity;
 }
 
 
-
-
+/**
+ * @brief simple print function that prints the tables, used for debugging
+ */
 void Map::printMap() const {
     std::cout << "Map contents: " << std::endl;
 
@@ -326,11 +372,4 @@ Map Map::mapInterval(TKey key1, TKey key2) const {
     return newMap;
 }
 
-int Map::hashFunction1( TKey& key) const {
-    return abs(key) % capacity;
-}
 
-
-int Map::hashFunction2( TKey& key) const {
-    return (abs(key) * 17 ) % capacity;
-}
