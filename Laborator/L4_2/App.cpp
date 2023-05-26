@@ -12,7 +12,6 @@ int main() {
 
 	testAll();
 	testAllExtended();
-//    basicTest();
 //    testMapInterval();
 
 

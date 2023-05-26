@@ -16,6 +16,15 @@ public:
 	void next();
 	TElem getCurrent();
 	bool valid() const;
+
+    //function that removes the current element from the map and goes to the next element
+
+    void deleteCurrentAndMoveNext();
+
+
+    //function that removes the current element from the map and goes to the next element
+
+    void deleteCurrent();
 };
 
 

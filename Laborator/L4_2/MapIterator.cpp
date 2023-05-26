@@ -133,3 +133,86 @@ bool MapIterator::valid() const {
     return false;
 }
 
+
+
+/**
+ *
+ * function deleteCurrent():
+    if not valid():
+        throw exception  // Invalid operation
+
+    // Delete the current key-value pair from the map
+    if currentTable is 1:
+        set map.table1[currentPosition].occupied to false
+        set map.table1[currentPosition].element to NULL_TELEM
+    else if currentTable is 2:
+        set map.table2[currentPosition].occupied to false
+        set map.table2[currentPosition].element to NULL_TELEM
+
+    // Move the iterator to the next position
+    if currentPosition < map.capacity - 1:
+        // Check if the next position is valid
+        currentPosition++
+        if not valid():
+            // Move to the next table if necessary
+            currentPosition--
+            currentTable++
+            currentPosition = 0
+    else if currentTable is 1:
+        // Move to the second table
+        currentTable++
+        currentPosition = 0
+    else:
+        // Move to the next position in the second table
+        currentPosition++
+
+
+    * @TimeComplexity-BestCase: θ(1)
+    * @TimeComplexity-AverageCase: θ(1)
+    * @TimeComplexity-WorstCase: θ(1)
+    *
+    * Preconditions:
+
+    The iterator is valid, i.e., it is positioned at a valid key-value pair in the map.
+
+    Postconditions:
+
+    The current key-value pair is deleted from the map.
+    The iterator is moved to the next valid position in the map, if available.
+    If the current position is the last valid position in the current table, the iterator moves to the first valid
+    position in the next table, if available.
+    If the current position is the last valid position in the second table, the iterator becomes invalid (i.e.,
+    valid() returns false).
+
+ */
+void MapIterator::deleteCurrent() {
+    // Check if the iterator is valid
+    if (!valid()) {
+        throw std::exception();  // Throw an exception to indicate invalid operation
+    }
+
+    // Delete the current key-value pair from the map
+    if (currentTable == 1) {
+        map.table1[currentPosition].occupied = false;
+        map.table1[currentPosition].element = NULL_TELEM;
+    } else if (currentTable == 2) {
+        map.table2[currentPosition].occupied = false;
+        map.table2[currentPosition].element = NULL_TELEM;
+
+    }
+
+    // Check if the next position is valid before moving the iterator
+    if (currentPosition < map.capacity - 1) {
+        currentPosition++;
+        if (!valid()) {
+            currentPosition--;
+            currentTable++;
+            currentPosition = 0;
+        }
+    } else if (currentTable == 1) {
+        currentTable++;
+        currentPosition = 0;
+    } else {
+        currentPosition++;
+    }
+}

@@ -2,6 +2,8 @@
 #include <utility>
 #include <cinttypes>
 #include <cstdlib>
+#include <vector>
+#include <unordered_set>
 //DO NOT INCLUDE MAPITERATOR
 
 
@@ -87,6 +89,36 @@ public:
 
     //function that returns a new map with the keys in the interval [key1, key2]
     Map mapInterval(TKey key1, TKey key2) const;
+
+    //function that returns all the keys from a map in a vector
+    std::vector<TKey> keySet() const;
+
+    //function that returns all the values from a map in a vector
+    std::vector<TValue> valueSet() const;
+
+    //function that returns the number of pairs (key, value) from the map that have the value equal to the one given as parameter
+    int countValues(TValue value) const;
+
+    //function that updates an existing value for a given key if it exists
+
+    bool update(TKey& key, TValue& newValue);
+
+    //Copy constructor
+
+    Map(const Map& other);
+
+    //function that returns a new map with only the even keys from another map using the copy constructor
+
+    Map getEvenKeys(const Map& other) const;
+
+    //function that returns all the collision between elements from a map
+
+    std::vector<TElem> getCollisions() const;
+
+    //function that returns all the collision in map in a form of key value pairs
+
+    std::vector<std::pair<TKey, TValue>> getCollisionsPairs() const;
+
 
 };
 

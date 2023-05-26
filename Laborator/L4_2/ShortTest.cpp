@@ -3,15 +3,7 @@
 #include "Map.h"
 #include "MapIterator.h"
 
-void basicTest(){
-    Map m;
-    assert(m.isEmpty() == true);
-    assert(m.size() == 0); //add elements
-    assert(m.add(13,13)==NULL_TVALUE);
-    assert(m.add(25,25)==NULL_TVALUE);
-    assert(m.add(37,37)==NULL_TVALUE);
-    m.printMap();
-}
+
 void testAll() { //call each function to see if it is implemented
 	Map m;
 	assert(m.isEmpty() == true);

@@ -270,12 +270,36 @@ void testQuantity() {
 	assert(m.size() == 0);
 }
 
+
+
+void testAdditionalFunction() {
+    // This tests the iterator function void MapIterator::deleteCurrent()
+
+    Map m;
+    for (int i = 0; i < 10; i++) {
+        assert(m.add(i, i) == NULL_TVALUE);
+    }
+
+    // Assert that the map has the expected number of elements
+    assert(m.size() == 10);
+
+    MapIterator it = m.iterator();
+    it.first();
+
+    while (it.valid()) {
+        TElem elem = it.getCurrent();
+        it.deleteCurrent();
+
+    }
+}
+
 void testAllExtended() {
 	testCreate();
 	testAdd();
 	testRemove();
     testQuantity();
     testIterator();
+    testAdditionalFunction();
 }
 
 

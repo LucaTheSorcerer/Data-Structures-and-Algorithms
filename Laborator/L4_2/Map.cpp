@@ -53,8 +53,8 @@ Map::~Map() {
  * @param v the value of the new node
  * @return the previous value associated with the key if the key already exists in the map, or NULL_TVALUE otherwise
  * @TimeComplexity-BestCase: θ(1)
- * @TimeComplexity-AverageCase: O(1) amortized with reasonably high probability
- * @TimeComplexity-WorstCase: O(n)
+ * @TimeComplexity-AverageCase: θ(1) amortized with reasonably high probability
+ * @TimeComplexity-WorstCase: θ(n)
  */
 TValue Map::add(TKey c, TValue v) {
     if (size_ >= capacity * LOAD_FACTOR_THRESHOLD) {
@@ -131,11 +131,11 @@ TValue Map::add(TKey c, TValue v) {
 void Map::automaticResize() {
     if (size_ < capacity / 4 && capacity >= 10) {
         resizeAndRehash(capacity / 2);
-        std::cout << "Resizing downwards\n";
+//        std::cout << "Resizing downwards\n";
 
     } else {
         resizeAndRehash(capacity * 2);
-        std::cout << "Resizing upwards\n";
+//        std::cout << "Resizing upwards\n";
     }
 }
 
@@ -371,5 +371,180 @@ Map Map::mapInterval(TKey key1, TKey key2) const {
 
     return newMap;
 }
+
+std::vector<TKey> Map::keySet() const {
+
+        std::vector<TKey> keys;
+
+        for (int i = 0; i < capacity; i++) {
+            if (table1[i].occupied) {
+                keys.push_back(table1[i].element.first);
+            }
+
+            if (table2[i].occupied) {
+                keys.push_back(table2[i].element.first);
+            }
+        }
+
+        return keys;
+}
+
+std::vector<TValue> Map::valueSet() const {
+
+        std::vector<TValue> values;
+
+        for (int i = 0; i < capacity; i++) {
+            if (table1[i].occupied) {
+                values.push_back(table1[i].element.second);
+            }
+
+            if (table2[i].occupied) {
+                values.push_back(table2[i].element.second);
+            }
+        }
+
+        return values;
+}
+
+int Map::countValues(TValue value) const {
+
+        int count = 0;
+
+        for (int i = 0; i < capacity; i++) {
+            if (table1[i].occupied) {
+                if (table1[i].element.second == value) {
+                    count++;
+                }
+            }
+
+            if (table2[i].occupied) {
+                if (table2[i].element.second == value) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+}
+
+bool Map::update(TKey &key, TValue &newValue) {
+
+        int index1 = hashFunction1(key);
+        int index2 = hashFunction2(key);
+
+        if (table1[index1].occupied) {
+            if (table1[index1].element.first == key) {
+                table1[index1].element.second = newValue;
+                return true;
+            }
+        }
+
+        if (table2[index2].occupied) {
+            if (table2[index2].element.first == key) {
+                table2[index2].element.second = newValue;
+                return true;
+            }
+        }
+
+        return false;
+}
+
+Map::Map(const Map &other) {
+
+        capacity = other.capacity;
+        size_ = other.size_;
+
+        table1 = new Node[capacity];
+        table2 = new Node[capacity];
+
+        for (int i = 0; i < capacity; i++) {
+            table1[i] = other.table1[i];
+            table2[i] = other.table2[i];
+        }
+}
+
+Map Map::getEvenKeys(const Map &other) const {
+
+    Map newMap;
+
+    for (int i = 0; i < capacity; i++) {
+        if (table1[i].occupied) {
+            if (table1[i].element.first % 2 == 0) {
+                newMap.add(table1[i].element.first, table1[i].element.second);
+            }
+        }
+
+        if (table2[i].occupied) {
+            if (table2[i].element.first % 2 == 0) {
+                newMap.add(table2[i].element.first, table2[i].element.second);
+            }
+        }
+    }
+
+    return newMap;
+}
+
+std::vector<TElem> Map::getCollisions() const {
+
+    std::vector<TElem> collisions;
+
+    //Check for collisions in table 1
+    for (int i = 0; i < capacity; i++) {
+        if (table1[i].occupied) {
+            int index2 = hashFunction2(table1[i].element.first);
+            if (table2[index2].occupied) {
+                collisions.push_back(table1[i].element);
+            }
+        }
+    }
+
+    //Check for collisions in table 2
+    for (int i = 0; i < capacity; i++) {
+        if (table2[i].occupied) {
+            int index1 = hashFunction1(table2[i].element.first);
+            if (table1[index1].occupied) {
+                collisions.push_back(table2[i].element);
+            }
+        }
+    }
+
+
+    return collisions;
+}
+
+std::vector<std::pair<TKey, TValue>> Map::getCollisionsPairs() const {
+    std::vector<std::pair<TKey, TValue>> collisions;
+    std::unordered_set<TKey> keys;
+
+    // Check for collisions in table 1
+    for (int i = 0; i < capacity; i++) {
+        if (table1[i].occupied) {
+            int index2 = hashFunction2(table1[i].element.first);
+            if (table2[index2].occupied && table2[index2].element.first == table1[i].element.first) {
+                if (keys.find(table1[i].element.first) == keys.end()) {
+                    collisions.push_back(table1[i].element);
+                    keys.insert(table1[i].element.first);
+                }
+            }
+        }
+    }
+
+    // Check for collisions in table 2
+    for (int i = 0; i < capacity; i++) {
+        if (table2[i].occupied) {
+            int index1 = hashFunction1(table2[i].element.first);
+            if (table1[index1].occupied && table1[index1].element.first == table2[i].element.first) {
+                if (keys.find(table2[i].element.first) == keys.end()) {
+                    collisions.push_back(table2[i].element);
+                    keys.insert(table2[i].element.first);
+                }
+            }
+        }
+    }
+
+    return collisions;
+}
+
+
 
 
