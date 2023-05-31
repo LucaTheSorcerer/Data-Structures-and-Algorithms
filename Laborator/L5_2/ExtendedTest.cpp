@@ -152,7 +152,6 @@ void testAddAndSearch(Relation r) {
 	int n = populate(list, vMin, vMax, s, m);
 	assert(!list.isEmpty());
 	assert(list.size() == n);
-//    list.printDebugInfo();
 
     //we can't find values outside the interval or on invalid positions
 	int d = 30;
@@ -191,14 +190,11 @@ void testAddAndSearch(Relation r) {
             if (p != -1 && v%m == 0){
             	for (int i=0; i<=v/m; i++){
             		try{
-//                        cout << "i=" << i <<  " v=" << v << " p=" << p << endl;
             			assert(list.remove(p) == v);
             		} catch (exception&) {
 						assert(false);
 					}
             	}
-                cout << "v=" << v << " p=" << p << endl;
-                list.printDebugInfo();
             	assert(list.search(v) == -1);
             }
 		}
@@ -305,10 +301,7 @@ void testQuantity(){
     	list.add(values[i]);
     }
 
-    list.printDebugInfo();
-
     assert(list.size() == vMax - vMin + 1);
-    //ISSUE assertion error!!!
     for (int v = vMin; v <= vMax; v++){
       	assert(list.search(v)>= 0 && list.search(v) < list.size());
       	assert(list.getElement(list.search(v)) == v);
@@ -353,9 +346,9 @@ void testQuantity(){
 
 void testAllExtended() {
 	testCreate();
-	testAddAndSearch();
-//	testDeleteSearch();
-//    testQuantity();
+//	testAddAndSearch();
+	testDeleteSearch();
+    testQuantity();
 }
 
 

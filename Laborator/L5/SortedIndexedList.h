@@ -62,4 +62,13 @@ public:
     void destroyTree(Node *node);
 
     void updateNrLeftElements(Node *node);
+
+    void printTree(Node *node, int level) const;
+
+
+    void printDebugInfo() const;
+
+    void printSortedList() const;
+
+    Node *getSuccessor(Node *node) const;
 };
