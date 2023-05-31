@@ -4,8 +4,8 @@
 #include "ExtendedTest.h"
 
 int main(){
-    // testAll();
-    // testAllExtended();
+     testAll();
+     testAllExtended();
     std::cout<<"Finished IL Tests!"<<std::endl;
 	std::cin.get();
 }

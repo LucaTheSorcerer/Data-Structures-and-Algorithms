@@ -57,4 +57,9 @@ public:
 	//destructor
 	~SortedIndexedList();
 
+    Node *findMin(Node *node) const;
+
+    void destroyTree(Node *node);
+
+    void updateNrLeftElements(Node *node);
 };
