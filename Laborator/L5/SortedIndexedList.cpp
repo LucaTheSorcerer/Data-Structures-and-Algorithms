@@ -5,17 +5,22 @@ using namespace std;
 #include <exception>
 
 SortedIndexedList::SortedIndexedList(Relation r) {
-	//TODO - Implementation
+
+    this->root = nullptr;
+    this->sizeTree = 0;
+    this->r = r;
 }
 
 int SortedIndexedList::size() const {
-	//TODO - Implementation
-	return 0;
+
+    if(root == nullptr)
+        return 0;
+    else
+        return this->sizeTree;
 }
 
 bool SortedIndexedList::isEmpty() const {
-	//TODO - Implementation
-	return false;
+    return(this->sizeTree == 0);
 }
 
 TComp SortedIndexedList::getElement(int i) const{

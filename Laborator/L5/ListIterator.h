@@ -9,8 +9,6 @@ private:
 	const SortedIndexedList& list;
 	ListIterator(const SortedIndexedList& list);
     Node *currentNode;
-//    int currentPosition;
-	//TODO - Representation
 
 public:
 	void first();

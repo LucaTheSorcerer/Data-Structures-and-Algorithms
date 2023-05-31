@@ -22,7 +22,7 @@ private:
 	//TODO - Representation
 
     Node* root;
-//    Relation r;
+    Relation r;
     int sizeTree;
 
 public:
