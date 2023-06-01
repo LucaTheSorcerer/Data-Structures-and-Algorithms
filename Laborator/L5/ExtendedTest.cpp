@@ -191,7 +191,7 @@ void testAddAndSearch(Relation r) {
             if (p != -1 && v%m == 0){
             	for (int i=0; i<=v/m; i++){
             		try{
-//                        cout << "i=" << i <<  " v=" << v << " p=" << p << endl;
+                        cout << "i=" << i <<  " v=" << v << " p=" << p << endl;
             			assert(list.remove(p) == v);
             		} catch (exception&) {
 						assert(false);
@@ -353,9 +353,9 @@ void testQuantity(){
 
 void testAllExtended() {
 	testCreate();
-	testAddAndSearch();
+    testQuantity();
+//	testAddAndSearch();
 //	testDeleteSearch();
-//    testQuantity();
 }
 
 

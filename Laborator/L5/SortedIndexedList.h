@@ -71,4 +71,6 @@ public:
     void printSortedList() const;
 
     Node *getSuccessor(Node *node) const;
+
+    Node *getParent(Node *node) const;
 };

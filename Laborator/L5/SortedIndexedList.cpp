@@ -4,6 +4,13 @@
 using namespace std;
 #include <exception>
 
+/**
+ * @brief Constructor of the SortedIndexedList class
+ * @param r - the relation used for sorting the list
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 SortedIndexedList::SortedIndexedList(Relation r) {
 
     this->root = nullptr;
@@ -11,6 +18,13 @@ SortedIndexedList::SortedIndexedList(Relation r) {
     this->r = r;
 }
 
+/**
+ * @brief Returns the size of the binary search tree or the number of elements in the list
+ * @return the size of the binary search tree or the number of elements in the list
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 int SortedIndexedList::size() const {
 
     if(root == nullptr)
@@ -19,28 +33,38 @@ int SortedIndexedList::size() const {
         return this->sizeTree;
 }
 
+/**
+ * @brief Check whether the list is empty or not
+ * @return true if the list is empty, false otherwise
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 bool SortedIndexedList::isEmpty() const {
     return(this->sizeTree == 0);
 }
 
-TComp SortedIndexedList::getElement(int i) const{
-	//TODO - Implementation
-    if(i < 0 || i >= this->sizeTree)
-        throw invalid_argument("Invalid position in the list!");
 
-	Node *currentNode = this->root;
-    i = 0;
-    while(currentNode != nullptr) {
-        int leftSize = currentNode->nrLeftElements;
-        if(i == leftSize) {
-            return currentNode -> info;
+TComp SortedIndexedList::getElement(int i) const {
+    if (i < 0 || i >= this->sizeTree) {
+        throw std::out_of_range("Invalid position in the list!");
+    }
+
+    Node* current = this->root;
+    int position = 0;
+
+    while (current != nullptr) {
+        int leftSize = current->nrLeftElements;
+
+        if (i == (position + leftSize)) {
+            return current->info;
         }
-        else if (i < leftSize) {
-            currentNode = currentNode -> left;
-        }
-        else {
-            i = i - leftSize - 1;
-            currentNode = currentNode -> right;
+
+        if (i < (position + leftSize)) {
+            current = current->left;
+        } else {
+            position = position + leftSize + 1;
+            current = current->right;
         }
     }
 
@@ -49,32 +73,37 @@ TComp SortedIndexedList::getElement(int i) const{
 
 
 
+
 Node *SortedIndexedList::findMin(Node *node) const {
     Node *currentNode = node;
+
+    //check if empty
+    if(currentNode == nullptr) {
+        return nullptr;
+    }
+
     while(currentNode->left != nullptr) {
         currentNode = currentNode->left;
     }
     return currentNode;
 }
 
-int SortedIndexedList::search(TComp e) const {
-    Node *currentNode = this->root;
-    int position = 0;
 
-    while(currentNode != nullptr && currentNode->info != e)  {
-        if(this->r(e, currentNode->info)) {
-            currentNode = currentNode->left;
+int SortedIndexedList::search(TComp e) const {
+    Node *current = this->root;
+    int position = 0;
+    while (current != nullptr) {
+        if (current->info == e) {
+            return (position + current->nrLeftElements);
         }
-        else {
-            position = currentNode->nrLeftElements + 1;
-            currentNode = currentNode->right;
+        if (this->r(e, current->info)) {
+            current = current->left;
+        } else {
+            position = position + current->nrLeftElements + 1;
+            current = current->right;
         }
     }
-
-    if(currentNode == nullptr)
-        return -1;
-    else
-        return position + currentNode->nrLeftElements;
+    return -1;
 }
 
 void SortedIndexedList::add(TComp e) {
@@ -155,6 +184,31 @@ void SortedIndexedList::printTree(Node* node, int level) const {
     cout << node->info << "(" << node->nrLeftElements << ")" << endl;
     printTree(node->left, level + 1);
 }
+
+//void SortedIndexedList::printTree(Node* node, int level) const {
+//    if(node == nullptr) {
+//        return;
+//    }
+//
+//    printTree(node->right, level + 1);
+//
+//    for(int i = 0; i < level; i++) {
+//        cout << "    ";
+//    }
+//
+//    if(node->parent != nullptr) {
+//        if(node == node->parent->left) {
+//            cout << "L-->";
+//        }
+//        else {
+//            cout << "R-->";
+//        }
+//    }
+//
+//    cout << node->info << "(" << node->nrLeftElements << ")" << endl;
+//
+//    printTree(node->left, level + 1);
+//}
 
 void SortedIndexedList::printSortedList() const {
     Node* currentNode = findMin(this->root);
@@ -341,3 +395,13 @@ TComp SortedIndexedList::remove(int i) {
     this->sizeTree--;
     return removedElement;
 }
+
+
+Node* SortedIndexedList::getParent(Node* node) const {
+    if(node == nullptr) {
+        return nullptr;
+    }
+
+    return node->parent;
+}
+
