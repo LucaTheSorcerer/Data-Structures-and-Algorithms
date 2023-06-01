@@ -44,7 +44,15 @@ bool SortedIndexedList::isEmpty() const {
     return(this->sizeTree == 0);
 }
 
-
+/**
+ * @brief Gets an element from a given position from the list
+ * @param i - the position of the element
+ * @return the element from the given position
+ * @throws exception if the position is not valid
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(log(n))
+ * @TimeComplexity-WorstCase: θ(log(n))
+ */
 TComp SortedIndexedList::getElement(int i) const {
     if (i < 0 || i >= this->sizeTree) {
         throw std::out_of_range("Invalid position in the list!");
@@ -73,7 +81,15 @@ TComp SortedIndexedList::getElement(int i) const {
 
 
 
-
+/**
+ * @brief Finds the minimum element in the binary search tree
+ * @brief this function is used to find the minimum element in the binary search tree.
+ * @param node - the current node of the binary search tree
+ * @return the minimum element in the binary search tree
+ * @TimeComplexity-BestCase: θ(n)
+ * @TimeComplexity-AverageCase: θ(n)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
 Node *SortedIndexedList::findMin(Node *node) const {
     Node *currentNode = node;
 
@@ -146,11 +162,24 @@ ListIterator SortedIndexedList::iterator(){
 	return ListIterator(*this);
 }
 
-//destructor
+/**
+ * @brief Destructor of the SortedIndexedList class
+ * @details Function that destroys the tree by calling the destroyTree function
+ * @TimeComplexity-BestCase: θ(n)
+ * @TimeComplexity-AverageCase: θ(n)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
 SortedIndexedList::~SortedIndexedList() {
     this->destroyTree(this->root);
 }
 
+/**
+ * @brief Function that destroys the tree
+ * @param node - the root of the tree
+ * @TimeComplexity-BestCase: θ(n)
+ * @TimeComplexity-AverageCase: θ(n)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
 void SortedIndexedList::destroyTree(Node *node) {
     if(node != nullptr) {
         destroyTree(node->left);
@@ -227,6 +256,15 @@ void SortedIndexedList::printDebugInfo() const {
     printSortedList();
 }
 
+/**
+ * @brief Function that returns the successor of a node
+ * @param node - the node whose successor we want to find
+ * @return the successor of the node
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(logn)
+ * @TimeComplexity-WorstCase: θ(n)
+ *
+ */
 Node* SortedIndexedList::getSuccessor(Node* node) const {
     if(node == nullptr) {
         return nullptr;
@@ -397,6 +435,11 @@ TComp SortedIndexedList::remove(int i) {
 }
 
 
+/**
+ * @brief Function that returns the parent of a node
+ * @param node
+ * @return parent of the node
+ */
 Node* SortedIndexedList::getParent(Node* node) const {
     if(node == nullptr) {
         return nullptr;
