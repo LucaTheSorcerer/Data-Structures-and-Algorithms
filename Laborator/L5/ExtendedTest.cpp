@@ -182,6 +182,8 @@ void testAddAndSearch(Relation r) {
 	}
 	testIteratorSteps(list, r);
 
+    list.printDebugInfo();
+
 	//check if added values can be found
 		for (int v = vMin; v <= vMax; v++) {
 			int p = list.search(v);
@@ -192,6 +194,7 @@ void testAddAndSearch(Relation r) {
             	for (int i=0; i<=v/m; i++){
             		try{
                         cout << "i=" << i <<  " v=" << v << " p=" << p << endl;
+//                        cout << list.remove(p) << endl;
             			assert(list.remove(p) == v);
             		} catch (exception&) {
 						assert(false);
@@ -305,7 +308,7 @@ void testQuantity(){
     	list.add(values[i]);
     }
 
-    list.printDebugInfo();
+//    list.printDebugInfo();
 
     assert(list.size() == vMax - vMin + 1);
     //ISSUE assertion error!!!
@@ -354,7 +357,7 @@ void testQuantity(){
 void testAllExtended() {
 	testCreate();
     testQuantity();
-//	testAddAndSearch();
+	testAddAndSearch();
 //	testDeleteSearch();
 }
 

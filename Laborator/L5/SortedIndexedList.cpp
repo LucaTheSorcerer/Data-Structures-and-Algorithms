@@ -201,6 +201,22 @@ void SortedIndexedList::updateNrLeftElements(Node* node) {
     updateNrLeftElements(node->parent);
 }
 
+void SortedIndexedList::updateNrLeftElementsSubtree(Node* node) {
+    if (node == nullptr) {
+        return;
+    }
+
+    int leftSize = 0;
+    if (node->left != nullptr) {
+        leftSize = node->left->nrLeftElements + 1;
+    }
+
+    node->nrLeftElements = leftSize;
+    updateNrLeftElementsSubtree(node->left);
+    updateNrLeftElementsSubtree(node->right);
+}
+
+
 void SortedIndexedList::printTree(Node* node, int level) const {
     if(node == nullptr) {
         return;
@@ -283,72 +299,276 @@ Node* SortedIndexedList::getSuccessor(Node* node) const {
     return parentNode;
 }
 
-//TComp SortedIndexedList::remove(int pos) {
-//    if (pos < 0 || pos >= this->sizeTree) {
-//        throw invalid_argument("Invalid position in the list!");
+
+
+
+
+//TComp SortedIndexedList::remove(int i) {
+//    if (i < 0 || i >= this->sizeTree) {
+//        throw std::invalid_argument("Invalid position in the list!");
 //    }
 //
 //    Node* currentNode = this->root;
 //    while (currentNode != nullptr) {
 //        int leftSize = currentNode->nrLeftElements;
-//        if (pos == leftSize) {
+//        if (i == leftSize) {
 //            break;
-//        } else if (pos < leftSize) {
+//        } else if (i < leftSize) {
 //            currentNode = currentNode->left;
 //        } else {
-//            pos = pos - leftSize - 1;
+//            i = i - leftSize - 1;
 //            currentNode = currentNode->right;
 //        }
 //    }
 //
 //    TComp removedElement = currentNode->info;
 //
-//    // Update the condition to check if the element's value matches the position
-//    if (removedElement == pos) {
-//        if (currentNode->left == nullptr && currentNode->right == nullptr) {
-//            // Handle the case when the node has no children
-//            if (currentNode == this->root) {
-//                this->root = nullptr;
-//            } else {
-//                Node* parentNode = currentNode->parent;
-//                if (parentNode->left == currentNode) {
-//                    parentNode->left = nullptr;
-//                } else {
-//                    parentNode->right = nullptr;
-//                }
-//                this->updateNrLeftElements(parentNode);
-//            }
-//            delete currentNode;
+//    if (currentNode->left == nullptr && currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = nullptr;
 //        } else {
-//            // Handle the case when the node has one child
-//            Node* childNode;
-//            if (currentNode->left != nullptr) {
-//                childNode = currentNode->left;
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = nullptr;
 //            } else {
-//                childNode = currentNode->right;
+//                parentNode->right = nullptr;
 //            }
-//
-//            if (currentNode == this->root) {
-//                this->root = childNode;
-//                this->root->parent = nullptr;
-//            } else {
-//                Node* parentNode = currentNode->parent;
-//                if (parentNode->left == currentNode) {
-//                    parentNode->left = childNode;
-//                } else {
-//                    parentNode->right = childNode;
-//                }
-//                childNode->parent = parentNode;
-//                this->updateNrLeftElements(parentNode);
-//            }
-//            delete currentNode;
+//            this->updateNrLeftElements(parentNode);
 //        }
+//        delete currentNode;
+//    } else if (currentNode->left == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->right;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->right;
+//            } else {
+//                parentNode->right = currentNode->right;
+//            }
+//            currentNode->right->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else if (currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->left;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->left;
+//            } else {
+//                parentNode->right = currentNode->left;
+//            }
+//            currentNode->left->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else {
+//        Node* successorNode = currentNode->right;
+//        while (successorNode->left != nullptr) {
+//            successorNode = successorNode->left;
+//        }
+//        currentNode->info = successorNode->info;
+//        if (successorNode->right != nullptr) {
+//            successorNode->right->parent = successorNode->parent;
+//        }
+//        if (successorNode->parent->left == successorNode) {
+//            successorNode->parent->left = successorNode->right;
+//        } else {
+//            successorNode->parent->right = successorNode->right;
+//        }
+//        this->updateNrLeftElements(successorNode->parent);
+//        delete successorNode;
+//    }
+//
+//
+//
+//    this->sizeTree--;
+//    return removedElement;
+//}
+
+//TComp SortedIndexedList::remove(int i) {
+//    if (i < 0 || i >= this->sizeTree) {
+//        throw std::invalid_argument("Invalid position in the list!");
+//    }
+//
+//    Node* currentNode = this->root;
+//    while (currentNode != nullptr) {
+//        int leftSize = currentNode->nrLeftElements;
+//        if (i == leftSize) {
+//            break;
+//        } else if (i < leftSize) {
+//            currentNode = currentNode->left;
+//        } else {
+//            i = i - leftSize - 1;
+//            currentNode = currentNode->right;
+//        }
+//    }
+//
+//    TComp removedElement = currentNode->info;
+//
+//    if (currentNode->left == nullptr && currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = nullptr;
+//            } else {
+//                parentNode->right = nullptr;
+//            }
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else if (currentNode->left == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->right;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->right;
+//            } else {
+//                parentNode->right = currentNode->right;
+//            }
+//            currentNode->right->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else if (currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->left;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->left;
+//            } else {
+//                parentNode->right = currentNode->left;
+//            }
+//            currentNode->left->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else {
+//        Node* successorNode = currentNode->right;
+//        while (successorNode->left != nullptr) {
+//            successorNode = successorNode->left;
+//        }
+//        currentNode->info = successorNode->info;
+//
+//        if (successorNode->parent->left == successorNode) {
+//            successorNode->parent->left = successorNode->right;
+//        } else {
+//            successorNode->parent->right = successorNode->right;
+//        }
+//
+//        if (successorNode->right != nullptr) {
+//            successorNode->right->parent = successorNode->parent;
+//        }
+//
+//        this->updateNrLeftElements(successorNode->parent);
+//        delete successorNode;
 //    }
 //
 //    this->sizeTree--;
 //    return removedElement;
 //}
 
+//TComp SortedIndexedList::remove(int i) {
+//    if (i < 0 || i >= this->sizeTree) {
+//        throw std::invalid_argument("Invalid position in the list!");
+//    }
+//
+//    Node* currentNode = this->root;
+//    while (currentNode != nullptr) {
+//        int leftSize = currentNode->nrLeftElements;
+//        if (i == leftSize) {
+//            break;
+//        } else if (i < leftSize) {
+//            currentNode = currentNode->left;
+//        } else {
+//            i = i - leftSize - 1;
+//            currentNode = currentNode->right;
+//        }
+//    }
+//
+//    TComp removedElement = currentNode->info;
+//
+//    if (currentNode->left == nullptr && currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = nullptr;
+//            } else {
+//                parentNode->right = nullptr;
+//            }
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else if (currentNode->left == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->right;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->right;
+//            } else {
+//                parentNode->right = currentNode->right;
+//            }
+//            currentNode->right->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else if (currentNode->right == nullptr) {
+//        if (currentNode == this->root) {
+//            this->root = currentNode->left;
+//            this->root->parent = nullptr;
+//        } else {
+//            Node* parentNode = currentNode->parent;
+//            if (parentNode->left == currentNode) {
+//                parentNode->left = currentNode->left;
+//            } else {
+//                parentNode->right = currentNode->left;
+//            }
+//            currentNode->left->parent = parentNode;
+//            this->updateNrLeftElements(parentNode);
+//        }
+//        delete currentNode;
+//    } else {
+//        Node* successorNode = currentNode->right;
+//        while (successorNode->left != nullptr) {
+//            successorNode = successorNode->left;
+//        }
+//        currentNode->info = successorNode->info;
+//
+//        // Update nrLeftElements values for the affected nodes
+//        if (successorNode->parent->left == successorNode) {
+//            successorNode->parent->left = successorNode->right;
+//            if (successorNode->right != nullptr) {
+//                successorNode->right->parent = successorNode->parent;
+//            }
+//            this->updateNrLeftElements(currentNode->parent); // Update for the parent of currentNode
+//        } else {
+//            successorNode->parent->right = successorNode->right;
+//            if (successorNode->right != nullptr) {
+//                successorNode->right->parent = successorNode->parent;
+//            }
+//            this->updateNrLeftElements(currentNode->parent); // Update for the parent of currentNode
+//        }
+//
+//        delete successorNode;
+//    }
+//
+//    this->sizeTree--;
+//    return removedElement;
+//}
 TComp SortedIndexedList::remove(int i) {
     if (i < 0 || i >= this->sizeTree) {
         throw std::invalid_argument("Invalid position in the list!");
@@ -418,23 +638,54 @@ TComp SortedIndexedList::remove(int i) {
             successorNode = successorNode->left;
         }
         currentNode->info = successorNode->info;
-        if (successorNode->right != nullptr) {
-            successorNode->right->parent = successorNode->parent;
-        }
+
+        // Update nrLeftElements values for the affected nodes
         if (successorNode->parent->left == successorNode) {
             successorNode->parent->left = successorNode->right;
+            if (successorNode->right != nullptr) {
+                successorNode->right->parent = successorNode->parent;
+            }
+            this->updateNrLeftElements(currentNode->parent); // Update for the parent of currentNode
         } else {
             successorNode->parent->right = successorNode->right;
+            if (successorNode->right != nullptr) {
+                successorNode->right->parent = successorNode->parent;
+            }
+            this->updateNrLeftElements(currentNode->parent); // Update for the parent of currentNode
         }
-        this->updateNrLeftElements(successorNode->parent);
+
         delete successorNode;
     }
 
     this->sizeTree--;
     return removedElement;
 }
+Node* SortedIndexedList::getPredecessor(Node* node) const {
+    if(node == nullptr) {
+        return nullptr;
+    }
+
+    if(node->left != nullptr) {
+        return findMax(node->left);
+    }
+
+    Node* parentNode = node->parent;
+    while(parentNode != nullptr && node == parentNode->left) {
+        node = parentNode;
+        parentNode = parentNode->parent;
+    }
+
+    return parentNode;
+}
 
 
+Node *SortedIndexedList::findMax(Node *node) {
+    Node *currentNode = node;
+    while(currentNode->right != nullptr) {
+        currentNode = currentNode->right;
+    }
+    return currentNode;
+}
 /**
  * @brief Function that returns the parent of a node
  * @param node

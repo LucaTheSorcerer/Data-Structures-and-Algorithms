@@ -73,4 +73,11 @@ public:
     Node *getSuccessor(Node *node) const;
 
     Node *getParent(Node *node) const;
+
+    void updateNrLeftElementsSubtree(Node *node);
+
+    Node *getPredecessor(Node *node) const;
+
+    static Node *findMax(Node *node) ;
+
 };

@@ -346,7 +346,7 @@ void testQuantity(){
 
 void testAllExtended() {
 	testCreate();
-//	testAddAndSearch();
+	testAddAndSearch();
 	testDeleteSearch();
     testQuantity();
 }
