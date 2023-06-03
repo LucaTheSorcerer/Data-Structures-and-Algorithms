@@ -397,6 +397,103 @@ TComp SortedIndexedList::remove(int i) {
 }
 
 
+//TComp SortedIndexedList::remove(int i) {
+//    if (i < 0 || i >= sizeTree)
+//        throw exception();
+//
+//    Node* current = root;
+//    int currentPosition = root->nrLeftElements;
+//
+//    while (currentPosition != i) {
+//        if (i < currentPosition) {
+//            current = current->left;
+//            currentPosition--;
+//            currentPosition -= (current->parent->nrLeftElements - current->nrLeftElements - 1);
+//            current->parent->nrLeftElements--;
+//        } else {
+//            current = current->right;
+//            currentPosition++;
+//            currentPosition += current->nrLeftElements;
+//        }
+//    }
+//
+//    TComp deletedValue = current->info;
+//    Node* parent = current->parent;
+//
+//    if (current == root) {
+//        if (root->left == nullptr) {
+//            root = root->right;
+//            if (root != nullptr)
+//                root->parent = nullptr;
+//        } else if (root->right == nullptr) {
+//            root = root->left;
+//            if (root != nullptr)
+//                root->parent = nullptr;
+//        } else {
+//            Node* nextNode = root->right;
+//
+//            while (nextNode->left != nullptr) {
+//                nextNode->nrLeftElements--;
+//                nextNode = nextNode->left;
+//            }
+//
+//            root->info = nextNode->info;
+//            if (nextNode->parent->left == nextNode)
+//                nextNode->parent->left = nextNode->right;
+//            else
+//                nextNode->parent->right = nextNode->right;
+//
+//            if (nextNode->right != nullptr)
+//                nextNode->right->parent = nextNode->parent;
+//
+//            delete nextNode;
+//        }
+//    } else {
+//        if (current->left == nullptr && current->right == nullptr) {
+//            if (parent->left == current)
+//                parent->left = nullptr;
+//            else
+//                parent->right = nullptr;
+//            delete current;
+//        } else if (current->left == nullptr) {
+//            if (parent->left == current)
+//                parent->left = current->right;
+//            else
+//                parent->right = current->right;
+//            current->right->parent = parent;
+//            delete current;
+//        } else if (current->right == nullptr) {
+//            if (parent->left == current)
+//                parent->left = current->left;
+//            else
+//                parent->right = current->left;
+//            current->left->parent = parent;
+//            delete current;
+//        } else {
+//            Node* nextNode = current->right;
+//
+//            while (nextNode->left != nullptr) {
+//                nextNode->nrLeftElements--;
+//                nextNode = nextNode->left;
+//            }
+//
+//            current->info = nextNode->info;
+//            if (nextNode->parent->left == nextNode)
+//                nextNode->parent->left = nextNode->right;
+//            else
+//                nextNode->parent->right = nextNode->right;
+//
+//            if (nextNode->right != nullptr)
+//                nextNode->right->parent = nextNode->parent;
+//
+//            delete nextNode;
+//        }
+//    }
+//
+//    sizeTree--;
+//    return deletedValue;
+//}
+
 Node* SortedIndexedList::getPredecessor(Node* node) const {
     if(node == nullptr) {
         return nullptr;
