@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin21-g++-12   -g -std=gnu++23 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/L5.dir/App.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/App.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/App.cpp",
+  "output": "CMakeFiles/L5.dir/App.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin21-g++-12   -g -std=gnu++23 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/L5.dir/ListIterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ListIterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ListIterator.cpp",
+  "output": "CMakeFiles/L5.dir/ListIterator.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin21-g++-12   -g -std=gnu++23 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/L5.dir/SortedIndexedList.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/SortedIndexedList.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/SortedIndexedList.cpp",
+  "output": "CMakeFiles/L5.dir/SortedIndexedList.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin21-g++-12   -g -std=gnu++23 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/L5.dir/ShortTest.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ShortTest.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ShortTest.cpp",
+  "output": "CMakeFiles/L5.dir/ShortTest.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin21-g++-12   -g -std=gnu++23 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/L5.dir/ExtendedTest.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ExtendedTest.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/Laborator/L5/ExtendedTest.cpp",
+  "output": "CMakeFiles/L5.dir/ExtendedTest.cpp.o"
+}
+]
