@@ -8,6 +8,10 @@ using namespace std;
  * @brief Construct a new List Iterator:: List Iterator object
  * @details This calls the first() method to set the current node to the first node in the list
  * @param list
+ * @TimeComplexity-BestCase: θ(1) -> the tree is empty and the function insert the new element as the root of the tree
+ * @TimeComplexity-AverageCase: θ(log(n)) -> each iteration reduces the search space by half on average
+ * @TimeComplexity-WorstCase: θ(n) -> the binary tree is entirely to left or to the right and the function needs to
+ * traverse the entire height of the tree to find the correct position for insertion
  */
 ListIterator::ListIterator(const SortedIndexedList& list) : list(list) {
     first();
@@ -38,10 +42,9 @@ void ListIterator::first(){
  * is in the left subtree. The function traverses the tree through parent nodes until either reaching to the root or
  * finding a parent node for which the current node is in the left subtree. Finally the current node is updated to the
  * ancestor node.
- * @TimeComplexity-BestCase: θ(log(n)) -> the best case occurs when the current node has a right child and no left child
- * @TimeComplexity-AverageCase: θ(log(n)) -> each iteration reduces the search space by half on average
- * @TimeComplexity-WorstCase: θ(n) -> the binary tree is entirely to left or to the right and the function needs to
- * traverse the entire height of the tree to find the first ancestor
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
  *
  */
 void ListIterator::next(){
@@ -69,6 +72,9 @@ void ListIterator::next(){
 /**
  * @brief Checks if the iterator is valid
  * @return true if the iterator is valid, false otherwise
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
  */
 bool ListIterator::valid() const{
     return(this->currentNode != nullptr);
@@ -80,6 +86,9 @@ bool ListIterator::valid() const{
  * @details This method returns the current element from the iterator. If the iterator is not valid, an exception is
  * thrown
  * @return
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
  */
 TComp ListIterator::getCurrent() const{
     if(!this->valid()) {

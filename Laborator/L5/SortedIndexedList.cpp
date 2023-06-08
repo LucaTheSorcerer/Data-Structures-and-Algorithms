@@ -237,6 +237,12 @@ void SortedIndexedList::add(TComp e) {
 }
 
 
+/**
+ * @brief Function that creates an iterator
+ * @TimeComplexity-BestCase: θ(1)
+ * @TimeComplexity-AverageCase: θ(1)
+ * @TimeComplexity-WorstCase: θ(1)
+ */
 ListIterator SortedIndexedList::iterator(){
 	return ListIterator(*this);
 }
