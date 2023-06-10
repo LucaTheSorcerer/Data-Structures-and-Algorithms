@@ -354,11 +354,75 @@ void testQuantity(){
     assert(list.isEmpty());
 }
 
+void testAdditionalAscending() {
+    //This test the function equals that checks if two containers are equal or not
+    SortedIndexedList list1(asc);
+    SortedIndexedList list2(asc);
+
+    //Add elements to the two lists
+
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+    list1.add(4);
+    list1.add(5);
+
+    list2.add(1);
+    list2.add(2);
+    list2.add(3);
+    list2.add(4);
+    list2.add(5);
+
+
+    if(list1.equals(list2))
+        assert(true);
+    else
+        assert(false);
+
+    cout << "Test additional" << endl;
+}
+
+void testAdditionalExtended() {
+    SortedIndexedList list1(asc);
+    SortedIndexedList list2(asc);
+
+    list1.add(10);
+    list1.add(20);
+    list1.add(30);
+
+
+
+    list2.add(10);
+    list2.add(20);
+    list2.add(30);
+
+
+
+    // Check if lists are equal
+    if (list1.equals(list2)) {
+        std::cout << "Lists are equal." << std::endl;
+    } else {
+        std::cout << "Lists are not equal." << std::endl;
+    }
+
+    // Now modify list2 and check again
+    list2.remove(2); // removes element 30
+
+    if (list1.equals(list2)) {
+        std::cout << "Lists are equal." << std::endl;
+    } else {
+        std::cout << "Lists are not equal." << std::endl;
+    }
+}
+
+
 void testAllExtended() {
 	testCreate();
     testQuantity();
 	testAddAndSearch();
 	testDeleteSearch();
+    testAdditionalAscending();
+    testAdditionalExtended();
 }
 
 

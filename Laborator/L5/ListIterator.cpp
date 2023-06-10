@@ -38,10 +38,10 @@ void ListIterator::first(){
  * @details This method is responsible for moving the iterator to the next node in the list. If the current node has a
  * right child, update the current node to its right child, then while the current node has a left child, update the
  * current node to its left childs. This ensures that the iterator moves to the leftmost child of the right subtree
- * If the current node does not have a right child, find the first ancestor of the current node for which the current node
- * is in the left subtree. The function traverses the tree through parent nodes until either reaching to the root or
- * finding a parent node for which the current node is in the left subtree. Finally the current node is updated to the
- * ancestor node.
+ * If the current node does not have a right child, it means that the current node is the largest element in its subtree
+ * so the iterator needs to find the nearest ancestor that is greater than the current node.
+ * So it moves up the parents to find an ancestor with a right child, because it means that the current node is the
+ * largest element possible in the subtree
  * @TimeComplexity-BestCase: θ(1)
  * @TimeComplexity-AverageCase: θ(1)
  * @TimeComplexity-WorstCase: θ(1)

@@ -611,6 +611,11 @@ TComp SortedIndexedList::remove(int i) {
 //    return deletedValue;
 //}
 
+/**
+ * @brief Function that returns the predecessor of a node
+ * @param node
+ * @return
+ */
 Node* SortedIndexedList::getPredecessor(Node* node) const {
     if(node == nullptr) {
         return nullptr;
@@ -630,6 +635,11 @@ Node* SortedIndexedList::getPredecessor(Node* node) const {
 }
 
 
+/**
+ * @brief Function that returns the maximum node in a subtree
+ * @param node
+ * @return
+ */
 Node *SortedIndexedList::findMax(Node *node) {
     Node *currentNode = node;
     while(currentNode->right != nullptr) {
@@ -648,4 +658,76 @@ Node* SortedIndexedList::getParent(Node* node) const {
     }
 
     return node->parent;
+}
+
+//bool SortedIndexedList::equals(SortedIndexedList &list) {
+//
+//    if(this->sizeTree != list.sizeTree) {
+//        return false;
+//    }
+//
+//    ListIterator it1 = this->iterator();
+//    ListIterator it2 = list.iterator();
+//
+//    while(it1.valid() && it2.valid()) {
+//        if(it1.getCurrent() != it2.getCurrent()) {
+//            return false;
+//        }
+//        it1.next();
+//        it2.next();
+//    }
+//
+//    return true;
+//}
+
+bool SortedIndexedList::equals(SortedIndexedList& list) {
+    return isEqual(this->root, list.root);
+}
+
+/**
+ * @brief Function that recursively checks if two sorted indexed lists are equal
+ * @param node1
+ * @param node2
+ * @return
+ *  Preconditions:
+    - `node1` and `node2` are valid pointers to the root nodes of two binary trees
+
+    Postconditions:
+    - Returns true if the trees rooted at `node1` and `node2` are equal and false otherwise
+
+    PseudoCode for the function:
+    Function isEqual(node1, node2):
+    // If both trees are empty, return true
+    if node1 is nullptr and node2 is nullptr:
+        return true
+
+    // If both trees are not empty, check the data of the nodes and recurse for left and right subtrees
+    if node1 is not nullptr and node2 is not nullptr:
+        return (node1->info == node2->info)
+            and isEqual(node1->left, node2->left)
+            and isEqual(node1->right, node2->right)
+
+    // If we reach here, then one tree is empty and the other is not
+    return false
+ *
+ * @TimeComplexity-BestCase: θ(1) -> if both trees are empty
+ * @TimeComplexity-AverageCase: θ(n)
+ * @TimeComplexity-WorstCase: θ(n)
+ */
+bool SortedIndexedList::isEqual(Node* node1, Node* node2) {
+    // If both trees are empty, return true
+    if (node1 == nullptr && node2 == nullptr) {
+        return true;
+    }
+
+    // If both trees are not empty, check the data of the nodes and
+    // recurse for left and right subtrees
+    if (node1 != nullptr && node2 != nullptr) {
+        return (node1->info == node2->info
+                && isEqual(node1->left, node2->left)
+                && isEqual(node1->right, node2->right));
+    }
+
+    // If we reach here, then one tree is empty and the other is not
+    return false;
 }

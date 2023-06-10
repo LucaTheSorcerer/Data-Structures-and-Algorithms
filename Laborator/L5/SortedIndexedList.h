@@ -85,4 +85,12 @@ public:
     TComp successor(TComp e);
 
     TComp parentOfNode(TComp e);
+
+    //function that checks if two sorted indexed lists are the same
+    bool equals(SortedIndexedList& list);
+
+    //Another implementation that checks if two sorted indexed lists are the same using the assignment operator overloaded  ==
+
+
+    bool isEqual(Node *node1, Node *node2);
 };
