@@ -122,3 +122,61 @@ TComp SLL::deleteFirst() {
 SLLIterator SLL::getIterator() {
     return SLLIterator(*this);
 }
+
+void SLL::merge(SLL &list1, SLL &list2) {
+    // Check if either of the input lists is empty
+    if (list1.isEmpty()) {
+        head = list2.head;
+    } else if (list2.isEmpty()) {
+        head = list1.head;
+    } else {
+        SLLNode* current1 = list1.head;
+        SLLNode* current2 = list2.head;
+
+        // Determine the head of the merged list
+        if (current1->info <= current2->info) {
+            head = current1;
+            current1 = current1->next;
+        } else {
+            head = current2;
+            current2 = current2->next;
+        }
+
+        SLLNode* current = head;
+
+        // Merge the lists by comparing the elements
+        while (current1 != nullptr && current2 != nullptr) {
+            if (current1->info <= current2->info) {
+                current->next = current1;
+                current1 = current1->next;
+            } else {
+                current->next = current2;
+                current2 = current2->next;
+            }
+            current = current->next;
+        }
+
+        // Append the remaining elements of the non-empty list
+        if (current1 != nullptr) {
+            current->next = current1;
+        } else {
+            current->next = current2;
+        }
+
+        // Find the last node of the merged list
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+
+        // Update the size and set the last node's next pointer to nullptr
+        size = list1.size + list2.size;
+        current->next = nullptr;
+    }
+
+    // Reset the input lists
+    list1.head = nullptr;
+    list1.size = 0;
+    list2.head = nullptr;
+    list2.size = 0;
+}
+

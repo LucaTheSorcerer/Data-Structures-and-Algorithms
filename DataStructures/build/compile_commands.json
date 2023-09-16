@@ -1,0 +1,74 @@
+[
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/main.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/main.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/main.cpp",
+  "output": "CMakeFiles/DataStructures.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/DynamicArray/DynamicArray.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/DynamicArray/DynamicArray.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/DynamicArray/DynamicArray.cpp",
+  "output": "CMakeFiles/DataStructures.dir/DynamicArray/DynamicArray.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/DynamicArray/DynamicArrayIterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/DynamicArray/DynamicArrayIterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/DynamicArray/DynamicArrayIterator.cpp",
+  "output": "CMakeFiles/DataStructures.dir/DynamicArray/DynamicArrayIterator.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/Heap/BinaryHeap.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/Heap/BinaryHeap.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/Heap/BinaryHeap.cpp",
+  "output": "CMakeFiles/DataStructures.dir/Heap/BinaryHeap.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedList/SLL/SLL.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/SLL/SLL.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/SLL/SLL.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedList/SLL/SLL.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedList/SLL/SLL_Iterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/SLL/SLL_Iterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/SLL/SLL_Iterator.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedList/SLL/SLL_Iterator.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedList/DLL/DLL.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/DLL/DLL.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/DLL/DLL.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedList/DLL/DLL.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedList/DLL/DLL_Iterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/DLL/DLL_Iterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedList/DLL/DLL_Iterator.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedList/DLL/DLL_Iterator.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedListOnArrays/SLLA/SLLA.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/SLLA/SLLA.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/SLLA/SLLA.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedListOnArrays/SLLA/SLLA.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedListOnArrays/SLLA/SLLAIterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/SLLA/SLLAIterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/SLLA/SLLAIterator.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedListOnArrays/SLLA/SLLAIterator.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedListOnArrays/DLLA/DLLA.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/DLLA/DLLA.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/DLLA/DLLA.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedListOnArrays/DLLA/DLLA.cpp.o"
+},
+{
+  "directory": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/DataStructures.dir/LinkedListOnArrays/DLLA/DLLAIterator.cpp.o -c /Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/DLLA/DLLAIterator.cpp",
+  "file": "/Users/lulu/UBB/Semestrul_II/Data-Structures-and-Algorithms/DataStructures/LinkedListOnArrays/DLLA/DLLAIterator.cpp",
+  "output": "CMakeFiles/DataStructures.dir/LinkedListOnArrays/DLLA/DLLAIterator.cpp.o"
+}
+]

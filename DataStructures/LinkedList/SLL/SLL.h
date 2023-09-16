@@ -40,4 +40,8 @@ public:
     SLLIterator getIterator();
 
     ~SLL();
+
+    //function  that merges two sorted lists into a single sorted list
+
+    void merge(SLL& list1, SLL& list2);
 };
